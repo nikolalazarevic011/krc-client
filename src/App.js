@@ -1,11 +1,27 @@
-// import React from 'react'
+import { CssBaseline, ThemeProvider } from "@mui/material";
+import { BeautifulTheme } from "./theme/BeautifulTheme";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import Root from "./components/navigation/Root";
+import Home from "./components/Home";
+
+const router = createBrowserRouter([
+    {
+        path: "/",
+        element: <Root />,
+        // errorElement: ,
+        children: [{ index: true, element: <Home /> }],
+    },
+]);
 
 function App() {
-  return (
-    <>
-    <h1>hi</h1>
-    </>
-  );
+    return (
+        <>
+            <ThemeProvider theme={BeautifulTheme}>
+                <CssBaseline />
+                <RouterProvider router={router} />
+            </ThemeProvider>
+        </>
+    );
 }
 
 export default App;
