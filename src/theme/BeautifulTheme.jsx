@@ -4,7 +4,7 @@ const BeautifulTheme = createTheme({
     palette: {
         primary: {
             main: "#283618",
-            // light: "#6c9cbd",
+            light: "#C3DAC3",
             // dark: "#2d4d63",
         },
         secondary: {
@@ -42,6 +42,20 @@ const BeautifulTheme = createTheme({
         subtitle2: {
             fontFamily: "Inter",
         }, 
+    },
+    components: {
+        MuiLink: {
+            styleOverrides: {
+                root: {
+                    color: "#283618",
+                    fontFamily: "Poppins",
+                    textDecoration: "none",
+                    "&:hover": {
+                        textDecoration: "underline",
+                    },
+                },
+            },
+        },
     },
 
     //! for links poppins font

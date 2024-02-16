@@ -10,6 +10,7 @@ export const isNotMobile = window.innerWidth >= 435;
 
 function Root() {
     // const token = useLoaderData();
+    const token = true
     let toggleDrawer = useSelector((state) => state.ui.toggleDrawer);
     const [marginLeft, setMarginLeft] = useState(null);
 
@@ -33,13 +34,12 @@ function Root() {
         <>
             {/* <Box sx={{ minHeight: "100vh" }}> */}
             <Box sx={{ minHeight: "97vh" }}>
-                {/* <body> */}
-                {!token && (
+                {/* {!token && (
                     <main>
                         <Navbar />
                         <Outlet />
                     </main>
-                )}
+                )} */}
                 {token && (
                     <main style={simpleStyles.content}>
                         <Navbar />
