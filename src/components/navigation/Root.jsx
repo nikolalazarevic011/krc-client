@@ -3,7 +3,7 @@ import { Outlet, useLoaderData } from "react-router-dom";
 import DrawerComp from "./DrawerComp";
 import Navbar from "./NavBar/Navbar";
 import { useSelector } from "react-redux";
-import Footer from "./Footer";
+// import Footer from "./Footer";
 import { Box } from "@mui/material";
 
 export const isNotMobile = window.innerWidth >= 435;
