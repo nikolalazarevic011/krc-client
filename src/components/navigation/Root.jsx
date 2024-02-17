@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { Outlet, useLoaderData } from "react-router-dom";
+// import { Outlet, useLoaderData } from "react-router-dom";
 import DrawerComp from "./DrawerComp";
-import Navbar from "./NavBar/Navbar";
+import Navbar from "../navbar/Navbar"
 import { useSelector } from "react-redux";
 // import Footer from "./Footer";
 import { Box } from "@mui/material";

@@ -44,6 +44,7 @@ const BeautifulTheme = createTheme({
         }, 
     },
     components: {
+        //! for links poppins font does it work?
         MuiLink: {
             styleOverrides: {
                 root: {
@@ -58,7 +59,6 @@ const BeautifulTheme = createTheme({
         },
     },
 
-    //! for links poppins font
 });
 
 export { BeautifulTheme };

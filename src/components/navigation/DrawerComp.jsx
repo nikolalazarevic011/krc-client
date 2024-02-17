@@ -15,17 +15,21 @@ import {
     Toolbar,
     Stack,
 } from "@mui/material";
-import { NavLink, Outlet, useLocation, useNavigate } from "react-router-dom";
+import {
+    Link,
+    NavLink,
+    Outlet,
+    useLocation,
+    useNavigate,
+} from "react-router-dom";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { UIActions } from "../../store/ui";
 import store from "../../store";
-import { isNotMobile } from "../Navigation/Root";
-
-import { CustomLink } from "../../theme/BeautifulTheme";
+import { isNotMobile } from "./Root";
 
 const drawerWidth = 240;
 
-const DrawerC = () => {
+const DrawerComp = () => {
     let toggleDrawer = useSelector((state) => state.ui.toggleDrawer);
     const responsiveDrawerWith = isNotMobile ? drawerWidth : "100%";
 
@@ -39,12 +43,6 @@ const DrawerC = () => {
                 display: "none",
             },
         },
-        // content: {
-        //     marginLeft: 0,
-        //     padding: 3,
-        //     maxWidth: 720,
-        //     minWidth: 375,
-        // },
     };
 
     useEffect(() => {
@@ -152,7 +150,7 @@ const DrawerC = () => {
                                 aria-controls="panel1a-content"
                                 id="panel1a-header"
                             >
-                                <Typography sx={{ color: "primary.main" }}>
+                                <Typography variant="" sx={{ color: "primary.main" }}>
                                     Handouts
                                 </Typography>
                             </AccordionSummary>
@@ -160,7 +158,7 @@ const DrawerC = () => {
                                 <List>
                                     {handoutItems.map((item, index) => (
                                         <Stack key={item.text}>
-                                            <CustomLink
+                                            <Link
                                                 to={`/office-at-hand/documents/${item.path}`}
                                             >
                                                 <Button
@@ -196,7 +194,7 @@ const DrawerC = () => {
                                                         </ListItemText>
                                                     </ListItemButton>
                                                 </Button>
-                                            </CustomLink>
+                                            </Link>
                                         </Stack>
                                     ))}
                                 </List>
@@ -216,7 +214,7 @@ const DrawerC = () => {
                                 <List>
                                     {classesItems.map((item, index) => (
                                         <Stack key={item.text}>
-                                            <CustomLink
+                                            <Link
                                                 to={`/office-at-hand/videos/${item.path}`}
                                             >
                                                 <Button
@@ -252,7 +250,7 @@ const DrawerC = () => {
                                                         </ListItemText>
                                                     </ListItemButton>
                                                 </Button>
-                                            </CustomLink>
+                                            </Link>
                                         </Stack>
                                     ))}
                                 </List>
@@ -272,7 +270,7 @@ const DrawerC = () => {
                                 <List>
                                     {homeworkItems.map((item, index) => (
                                         <Stack key={item.text}>
-                                            <CustomLink
+                                            <Link
                                                 to={`/office-at-hand/videos/${item.path}`}
                                             >
                                                 <Button
@@ -304,7 +302,7 @@ const DrawerC = () => {
                                                         </ListItemText>
                                                     </ListItemButton>
                                                 </Button>
-                                            </CustomLink>
+                                            </Link>
                                         </Stack>
                                     ))}
                                 </List>
@@ -318,4 +316,4 @@ const DrawerC = () => {
     );
 };
 
-export default DrawerC;
+export default DrawerComp;
