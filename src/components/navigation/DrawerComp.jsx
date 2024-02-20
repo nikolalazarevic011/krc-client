@@ -9,7 +9,6 @@ import {
     AccordionDetails,
     ListItemButton,
     Button,
-    ListItemIcon,
     ListItemText,
     Typography,
     Toolbar,
