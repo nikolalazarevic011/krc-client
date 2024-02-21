@@ -37,12 +37,11 @@ const UserOptions = () => {
                 marginLeft: "auto", // Move UserOptions to the right
             }}
         >
-            {isNotMobile && (
+            {/* {isNotMobile && (
                 <Typography sx={{ mt: 1, mr: 1 }}>
-                    {/* Welcome {localStorage.getItem("email")} */}
                     Welcome user
                 </Typography>
-            )}
+            )} */}
 
             <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>

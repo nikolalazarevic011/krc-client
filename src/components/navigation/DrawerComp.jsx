@@ -137,9 +137,12 @@ const DrawerComp = () => {
             <Stack>
                 <Drawer
                     sx={classes.drawer}
-                    variant="temporary"
+                    variant={isNotMobile? "permanent" : "temporary" }
                     anchor="left"
                     open={toggleDrawer}
+                    ModalProps={{
+                        keepMounted: false,
+                      }}
                 >
                     <Toolbar sx={{ mt: -1 }} />
                     <List>
@@ -158,7 +161,7 @@ const DrawerComp = () => {
                                     {handoutItems.map((item, index) => (
                                         <Stack key={item.text}>
                                             <Link
-                                                to={`/office-at-hand/documents/${item.path}`}
+                                                // to={`/office-at-hand/documents/${item.path}`}
                                             >
                                                 <Button
                                                     sx={{
@@ -214,7 +217,7 @@ const DrawerComp = () => {
                                     {classesItems.map((item, index) => (
                                         <Stack key={item.text}>
                                             <Link
-                                                to={`/office-at-hand/videos/${item.path}`}
+                                                // to={`/office-at-hand/videos/${item.path}`}
                                             >
                                                 <Button
                                                     sx={{
@@ -270,7 +273,7 @@ const DrawerComp = () => {
                                     {homeworkItems.map((item, index) => (
                                         <Stack key={item.text}>
                                             <Link
-                                                to={`/office-at-hand/videos/${item.path}`}
+                                                // to={`/office-at-hand/videos/${item.path}`}
                                             >
                                                 <Button
                                                     sx={{

@@ -48,8 +48,8 @@ const BeautifulTheme = createTheme({
         MuiLink: {
             styleOverrides: {
                 root: {
-                    color: "#283618",
-                    fontFamily: "Poppins",
+                    color: "#9AC339",
+                    fontFamily: "Poppins !important",
                     textDecoration: "none",
                     "&:hover": {
                         textDecoration: "underline",

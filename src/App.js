@@ -2,7 +2,7 @@ import { CssBaseline, ThemeProvider } from "@mui/material";
 import { BeautifulTheme } from "./theme/BeautifulTheme";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Root from "./components/navigation/Root";
-import Home from "./components/Home";
+import Home from "./pages/HomePage";
 
 const router = createBrowserRouter([
     {
