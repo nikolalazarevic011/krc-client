@@ -1,30 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
-import {
-    Box,
-    Drawer,
-    List,
-    Accordion,
-    AccordionSummary,
-    AccordionDetails,
-    ListItemButton,
-    Button,
-    ListItemText,
-    Typography,
-    Toolbar,
-    Stack,
-} from "@mui/material";
-import {
-    Link,
-    NavLink,
-    Outlet,
-    useLocation,
-    useNavigate,
-} from "react-router-dom";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { Drawer, List, Toolbar, Stack } from "@mui/material";
+import { Outlet } from "react-router-dom";
 import { UIActions } from "../../store/ui";
 import store from "../../store";
 import { isNotMobile } from "./Root";
+import CustomAccordion from "../helper/CustomAccordion";
 
 const drawerWidth = 240;
 
@@ -37,10 +18,15 @@ const DrawerComp = () => {
             width: responsiveDrawerWith,
             ".MuiDrawer-paper": {
                 width: responsiveDrawerWith,
+                backgroundColor: "#C3DAC3",
             },
             ".MuiBackdrop-root": {
                 display: "none",
             },
+            backgroundColor: "#C3DAC3",
+        },
+        list: {
+            backgroundColor: "#C3DAC3",
         },
     };
 
@@ -137,179 +123,28 @@ const DrawerComp = () => {
             <Stack>
                 <Drawer
                     sx={classes.drawer}
-                    variant={isNotMobile? "permanent" : "temporary" }
+                    variant={isNotMobile ? "permanent" : "temporary"}
                     anchor="left"
                     open={toggleDrawer}
                     ModalProps={{
                         keepMounted: false,
-                      }}
+                    }}
                 >
                     <Toolbar sx={{ mt: -1 }} />
                     <List>
-                        <Accordion>
-                            <AccordionSummary
-                                expandIcon={<ExpandMoreIcon />}
-                                aria-controls="panel1a-content"
-                                id="panel1a-header"
-                            >
-                                <Typography variant="" sx={{ color: "primary.main" }}>
-                                    Handouts
-                                </Typography>
-                            </AccordionSummary>
-                            <AccordionDetails>
-                                <List>
-                                    {handoutItems.map((item, index) => (
-                                        <Stack key={item.text}>
-                                            <Link
-                                                // to={`/office-at-hand/documents/${item.path}`}
-                                            >
-                                                <Button
-                                                    sx={{
-                                                        borderBottom:
-                                                            index ===
-                                                            handoutItems.length -
-                                                                1
-                                                                ? 0
-                                                                : "1px solid black",
-                                                        borderBottomColor:
-                                                            "primary.main",
-                                                    }}
-                                                    fullWidth
-                                                    // component={NavLink}
-                                                    // to={`/office-at-hand/documents/${item.path}`}
-                                                    onClick={
-                                                        handleMenuItemClick
-                                                    }
-                                                >
-                                                    <ListItemButton>
-                                                        <ListItemText
-                                                        // primary={item.text}
-                                                        >
-                                                            <Typography
-                                                                variant="body2"
-                                                                sx={{
-                                                                    color: "primary.main",
-                                                                }}
-                                                            >
-                                                                {item.text}
-                                                            </Typography>
-                                                        </ListItemText>
-                                                    </ListItemButton>
-                                                </Button>
-                                            </Link>
-                                        </Stack>
-                                    ))}
-                                </List>
-                            </AccordionDetails>
-                        </Accordion>
-                        <Accordion>
-                            <AccordionSummary
-                                expandIcon={<ExpandMoreIcon />}
-                                aria-controls="panel1b-content"
-                                id="panel1b-header"
-                            >
-                                <Typography sx={{ color: "primary.main" }}>
-                                    Classes
-                                </Typography>
-                            </AccordionSummary>
-                            <AccordionDetails>
-                                <List>
-                                    {classesItems.map((item, index) => (
-                                        <Stack key={item.text}>
-                                            <Link
-                                                // to={`/office-at-hand/videos/${item.path}`}
-                                            >
-                                                <Button
-                                                    sx={{
-                                                        borderBottom:
-                                                            index ===
-                                                            classesItems.length -
-                                                                1
-                                                                ? 0
-                                                                : "1px solid black",
-                                                        borderBottomColor:
-                                                            "primary.main",
-                                                    }}
-                                                    fullWidth
-                                                    // component={NavLink}
-                                                    // to={`/office-at-hand/videos/${item.path}`}
-                                                    onClick={
-                                                        handleMenuItemClick
-                                                    }
-                                                >
-                                                    <ListItemButton>
-                                                        <ListItemText
-                                                        // primary={item.text}
-                                                        >
-                                                            <Typography
-                                                                variant="body2"
-                                                                sx={{
-                                                                    color: "primary.main",
-                                                                }}
-                                                            >
-                                                                {item.text}
-                                                            </Typography>
-                                                        </ListItemText>
-                                                    </ListItemButton>
-                                                </Button>
-                                            </Link>
-                                        </Stack>
-                                    ))}
-                                </List>
-                            </AccordionDetails>
-                        </Accordion>
-                        <Accordion>
-                            <AccordionSummary
-                                expandIcon={<ExpandMoreIcon />}
-                                aria-controls="panel1c-content"
-                                id="panel1c-header"
-                            >
-                                <Typography sx={{ color: "primary.main" }}>
-                                    Homework
-                                </Typography>
-                            </AccordionSummary>
-                            <AccordionDetails>
-                                <List>
-                                    {homeworkItems.map((item, index) => (
-                                        <Stack key={item.text}>
-                                            <Link
-                                                // to={`/office-at-hand/videos/${item.path}`}
-                                            >
-                                                <Button
-                                                    sx={{
-                                                        borderBottom:
-                                                            index ===
-                                                            homeworkItems.length -
-                                                                1
-                                                                ? 0
-                                                                : "1px solid black",
-                                                        borderBottomColor:
-                                                            "primary.main",
-                                                    }}
-                                                    fullWidth
-                                                    onClick={
-                                                        handleMenuItemClick
-                                                    }
-                                                >
-                                                    <ListItemButton>
-                                                        <ListItemText>
-                                                            <Typography
-                                                                variant="body2"
-                                                                sx={{
-                                                                    color: "primary.main",
-                                                                }}
-                                                            >
-                                                                {item.text}
-                                                            </Typography>
-                                                        </ListItemText>
-                                                    </ListItemButton>
-                                                </Button>
-                                            </Link>
-                                        </Stack>
-                                    ))}
-                                </List>
-                            </AccordionDetails>
-                        </Accordion>
+                        {/* sx={classes.list} */}
+                        <CustomAccordion
+                            title={"Handouts"}
+                            array={handoutItems}
+                        />
+                        <CustomAccordion
+                            title={"Classes"}
+                            array={classesItems}
+                        />
+                        <CustomAccordion
+                            title={"Homework"}
+                            array={homeworkItems}
+                        />
                     </List>
                 </Drawer>
                 <Outlet />

@@ -31,7 +31,9 @@ const BeautifulTheme = createTheme({
         fontWeightMedium: 600,
         fontWeightBold: 700,
         body1: {
-            fontFamily: "Inter",
+            //should be Poppins, Inter . But this works how I want it for now. 
+            fontFamily: "inherit | Inter",
+            // fontFamily: "Inter,Poppins",
         },
         body2: {
             fontFamily: "Inter",
@@ -44,7 +46,7 @@ const BeautifulTheme = createTheme({
         }, 
     },
     components: {
-        //! for links poppins font does it work?
+        //! for links poppins font does it work? no
         MuiLink: {
             styleOverrides: {
                 root: {

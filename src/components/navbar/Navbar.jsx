@@ -18,7 +18,7 @@ import { UIActions } from "../../store/ui";
 import { NavLink, useLocation } from "react-router-dom";
 import { isNotMobile } from "../navigation/Root";
 import { useSelector } from "react-redux";
-import logoPic from "../../imgs/Logo_white.png";
+import logoPic from "../../assets/imgs/Logo_white.png"
 import XIcon from "@mui/icons-material/X";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import HomeIcon from "@mui/icons-material/Home";

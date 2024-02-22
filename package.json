@@ -29,9 +29,10 @@
             "react-app",
             "react-app/jest"
         ],
+        "plugin" : "react/recommended",
         "rules": {
-            "react/jsx-uses-react": "off",
-            "react/react-in-jsx-scope": "off"
+            "react/jsx-uses-react": "error",
+            "react/react-in-jsx-scope": "error"
         }
     },
     "browserslist": {
