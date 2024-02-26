@@ -10,17 +10,21 @@ import {
     Typography,
     Stack,
 } from "@mui/material";
-
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { UIActions } from "../../store/ui";
 import store from "../../store";
 import { isNotMobile } from "../../components/navigation/Root";
-import { NavLink as reactNavLink } from "react-router-dom";
+import { NavLink as reactNavLink, useLocation } from "react-router-dom";
 
-const CustomAccordion = ({ title, array }) => {
+const CustomAccordion = ({ title, array, activePath }) => {
+    const location = useLocation();
+
     const classes = {
         list: {
             backgroundColor: "#C3DAC3",
+        },
+        activeItem: {
+            backgroundColor: "#E8EAF2",
         },
     };
     const handleMenuItemClick = () => {
@@ -36,9 +40,7 @@ const CustomAccordion = ({ title, array }) => {
                 aria-controls="panel1a-content"
                 id="panel1a-header"
             >
-                <Typography variant="body1" sx={{ color: "primary.main" }}>
-                    {title}
-                </Typography>
+                <Typography variant="body1">{title}</Typography>
             </AccordionSummary>
             <AccordionDetails>
                 <List>
@@ -50,8 +52,9 @@ const CustomAccordion = ({ title, array }) => {
                                     borderBottom:
                                         index === array.length - 1
                                             ? 0
-                                            : "1px solid black",
-                                    borderBottomColor: "primary.main",
+                                            : "1px solid",
+                                    ...(location.pathname === `/${item.path}` &&
+                                        classes.activeItem), // Apply selected style if the path matches
                                 }}
                                 fullWidth
                                 component={reactNavLink}
@@ -62,14 +65,14 @@ const CustomAccordion = ({ title, array }) => {
                                     {/* <ListItemText
                                     // primary={item.text}
                                     > */}
-                                        <Typography
-                                            variant="body2"
-                                            sx={{
-                                                color: "primary.main",
-                                            }}
-                                        >
-                                            {item.text}
-                                        </Typography>
+                                    <Typography
+                                        variant="body2"
+                                        sx={{
+                                            color: "primary.main",
+                                        }}
+                                    >
+                                        {item.text}
+                                    </Typography>
                                     {/* </ListItemText> */}
                                 </ListItemButton>
                             </Button>

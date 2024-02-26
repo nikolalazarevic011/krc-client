@@ -1,14 +1,5 @@
-import * as React from "react";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemAvatar from "@mui/material/ListItemAvatar";
-import ListItemText from "@mui/material/ListItemText";
-import Avatar from "@mui/material/Avatar";
-import IconButton from "@mui/material/IconButton";
-import { Container, Link } from "@mui/material";
-import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
-import DownloadIcon from "@mui/icons-material/Download";
-
+import React from "react";
+import DrawerItemListView from "../../components/data-display/DrawerItemListView";
 const menuItems = [
     {
         text: "Food Log",
@@ -41,34 +32,7 @@ const menuItems = [
 ];
 
 const Handouts = () => {
-    return (
-        <>
-            <Container maxWidth="md">
-                <List>
-                    {menuItems.map((item, index) => (
-                        <ListItem
-                            key={index}
-                            secondaryAction={
-                                //possible link for download?
-                                <IconButton edge="end" aria-label="delete">
-                                    <DownloadIcon />
-                                </IconButton>
-                            }
-                        >
-                            <ListItemAvatar>
-                                <Avatar>
-                                    <PictureAsPdfIcon />
-                                </Avatar>
-                            </ListItemAvatar>
-                            <Link href={item.path} >
-                                <ListItemText primary={item.text}  />                
-                            </Link>
-                        </ListItem>
-                    ))}
-                </List>
-            </Container>
-        </>
-    );
+    return <DrawerItemListView data={menuItems} />;
 };
 
 export default Handouts;

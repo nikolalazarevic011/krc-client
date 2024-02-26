@@ -1,28 +1,32 @@
-import * as React from "react";
+import React from "react";
 import { styled, alpha } from "@mui/material/styles";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import InputBase from "@mui/material/InputBase";
-import Badge from "@mui/material/Badge";
-import MenuItem from "@mui/material/MenuItem";
-import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
-import SearchIcon from "@mui/icons-material/Search";
-import AccountCircle from "@mui/icons-material/AccountCircle";
-import MoreIcon from "@mui/icons-material/MoreVert";
-import store from "../../store/index";
-import { UIActions } from "../../store/ui";
+import {
+    AppBar,
+    Box,
+    Toolbar,
+    IconButton,
+    Typography,
+    InputBase,
+    Badge,
+    MenuItem,
+    Menu,
+    Link, // Merged with NavLink
+} from "@mui/material";
+import {
+    Menu as MenuIcon,
+    Search as SearchIcon,
+    AccountCircle,
+    MoreVert as MoreIcon,
+    X as XIcon,
+    Facebook as FacebookIcon,
+    Home as HomeIcon,
+} from "@mui/icons-material";
 import { NavLink, useLocation } from "react-router-dom";
-import { isNotMobile } from "../navigation/Root";
 import { useSelector } from "react-redux";
-import logoPic from "../../assets/imgs/Logo_white.png"
-import XIcon from "@mui/icons-material/X";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import HomeIcon from "@mui/icons-material/Home";
-import { Link } from "@mui/material";
+import store from "../../../store/index";
+import { UIActions } from "../../../store/ui";
+import { isNotMobile } from "../../navigation/Root";
+import logoPic from "../../../assets/imgs/Logo_white.png";
 
 const Search = styled("div")(({ theme }) => ({
     position: "relative",

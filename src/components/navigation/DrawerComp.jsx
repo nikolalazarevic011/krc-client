@@ -58,32 +58,32 @@ const DrawerComp = () => {
         {
             text: "Shoes",
             // //   icon: <RestaurantMenuRoundedIcon fontSize="large" />,
-            path: "shoes",
+            path: "handouts/shoes",
         },
         {
             text: "Gear",
             // //   icon: <RestaurantMenuRoundedIcon fontSize="large" />,
-            path: "gear",
+            path: "handouts/gear",
         },
         {
             text: "Seasonal Gear",
             // //   icon: <RestaurantMenuRoundedIcon fontSize="large" />,
-            path: "seasonal-gear",
+            path: "handouts/seasonal-gear",
         },
         {
             text: "Water",
             // //   icon: <RestaurantMenuRoundedIcon fontSize="large" />,
-            path: "water",
+            path: "handouts/water",
         },
         {
             text: "Clean Eating",
             // //   icon: <RestaurantMenuRoundedIcon fontSize="large" />,
-            path: "clean-eating",
+            path: "handouts/clean-eating",
         },
         {
             text: "KRC Recipe Book",
             // //   icon: <RestaurantMenuRoundedIcon fontSize="large" />,
-            path: "KRC-recipe-book",
+            path: "handouts/KRC-recipe-book",
         },
     ];
 
@@ -132,7 +132,6 @@ const DrawerComp = () => {
                 >
                     <Toolbar sx={{ mt: -1 }} />
                     <List>
-                        {/* sx={classes.list} */}
                         <CustomAccordion
                             title={"Handouts"}
                             array={handoutItems}

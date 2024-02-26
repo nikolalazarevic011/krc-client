@@ -1,10 +1,11 @@
-import React from 'react'
+import React from "react";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { BeautifulTheme } from "./theme/BeautifulTheme";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Root from "./components/navigation/Root";
 import Home from "./pages/HomePage";
 import Handouts from "./pages/Handouts/Handouts";
+import Shoes from "./pages/Handouts/Shoes";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -14,7 +15,10 @@ const router = createBrowserRouter([
             { index: true, element: <Home /> },
             {
                 path: "handouts",
-                children: [{ index: true, element: <Handouts /> }],
+                children: [
+                    { index: true, element: <Handouts /> },
+                    { path: "shoes", element: <Shoes /> },
+                ],
             },
         ],
     },
