@@ -263,7 +263,7 @@ export default function Navbar() {
                             {/* <Link to={"https://www.kingdomrunningclub.org/"}> */}
                             <Typography
                                 // variant="h6"
-                                // noWrap
+                                //! noWrap
                                 // component="div"
                                 sx={{
                                     display: { xs: "none", sm: "block" },
