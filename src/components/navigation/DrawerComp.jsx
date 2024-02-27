@@ -38,11 +38,11 @@ const DrawerComp = () => {
         }
     }, []);
 
-    const handleMenuItemClick = () => {
-        if (!isNotMobile) {
-            store.dispatch(UIActions.toggleDrawer(false));
-        }
-    };
+    // const handleMenuItemClick = () => {
+    //     if (!isNotMobile) {
+    //         store.dispatch(UIActions.toggleDrawer(false));
+    //     }
+    // };
 
     const handoutItems = [
         // {
@@ -130,7 +130,7 @@ const DrawerComp = () => {
                         keepMounted: false,
                     }}
                 >
-                    <Toolbar sx={{ mt: -1 }} />
+                    <Toolbar />
                     <List>
                         <CustomAccordion
                             title={"Handouts"}
@@ -145,6 +145,8 @@ const DrawerComp = () => {
                             array={homeworkItems}
                         />
                     </List>
+                    <Toolbar />
+                    <Toolbar />
                 </Drawer>
                 <Outlet />
             </Stack>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import { useEffect, useState } from "react";
 // import { Outlet, useLoaderData } from "react-router-dom";
 import DrawerComp from "./DrawerComp";
@@ -6,12 +6,13 @@ import { useSelector } from "react-redux";
 // import Footer from "./Footer";
 import { Box } from "@mui/material";
 import Navbar from "./navbar/Navbar";
+import Footer from "./footer/Footer";
 
 export const isNotMobile = window.innerWidth >= 435;
 
 function Root() {
     // const token = useLoaderData();
-    const token = true
+    const token = true;
     let toggleDrawer = useSelector((state) => state.ui.toggleDrawer);
     const [marginLeft, setMarginLeft] = useState(null);
 
@@ -42,13 +43,15 @@ function Root() {
                     </main>
                 )} */}
                 {token && (
-                    <main style={simpleStyles.content}>
-                        <Navbar/>
-                        <DrawerComp />
-                    </main>
+                    <>
+                        <main style={simpleStyles.content}>
+                            <Navbar />
+                            <DrawerComp />
+                        </main>
+                    </>
                 )}
             </Box>
-            {/* <Footer /> */}
+            <Footer />
         </>
     );
 }

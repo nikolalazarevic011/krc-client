@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import Logout from "@mui/icons-material/Logout";
 import { Link, useLocation } from "react-router-dom";
-import { isNotMobile } from "../navigation/Root";
+// import { isNotMobile } from "../navigation/Root";
 
 const settings = [
     { text: "Logout", icon: <Logout fontSize="small" />, path: "/logout" },
