@@ -59,7 +59,7 @@ const Footer = () => {
                                     my: { xs: 2, md: "" },
                                 }}
                             />
-                            <Button color="secondary" variant="contained">
+                            <Button color="secondary" variant="contained" sx={{minWidth: '300px'}}>
                                 <Typography color="bgWhite.main">
                                     Submit now
                                 </Typography>
