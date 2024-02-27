@@ -27,7 +27,7 @@ const Footer = () => {
                 }}
             >
                 <Grid container spacing={2}>
-                    {/* First row */}
+                    {/* First row! */}
                     <Grid item xs={12}>
                         {/* Your content for the first row here */}
                         <Stack
