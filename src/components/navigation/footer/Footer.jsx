@@ -1,17 +1,18 @@
 import React from "react";
 import {
-    AppBar,
     Box,
-    Button,
     Container,
     Grid,
-    Stack,
-    TextField,
     Typography,
 } from "@mui/material";
-import { isNotMobile } from "../Root";
+import { useTheme } from "@mui/material/styles";
+import Footer1stRow from "./Footer1stRow";
 
+import Foot1stCol from "./Foot1stCol";
+import Foot2ndCol from "./Foot2ndCol";
 const Footer = () => {
+    const theme = useTheme();
+
     return (
         <Box
             sx={{
@@ -23,70 +24,33 @@ const Footer = () => {
         >
             <Container
                 sx={{
-                    maxWidth: { xs: "", md: "lg" },
+                    maxWidth: { xs: "sm", md: "lg" },
                 }}
             >
-                <Grid container spacing={2}>
+                <Grid
+                    container
+                    spacing={3}
+                    sx={{
+                        color: "bgWhite.main",
+                    }}
+                >
                     {/* First row! */}
-                    <Grid item xs={12}>
-                        {/* Your content for the first row here */}
-                        <Stack
-                            direction={isNotMobile ? "row" : "column"}
-                            // border="1px solid"
-                            border={isNotMobile ? "1px solid" : ""}
-                            alignItems="center"
-                            padding="30px"
-                            borderColor="bgBlue.main"
-                            sx={{}}
-                        >
-                            <Typography
-                                variant="body1"
-                                color="bgWhite.main"
-                                textAlign='center'
-                                sx={{ minWidth : '300px'}}
-                            >
-                                Join Our Newsletter to stay current
-                            </Typography>
-                            <TextField
-                                id="outlined-basic"
-                                label="Email Address"
-                                variant="outlined"
-                                color="bgBlue"
-                                focused
-                                sx={{
-                                    mx: 5,
-                                    minWidth: { xs: "300px", md: "600px" },
-                                    my: { xs: 2, md: "" },
-                                }}
-                            />
-                            <Button color="secondary" variant="contained" sx={{minWidth: '300px'}}>
-                                <Typography color="bgWhite.main">
-                                    Submit now
-                                </Typography>
-                            </Button>
-                        </Stack>
-                    </Grid>
+                    <Footer1stRow />
                     {/* Second row */}
-                    <Grid container item spacing={2}>
-                        {/* Four columns */}
-                        <Grid item xs={12} sm={6} md={3}>
-                            {/* Your content for the first column here */}
-                            <Typography variant="body1">
-                                Column 1 Content
-                            </Typography>
-                        </Grid>
-                        <Grid item xs={12} sm={6} md={3}>
-                            {/* Your content for the second column here */}
-                            <Typography variant="body1">
-                                Column 2 Content
-                            </Typography>
-                        </Grid>
+                    <Grid container item spacing={5}>
+                        {/* ----Four columns----- */}
+                        {/* first column  */}
+                        <Foot1stCol />
+                        {/* second column  */}
+                        <Foot2ndCol/>
+                        {/* third column  */}
                         <Grid item xs={12} sm={6} md={3}>
                             {/* Your content for the third column here */}
                             <Typography variant="body1">
                                 Column 3 Content
                             </Typography>
                         </Grid>
+                        {/* fourth column  */}
                         <Grid item xs={12} sm={6} md={3}>
                             {/* Your content for the fourth column here */}
                             <Typography variant="body1">

@@ -12,7 +12,6 @@ const BeautifulTheme = createTheme({
             // light: "#E4DECE",
             dark: "#73AB41",
         },
-        //!? jel moze ovako?
         bgBlue: {
             main: "#E8EAF2",
             // light: "#E4DECE",
@@ -32,7 +31,7 @@ const BeautifulTheme = createTheme({
         fontWeightBold: 700,
         body1: {
             //should be Poppins, Inter . But this works how I want it for now. 
-            fontFamily: "inherit | Inter",
+            fontFamily: "Inter",
             // fontFamily: "Inter,Poppins",
         },
         body2: {
