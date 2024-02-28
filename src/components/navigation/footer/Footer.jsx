@@ -1,15 +1,11 @@
 import React from "react";
-import {
-    Box,
-    Container,
-    Grid,
-    Typography,
-} from "@mui/material";
+import { Box, Container, Grid, Typography } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import Footer1stRow from "./Footer1stRow";
-
 import Foot1stCol from "./Foot1stCol";
 import Foot2ndCol from "./Foot2ndCol";
+import Foot3rdCol from "./Foot3rdCol";
+import Foot4thCol from "./Foot4thCol";
 const Footer = () => {
     const theme = useTheme();
 
@@ -24,7 +20,7 @@ const Footer = () => {
         >
             <Container
                 sx={{
-                    maxWidth: { xs: "sm", md: "lg" },
+                    maxWidth: { xs: "sm", md: "xl" },
                 }}
             >
                 <Grid
@@ -36,28 +32,21 @@ const Footer = () => {
                 >
                     {/* First row! */}
                     <Footer1stRow />
-                    {/* Second row */}
-                    <Grid container item spacing={5}>
-                        {/* ----Four columns----- */}
-                        {/* first column  */}
-                        <Foot1stCol />
-                        {/* second column  */}
-                        <Foot2ndCol/>
-                        {/* third column  */}
-                        <Grid item xs={12} sm={6} md={3}>
-                            {/* Your content for the third column here */}
-                            <Typography variant="body1">
-                                Column 3 Content
-                            </Typography>
-                        </Grid>
-                        {/* fourth column  */}
-                        <Grid item xs={12} sm={6} md={3}>
-                            {/* Your content for the fourth column here */}
-                            <Typography variant="body1">
-                                Column 4 Content
-                            </Typography>
-                        </Grid>
-                    </Grid>
+                </Grid>
+
+                {/* Second row */}
+                <Grid
+                    container
+                    spacing={5}
+                    sx={{
+                        mt: 3,
+                        color: "bgWhite.main",
+                    }}
+                >
+                    <Foot1stCol />
+                    <Foot2ndCol />
+                    <Foot3rdCol />
+                    <Foot4thCol />
                 </Grid>
             </Container>
         </Box>
