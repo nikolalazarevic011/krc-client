@@ -5,12 +5,12 @@ import ListItemAvatar from "@mui/material/ListItemAvatar";
 import ListItemText from "@mui/material/ListItemText";
 import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
-import { Container, Link } from "@mui/material";
+import { Container, Link, Toolbar } from "@mui/material";
 import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
 import DownloadIcon from "@mui/icons-material/Download";
 
 const DrawerItemListView = ({ data }) => {
-    //blocked bu CORS, should be working?
+    //blocked by CORS, should be working?
     const handleDownload = (path, fileName) => {
         fetch(path)
             .then((response) => response.blob())
@@ -29,7 +29,8 @@ const DrawerItemListView = ({ data }) => {
     };
     return (
         <>
-            <Container maxWidth="sm">
+        <Toolbar/>
+            <Container maxWidth="sm" sx={{mt:3}}>
                 <List>
                     {data.map((item, index) => (
                         <ListItem
@@ -42,7 +43,7 @@ const DrawerItemListView = ({ data }) => {
                                     onClick={() =>
                                         handleDownload(
                                             item.path,
-                                            item.text + ".pdf"
+                                            item.path + ".pdf"
                                         )
                                     }
                                 >

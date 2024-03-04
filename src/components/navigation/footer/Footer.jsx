@@ -27,7 +27,8 @@ const Footer = () => {
                     container
                     spacing={3}
                     sx={{
-                        color: "bgWhite.main",
+                        // color: theme.palette.background.main,
+                        color: "background.main",
                     }}
                 >
                     {/* First row! */}

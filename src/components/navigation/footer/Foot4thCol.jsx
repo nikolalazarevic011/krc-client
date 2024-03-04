@@ -1,16 +1,10 @@
 import React from "react";
 import {
-    AppBar,
     Box,
-    Button,
-    Container,
     Grid,
     List,
     ListItem,
-    ListItemButton,
     ListItemText,
-    Stack,
-    TextField,
     Typography,
 } from "@mui/material";
 import { isNotMobile } from "../Root";
@@ -55,15 +49,15 @@ const Foot4thCol = () => {
                         justifyContent: { xs: "center", md: "start" },
                     }}
                 >
-                    <ListItemAvatar sx={{
-                            mr: { xs:2, md: "0" },
-                            // pr: {xs:5, sm:0}
+                    <ListItemAvatar
+                        sx={{
+                        justifyContent: { xs: "center", md: "start" },
 
-                        }}>
+                        }}
+                    >
                         <Avatar
                             sx={{
-                                ml: { xs: 7.5, md: "0" },
-                                backgroundColor: theme.palette.secondary.main
+                                backgroundColor: theme.palette.secondary.main,
                             }}
                         >
                             <LocationOnIcon />
@@ -76,7 +70,6 @@ const Foot4thCol = () => {
                         sx={{ color: "inherit", textDecoration: "none" }}
                     >
                         <ListItemText
-                        
                             color="bgWhite.main"
                             primary={"7600 Roosevelt Rd, Forest Park, IL 60130"}
                         />
@@ -87,8 +80,12 @@ const Foot4thCol = () => {
                         justifyContent: { xs: "center", md: "start" },
                     }}
                 >
-                    <ListItemAvatar >
-                        <Avatar sx={{ backgroundColor: theme.palette.secondary.main }}>
+                    <ListItemAvatar>
+                        <Avatar
+                            sx={{
+                                backgroundColor: theme.palette.secondary.main,
+                            }}
+                        >
                             <LocalPhoneIcon />
                         </Avatar>
                     </ListItemAvatar>
@@ -97,7 +94,7 @@ const Foot4thCol = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         underline="hover"
-                        sx={{ color: "inherit", textDecoration: "none" }} // Ensure link styling
+                        sx={{ color: "inherit", textDecoration: "none" }} 
                     >
                         <ListItemText primary="+1 (708) 697 5000" />
                     </Link>
@@ -105,10 +102,15 @@ const Foot4thCol = () => {
                 <ListItem
                     sx={{
                         justifyContent: { xs: "center", md: "start" },
+                        mt: 1,
                     }}
                 >
                     <ListItemAvatar>
-                        <Avatar sx={{ backgroundColor: theme.palette.secondary.main }}>
+                        <Avatar
+                            sx={{
+                                backgroundColor: theme.palette.secondary.main,
+                            }}
+                        >
                             <EmailIcon />
                         </Avatar>
                     </ListItemAvatar>

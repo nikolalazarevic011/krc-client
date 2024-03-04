@@ -5,14 +5,14 @@ const BeautifulTheme = createTheme({
         primary: {
             main: "#283618",
             light: "#C3DAC3",
-            // dark: "#2d4d63",
+            dark: "#1C2611",
         },
         secondary: {
             main: "#9AC339",
             // light: "#E4DECE",
             dark: "#73AB41",
         },
-        bgBlue: {
+        background: {
             main: "#E8EAF2",
             // light: "#E4DECE",
             // dark: "#AF9B6B",
@@ -21,7 +21,7 @@ const BeautifulTheme = createTheme({
             main: "#FFFFFF",
             // light: "#E4DECE",
             // dark: "#AF9B6B",
-        }, 
+        },
     },
     typography: {
         fontFamily: "SofiaSansCondensed",
@@ -30,7 +30,7 @@ const BeautifulTheme = createTheme({
         fontWeightMedium: 600,
         fontWeightBold: 700,
         body1: {
-            //should be Poppins, Inter . But this works how I want it for now. 
+            //should be Poppins, Inter . But this works how I want it for now.
             fontFamily: "Inter",
             // fontFamily: "Inter,Poppins",
         },
@@ -42,7 +42,7 @@ const BeautifulTheme = createTheme({
         },
         subtitle2: {
             fontFamily: "Inter",
-        }, 
+        },
     },
     components: {
         //! for links poppins font does it work? no
@@ -59,7 +59,6 @@ const BeautifulTheme = createTheme({
             },
         },
     },
-
 });
 
 export { BeautifulTheme };
