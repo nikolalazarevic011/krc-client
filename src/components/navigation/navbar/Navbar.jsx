@@ -10,7 +10,7 @@ import {
     Badge,
     MenuItem,
     Menu,
-    Link, // Merged with NavLink
+    Link,
 } from "@mui/material";
 import {
     Menu as MenuIcon,
@@ -21,7 +21,8 @@ import {
     Facebook as FacebookIcon,
     Home as HomeIcon,
 } from "@mui/icons-material";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink as reactNavLink, useLocation } from "react-router-dom";
+import LogoutIcon from "@mui/icons-material/Logout";
 import { useSelector } from "react-redux";
 import store from "../../../store/index";
 import { UIActions } from "../../../store/ui";
@@ -75,6 +76,8 @@ export default function Navbar() {
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
+    let token = localStorage.getItem("token");
+
     let isDrawerOpen = useSelector((state) => state.ui.toggleDrawer);
 
     const handleDrawerClick = () => {
@@ -98,6 +101,12 @@ export default function Navbar() {
         setMobileMoreAnchorEl(event.currentTarget);
     };
 
+    const niceName = localStorage.getItem("niceName");
+    const formattedNiceName = niceName
+        ? niceName.charAt(0).toUpperCase() + niceName.slice(1)
+        : "";
+
+    //DESKTOP
     const menuId = "primary-search-account-menu";
     const renderMenu = (
         <Menu
@@ -116,11 +125,26 @@ export default function Navbar() {
             onClose={handleMenuClose}
         >
             {/* add link component with to prop for each */}
-            <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-            <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+            {/* <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+            <MenuItem onClick={handleMenuClose}>My account</MenuItem> */}
+            <Link component={reactNavLink} to={"/logout"}>
+                <MenuItem onClick={handleMenuClose}>
+                    <IconButton
+                        size="large"
+                        aria-label="logout"
+                        aria-controls="logout"
+                        aria-haspopup="true"
+                        color="inherit"
+                    >
+                        <LogoutIcon />
+                    </IconButton>
+                    Logout
+                </MenuItem>
+            </Link>
         </Menu>
     );
 
+    //Mobile
     const mobileMenuId = "primary-search-account-menu-mobile";
     const renderMobileMenu = (
         <Menu
@@ -174,18 +198,19 @@ export default function Navbar() {
                     <p>KRC</p>
                 </MenuItem>
             </Link>
-            <Link>
-                <MenuItem onClick={handleProfileMenuOpen}>
+            <Link component={reactNavLink} to={"/logout"}>
+                <MenuItem onClick={handleMenuClose}>
                     <IconButton
                         size="large"
-                        aria-label="account of current user"
-                        aria-controls="primary-search-account-menu"
+                        aria-label="logout"
+                        aria-controls="logout"
                         aria-haspopup="true"
                         color="inherit"
+                        onClick={handleMenuClose}
                     >
-                        <AccountCircle />
+                        <LogoutIcon onClick={handleMenuClose} />
                     </IconButton>
-                    <p>Profile</p>
+                    Logout
                 </MenuItem>
             </Link>
         </Menu>
@@ -200,17 +225,19 @@ export default function Navbar() {
                 }}
             >
                 <Toolbar>
-                    <IconButton
-                        size="large"
-                        edge="start"
-                        color="inherit"
-                        aria-label="open drawer"
-                        sx={{ mr: 2, display: { xs: "block", sm: "none" } }}
-                        onClick={handleDrawerClick}
-                    >
-                        <MenuIcon />
-                    </IconButton>
-                    <NavLink to={"/"}>
+                    {token && (
+                        <IconButton
+                            size="large"
+                            edge="start"
+                            color="inherit"
+                            aria-label="open drawer"
+                            sx={{ mr: 2, display: { xs: "block", sm: "none" } }}
+                            onClick={handleDrawerClick}
+                        >
+                            <MenuIcon />
+                        </IconButton>
+                    )}
+                    <Link to={"/"} component={reactNavLink}>
                         <img
                             src={logoPic}
                             alt="Logo"
@@ -221,16 +248,18 @@ export default function Navbar() {
                                 marginRight: isNotMobile ? "20px" : "15px", // No margin on mobile
                             }}
                         />
-                    </NavLink>
-                    <Search>
-                        <SearchIconWrapper>
-                            <SearchIcon />
-                        </SearchIconWrapper>
-                        <StyledInputBase
-                            placeholder="Search…"
-                            inputProps={{ "aria-label": "search" }}
-                        />
-                    </Search>
+                    </Link>
+                    {token && (
+                        <Search>
+                            <SearchIconWrapper>
+                                <SearchIcon />
+                            </SearchIconWrapper>
+                            <StyledInputBase
+                                placeholder="Search…"
+                                inputProps={{ "aria-label": "search" }}
+                            />
+                        </Search>
+                    )}
                     {/* to puch things to the right */}
                     <Box sx={{ flexGrow: 1 }} />
                     {/*  */}
@@ -240,6 +269,11 @@ export default function Navbar() {
                             size="large"
                             color="inherit"
                             href="https://twitter.com/livingwd"
+                            sx={{
+                                "&:hover": {
+                                    bgcolor: "secondary.main",
+                                },
+                            }}
                         >
                             <Badge>
                                 <XIcon />
@@ -249,6 +283,11 @@ export default function Navbar() {
                             href="https://www.facebook.com/KingdomRunningClub/"
                             size="large"
                             color="inherit"
+                            sx={{
+                                "&:hover": {
+                                    bgcolor: "secondary.main",
+                                },
+                            }}
                         >
                             <Badge>
                                 <FacebookIcon />
@@ -259,51 +298,64 @@ export default function Navbar() {
                             href="https://www.kingdomrunningclub.org/"
                             color="inherit"
                             size="large"
+                            sx={{
+                                "&:hover": {
+                                    bgcolor: "secondary.main",
+                                },
+                            }}
                         >
-                            {/* <Link to={"https://www.kingdomrunningclub.org/"}> */}
                             <Typography
-                                // variant="h6"
-                                //! noWrap
-                                // component="div"
                                 sx={{
                                     display: { xs: "none", sm: "block" },
-                                    // mt: 1.5,
-                                    // ml: 2,
-                                    mr: 4,
                                     color: "white",
                                 }}
                             >
                                 KRC
                             </Typography>
-                            {/* </Link> */}
                         </IconButton>
-
-                        <IconButton
-                            size="large"
-                            edge="end"
-                            aria-label="account of current user"
-                            aria-controls={menuId}
-                            aria-haspopup="true"
-                            onClick={handleProfileMenuOpen}
-                            color="inherit"
-                        >
-                            <AccountCircle />
-                        </IconButton>
+                        <Box mr={3} sx={{ display: { xs: false } }}></Box>
+                        {token && (
+                            <>
+                                <Typography mt={1.5}>
+                                    Welcome {formattedNiceName}
+                                </Typography>
+                                <IconButton
+                                    size="large"
+                                    edge="end"
+                                    aria-label="account of current user"
+                                    aria-controls={menuId}
+                                    aria-haspopup="true"
+                                    onClick={handleProfileMenuOpen}
+                                    color="inherit"
+                                    sx={{
+                                        "&:hover": {
+                                            bgcolor: "secondary.main",
+                                        },
+                                    }}
+                                >
+                                    <AccountCircle />
+                                </IconButton>
+                            </>
+                        )}
                     </Box>
 
-                    {/* three dots on mobile devices */}
-                    <Box sx={{ display: { xs: "flex", md: "none" } }}>
-                        <IconButton
-                            size="large"
-                            aria-label="show more"
-                            aria-controls={mobileMenuId}
-                            aria-haspopup="true"
-                            onClick={handleMobileMenuOpen}
-                            color="inherit"
-                        >
-                            <MoreIcon />
-                        </IconButton>
-                    </Box>
+                    {token && (
+                        <>
+                            {/* three dots on mobile devices */}
+                            <Box sx={{ display: { xs: "flex", md: "none" } }}>
+                                <IconButton
+                                    size="large"
+                                    aria-label="show more"
+                                    aria-controls={mobileMenuId}
+                                    aria-haspopup="true"
+                                    onClick={handleMobileMenuOpen}
+                                    color="inherit"
+                                >
+                                    <MoreIcon />
+                                </IconButton>
+                            </Box>
+                        </>
+                    )}
                 </Toolbar>
             </AppBar>
             {renderMobileMenu}

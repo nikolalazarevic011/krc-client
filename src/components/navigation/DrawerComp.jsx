@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Drawer, List, Toolbar, Stack } from "@mui/material";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import { UIActions } from "../../store/ui";
 import store from "../../store";
 import { isNotMobile } from "./Root";
@@ -10,8 +10,15 @@ import CustomAccordion from "../helper/CustomAccordion";
 const drawerWidth = 240;
 
 const DrawerComp = () => {
+    const location = useLocation();
+    // Define your login page route
+    const loginPageRoute = "/login";
+
+    // Check if the current location matches the login page route
+    const isLoginPage = location.pathname === loginPageRoute;
+
     let toggleDrawer = useSelector((state) => state.ui.toggleDrawer);
-    const responsiveDrawerWith = isNotMobile ? drawerWidth : "100%";
+    let responsiveDrawerWith = isNotMobile ? drawerWidth : "100%";
 
     const classes = {
         drawer: {
@@ -31,12 +38,14 @@ const DrawerComp = () => {
     };
 
     useEffect(() => {
+     responsiveDrawerWith = isNotMobile ? drawerWidth : "100%";
+
         if (isNotMobile) {
             store.dispatch(UIActions.toggleDrawer(true));
         } else {
             store.dispatch(UIActions.toggleDrawer(false));
         }
-    }, []);
+    }, [responsiveDrawerWith]);
 
     // const handleMenuItemClick = () => {
     //     if (!isNotMobile) {
@@ -120,6 +129,7 @@ const DrawerComp = () => {
 
     return (
         <>
+            {!isLoginPage && (
             <Stack>
                 <Drawer
                     sx={classes.drawer}
@@ -148,8 +158,9 @@ const DrawerComp = () => {
                     <Toolbar />
                     <Toolbar />
                 </Drawer>
-                <Outlet />
             </Stack>
+             )} 
+            <Outlet />
         </>
     );
 };
