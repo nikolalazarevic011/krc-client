@@ -1,5 +1,5 @@
 import React from "react";
-import VideoCard from "../../components/helper/VideoCard";
+import VideoCard from "../helper/VideoCard";
 import { Container, Grid, Toolbar, Typography } from "@mui/material";
 const Home = () => {
     return (
@@ -24,7 +24,7 @@ const Home = () => {
                             url={
                                 "https://www.youtube.com/watch?v=iu-LBY7NXD4&t=660s"
                             }
-                            description={'Nulla ut quis consequat dolore pariatur aliqua ut mollit occaecat. Officia minim culpa do velit ullamco Lorem id est. Exercitation occaecat adipisicing officia ad tempor ipsum velit minim fugiat irure sunt consequat. Mollit adipisicing incididunt cillum sunt enim non pariatur ex adipisicing aliquip. Pariatur ex non culpa proident.'}
+                            description={' Pariatur ex non culpa proident.'}
                         />
                     </Grid>
                     <Grid item xs={12} sm={4}>
