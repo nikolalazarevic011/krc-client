@@ -6,9 +6,12 @@ import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 import Typography from "@mui/material/Typography";
-
+import {
+    useNavigate,
+} from "react-router-dom";
 import VideoPlayer from "./VideoPlayer";
-import { Button } from "@mui/material";
+import LoadingButton from "@mui/lab/LoadingButton";
+import { useState } from "react";
 
 const StyledCard = styled(Card)({
     display: "grid",
@@ -16,12 +19,23 @@ const StyledCard = styled(Card)({
     height: "590px", // Ensure the card takes full height
 });
 
+export default function VideoCardCopy({ title, url, description, toPage }) {
+    // const navigation = useNavigation();
+    // const isSubmitting = navigation.state === "loading"
 
-export default function VideoCardCopy({ title, url, description }) {
+    const navigate = useNavigate();
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
-
+    //for only a singe button of 3 cards on main page to spin
+    const clickHandler =  () => {
+        setIsSubmitting(true);
+         navigate(toPage);
+     
+    };
     return (
-        <StyledCard sx={{ maxWidth: "545px" , backgroundColor:"primary.light"}}>
+        <StyledCard
+            sx={{ maxWidth: "545px", backgroundColor: "primary.light" }}
+        >
             <CardHeader
                 sx={{ color: "primary.main", backgroundColor: "primary.light" }}
                 title={title}
@@ -30,7 +44,9 @@ export default function VideoCardCopy({ title, url, description }) {
             <CardMedia>
                 <VideoPlayer url={url} />
             </CardMedia>
-            <CardContent sx={{ backgroundColor: "primary.light",overflow: "auto" }}>
+            <CardContent
+                sx={{ backgroundColor: "primary.light", overflow: "auto" }}
+            >
                 <Typography variant="body2" color="text.secondary">
                     {description}
                 </Typography>
@@ -39,13 +55,14 @@ export default function VideoCardCopy({ title, url, description }) {
                 disableSpacing
                 sx={{ backgroundColor: "primary.light" }}
             >
-                <Button
+                <LoadingButton
                     variant="contained"
-                    href="#contained-buttons"
+                    loading={isSubmitting}
                     sx={{ backgroundColor: "secondary.main" }}
+                    onClick={clickHandler}
                 >
                     View All
-                </Button>
+                </LoadingButton>
             </CardActions>
         </StyledCard>
     );

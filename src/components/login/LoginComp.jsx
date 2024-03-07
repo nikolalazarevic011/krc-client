@@ -4,12 +4,12 @@ import background from "../../assets/imgs/gary-butterfield-XGKSeGYGP0A-unsplash.
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import LoginForm from "./LoginForm";
+import { useNavigation } from "react-router-dom";
 
 const LoginComp = () => {
+    const navigation = useNavigation();
 
-    // const isSubmitting = navigation.state === "submitting";
-
-
+    const isSubmitting = navigation.state === "submitting";
 
     //for error data
 
@@ -53,9 +53,7 @@ const LoginComp = () => {
                             // backgroundColor:"secondary.main"
                         }}
                     >
-                        <CardContent 
-                        sx={{ color: "secondary.main" }}
-                        >
+                        <CardContent sx={{ color: "secondary.main" }}>
                             <Typography
                                 // fontSize={}
                                 sx={{}}
@@ -64,7 +62,7 @@ const LoginComp = () => {
                                 Login
                             </Typography>
                             <LoginForm
-                                // isSubmitting={isSubmitting}
+                                isSubmitting={isSubmitting}
                                 // handleClick={handleClick}
                             />
                         </CardContent>

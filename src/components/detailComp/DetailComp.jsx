@@ -1,0 +1,52 @@
+import React from "react";
+import { Button, Container, Grid, Toolbar, Typography } from "@mui/material";
+import VideoPlayer from "../helper/VideoPlayer";
+import Link from "@mui/material/Link";
+
+const DetailComp = ({ data }) => {
+    return (
+        <>
+            <Toolbar />
+            <Container maxWidth="lg">
+                <VideoPlayer url={data.class_video_url} />
+                <Grid container spacing={3} alignItems="center">
+                    <Grid item xs={12} my={3}>
+                        <Typography
+                            mb={3}
+                            mx={3}
+                            variant="h6"
+                            textAlign="center"
+                            color='secondary'
+                        >
+                          Title : {data.title}
+                        </Typography>
+                    </Grid>
+                    <Grid item xs={12} sm={6} sx={{ textAlign: "center" }}>
+                        <Typography variant="body1" color="text.secondary">
+                            Description :
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                            {data.class_week_description}
+                        </Typography>
+                    </Grid>
+                    <Grid item xs={12} sm={6} sx={{ textAlign: "center" }}>
+                        <Link
+                            href={data.class_document_1}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <Button
+                                variant="contained"
+                                sx={{ backgroundColor: "secondary.main" }}
+                            >
+                                View PDF
+                            </Button>
+                        </Link>
+                    </Grid>
+                </Grid>
+            </Container>
+        </>
+    );
+};
+
+export default DetailComp;

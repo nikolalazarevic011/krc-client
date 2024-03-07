@@ -9,7 +9,7 @@ const VideoPlayer = ({ url }) => {
             width="100%"
             // height="82vh"
             muted={true}
-            // playing={true}
+            playing={false}
         />
     );
 };

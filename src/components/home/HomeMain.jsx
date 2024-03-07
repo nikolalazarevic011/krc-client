@@ -24,7 +24,9 @@ const Home = () => {
                             url={
                                 "https://www.youtube.com/watch?v=iu-LBY7NXD4&t=660s"
                             }
-                            description={' Pariatur ex non culpa proident.'}
+                            description={" Pariatur ex non culpa proident."}
+                            toPage={'/classes'}
+
                         />
                     </Grid>
                     <Grid item xs={12} sm={4}>
@@ -33,7 +35,12 @@ const Home = () => {
                             url={
                                 "https://www.youtube.com/watch?v=iu-LBY7NXD4&t=660s"
                             }
-                            description={'Fugiat pariatur anim magna exercitation esse qui adipisicing exercitation magna reprehenderit est in eiusmod nisi. Cillum esse dolore ex ex ea enim ut do consequat sint sunt. Aliqua deserunt exercitation exercitation sint velit.'}
+                            description={
+                                "Fugiat pariatur anim magna exercitation esse qui adipisicing exercitation magna reprehenderit est in eiusmod nisi. Cillum esse dolore ex ex ea enim ut do consequat sint sunt. Aliqua deserunt exercitation exercitation sint velit."
+                            }
+                            toPage={'/homework'}
+
+
                         />
                     </Grid>
                     <Grid item xs={12} sm={4}>
@@ -42,7 +49,11 @@ const Home = () => {
                             url={
                                 "https://www.youtube.com/watch?v=iu-LBY7NXD4&t=660s"
                             }
-                            description={'Ipsum pariatur ut ullamco nostrud tempor ea cupidatat labore consectetur excepteur ut esse. Ut nostrud eiusmod ex sint eu. Occaecat aute excepteur eiusmod ea eu elit aliqua voluptate labore reprehenderit qui. Incididunt amet qui commodo minim minim duis excepteur eu sunt et voluptate sint.'} 
+                            description={
+                                "Ipsum pariatur ut ullamco nostrud tempor ea cupidatat labore consectetur excepteur ut esse. Ut nostrud eiusmod ex sint eu. Occaecat aute excepteur eiusmod ea eu elit aliqua voluptate labore reprehenderit qui. Incididunt amet qui commodo minim minim duis excepteur eu sunt et voluptate sint."
+                            }
+                            toPage={"/exercises"}
+                            
                         />
                     </Grid>
                 </Grid>
