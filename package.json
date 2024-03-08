@@ -35,7 +35,7 @@
         "rules": {
             "react/jsx-uses-react": "error",
             "react/react-in-jsx-scope": "error",
-            "noUnusedLocals": "false"
+            "noUnusedLocals": "0"
         }
     },
     "browserslist": {
