@@ -20,7 +20,7 @@ const Home = () => {
                 <Grid container spacing={3} sx={{}}>
                     <Grid item xs={12} sm={4}>
                         <VideoCard
-                            title={"Classes"}
+                            title={"Class of the Week"}
                             url={
                                 "https://www.youtube.com/watch?v=iu-LBY7NXD4&t=660s"
                             }

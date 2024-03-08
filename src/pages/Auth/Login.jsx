@@ -32,11 +32,16 @@ export async function action({ request }) {
     });
 
     // handle the response
-    //  if (response.status === 422 || response.status === 401) {
-    //     console.log(response);
-    //     console.log(response.statusText);
-    //     return response; //react router automatically extract the data for us
-    // }
+    if (
+        response.status === 422 ||
+        response.status === 401 ||
+        response.status === 403
+    ) {
+        console.log(response);
+        console.log(response.statusText);
+        console.log(response.url);
+        return response.statusText; //react router automatically extract the data for us
+    }
 
     if (!response.ok) {
         throw json(

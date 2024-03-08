@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Drawer, List, Toolbar, Stack } from "@mui/material";
 import { Outlet, useLocation } from "react-router-dom";
@@ -6,10 +6,15 @@ import { UIActions } from "../../store/ui";
 import store from "../../store";
 import { isNotMobile } from "./Root";
 import CustomAccordion from "../helper/CustomAccordion";
+import { baseURL } from "../../App";
 
 const drawerWidth = 240;
 
 const DrawerComp = () => {
+    const [handouts, setHandouts] = useState([]);
+    const [classesItems, setClassesItems] = useState([]);
+    const [homework, setHomework] = useState([]);
+
     const location = useLocation();
     // Define your login page route
     const loginPageRoute = "/login";
@@ -38,7 +43,7 @@ const DrawerComp = () => {
     };
 
     useEffect(() => {
-     responsiveDrawerWith = isNotMobile ? drawerWidth : "100%";
+        responsiveDrawerWith = isNotMobile ? drawerWidth : "100%";
 
         if (isNotMobile) {
             store.dispatch(UIActions.toggleDrawer(true));
@@ -47,119 +52,103 @@ const DrawerComp = () => {
         }
     }, [responsiveDrawerWith]);
 
-    // const handleMenuItemClick = () => {
-    //     if (!isNotMobile) {
-    //         store.dispatch(UIActions.toggleDrawer(false));
-    //     }
-    // };
+    // fetch the drawer contents
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const responseHandouts = await fetch(
+                    `${baseURL}/ce/v1/krc_handouts`
+                );
+                const responseClassesItems = await fetch(
+                    `${baseURL}/ce/v1/krc_classes`
+                );
+                const responseHomework = await fetch(
+                    `${baseURL}/ce/v1/krc_homework`
+                );
 
-    const handoutItems = [
-        // {
-        //     text: "All Documents",
-        //     //   icon: <HouseOutlinedIcon fontSize="large" />,
-        //     path: "documents",
-        // },
-        {
-            text: "Handouts",
-            // //   icon: <RestaurantMenuRoundedIcon fontSize="large" />,
-            path: "handouts",
-        },
-        {
-            text: "Shoes",
-            // //   icon: <RestaurantMenuRoundedIcon fontSize="large" />,
-            path: "handouts/shoes",
-        },
-        {
-            text: "Gear",
-            // //   icon: <RestaurantMenuRoundedIcon fontSize="large" />,
-            path: "handouts/gear",
-        },
-        {
-            text: "Seasonal Gear",
-            // //   icon: <RestaurantMenuRoundedIcon fontSize="large" />,
-            path: "handouts/seasonal-gear",
-        },
-        {
-            text: "Water",
-            // //   icon: <RestaurantMenuRoundedIcon fontSize="large" />,
-            path: "handouts/water",
-        },
-        {
-            text: "Clean Eating",
-            // //   icon: <RestaurantMenuRoundedIcon fontSize="large" />,
-            path: "handouts/clean-eating",
-        },
-        {
-            text: "KRC Recipe Book",
-            // //   icon: <RestaurantMenuRoundedIcon fontSize="large" />,
-            path: "handouts/KRC-recipe-book",
-        },
-    ];
+                if (
+                    !responseHandouts.ok ||
+                    !responseClassesItems.ok ||
+                    !responseHomework.ok
+                ) {
+                    throw new Error(
+                        "Failed to fetch data from one of the APIs"
+                    );
+                }
 
-    const classesItems = [
-        { text: "Safety During This Time", path: "safety-during-this-time" },
-        { text: "Motivation (Class 1 & 2):", path: "motivation-class-1-&-2):" },
-        { text: "Shoes (Class 3):", path: "shoes-class-3:" },
-        { text: "Gear (Class 3):", path: "gear-class-3:" },
-        {
-            text: "Seasonal Gear & Motivation (Class 3):",
-            path: "seasonal-gear-&-motivation-class-3:",
-        },
-        {
-            text: "Nutrition (Class 5, 7, 8 & 9)",
-            path: "nutrition-class-5,-7,-8-&-9",
-        },
-        {
-            text: "Fitness (Class 5 & 6) - Exercise",
-            path: "fitness-class-5-&-6-exercise",
-        },
-        { text: "Running", path: "running" },
-        {
-            text: "Fitness (Class 5, 10 & 11) - Injury Prevention:",
-            path: "fitness-class-5,-10-&-11-injury-prevention:",
-        },
-        { text: "Winter Running", path: "winter-running" },
-        { text: "Presentations", path: "presentations" },
-    ];
+                const responseDataHandouts = await responseHandouts.json();
+                const responseDataClassesItems =
+                    await responseClassesItems.json();
+                const responseDataHomework = await responseHomework.json();
 
-    const homeworkItems = [
-        { text: " Weekly Class Homework", path: "weekly-class-Homework" },
-        { text: " Workouts of The Week", path: "workouts-of-the-the-week" },
-    ];
+                // Extracting required fields from each API response
+                const extractedHandouts = responseDataHandouts.map((item) => ({
+                    url: "handouts",
+                    id: item.id,
+                    title: item.title,
+                    slug: item.slug,
+                }));
+                const extractedClassesItems = responseDataClassesItems.map(
+                    (item) => ({
+                        url: "classes",
+                        id: item.id,
+                        title: item.title,
+                        slug: item.slug,
+                    })
+                );
+                const extractedDataHomework = responseDataHomework.map(
+                    (item) => ({
+                        url: "homework",
+                        id: item.id,
+                        title: item.title,
+                        slug: item.slug,
+                    })
+                );
+
+                // Update state variables with extracted data
+                setHandouts(extractedHandouts);
+                setClassesItems(extractedClassesItems);
+                setHomework(extractedDataHomework);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            }
+        };
+        fetchData();
+    }, []);
 
     return (
         <>
             {!isLoginPage && (
-            <Stack>
-                <Drawer
-                    sx={classes.drawer}
-                    variant={isNotMobile ? "permanent" : "temporary"}
-                    anchor="left"
-                    open={toggleDrawer}
-                    ModalProps={{
-                        keepMounted: false,
-                    }}
-                >
-                    <Toolbar />
-                    <List>
-                        <CustomAccordion
-                            title={"Handouts"}
-                            array={handoutItems}
-                        />
-                        <CustomAccordion
-                            title={"Classes"}
-                            array={classesItems}
-                        />
-                        <CustomAccordion
-                            title={"Homework"}
-                            array={homeworkItems}
-                        />
-                    </List>
-                    <Toolbar />
-                    <Toolbar />
-                </Drawer>
-            </Stack>
-             )} 
+                <Stack>
+                    <Drawer
+                        sx={classes.drawer}
+                        variant={isNotMobile ? "permanent" : "temporary"}
+                        anchor="left"
+                        open={toggleDrawer}
+                        ModalProps={{
+                            keepMounted: false,
+                        }}
+                    >
+                        <Toolbar />
+                        <List>
+                            <CustomAccordion
+                                title={"Handouts"}
+                                array={handouts}
+                            />
+                            <CustomAccordion
+                                title={"Classes"}
+                                array={classesItems}
+                            />
+                            <CustomAccordion
+                                title={"Homework"}
+                                array={homework}
+                            />
+                        </List>
+                        <Toolbar />
+                        <Toolbar />
+                    </Drawer>
+                </Stack>
+            )}
             <Outlet />
         </>
     );

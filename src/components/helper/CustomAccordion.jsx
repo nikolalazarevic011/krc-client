@@ -16,7 +16,7 @@ import store from "../../store";
 import { isNotMobile } from "../../components/navigation/Root";
 import { NavLink as reactNavLink, useLocation } from "react-router-dom";
 
-const CustomAccordion = ({ title, array, activePath }) => {
+const CustomAccordion = ({ title, array }) => {
     const location = useLocation();
 
     const classes = {
@@ -53,12 +53,12 @@ const CustomAccordion = ({ title, array, activePath }) => {
                                         index === array.length - 1
                                             ? 0
                                             : "1px solid",
-                                    ...(location.pathname === `/${item.path}` &&
+                                    ...(location.pathname === `/${item.slug}` &&
                                         classes.activeItem), // Apply selected style if the path matches
                                 }}
                                 fullWidth
                                 component={reactNavLink}
-                                to={`/${item.path}`}
+                                to={`${item.url}/${item.slug}`}
                                 onClick={handleMenuItemClick}
                             >
                                 <ListItemButton>
@@ -71,7 +71,7 @@ const CustomAccordion = ({ title, array, activePath }) => {
                                             color: "primary.main",
                                         }}
                                     >
-                                        {item.text}
+                                        {item.title}
                                     </Typography>
                                     {/* </ListItemText> */}
                                 </ListItemButton>
