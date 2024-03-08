@@ -16,7 +16,7 @@ const HomeworkDetail = () => {
 export default HomeworkDetail;
 
 export async function loader({ params }) {
-    const id = params.classId;
+    const id = params.homeworkId;
 
     const response = await fetch(`${baseURL}/ce/v1/krc_homework_name/` + id);
 

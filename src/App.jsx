@@ -69,7 +69,7 @@ const router = createBrowserRouter([
                         element: <ProtectedRoute element={<Homework />} />,
                     },
                     {
-                        path: ":handoutId",
+                        path: ":homeworkId",
                         loader: homeworkDetailLoader,
                         element: <ProtectedRoute element={<HomeworkDetail />} />,
                     },

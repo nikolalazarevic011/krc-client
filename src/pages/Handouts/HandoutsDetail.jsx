@@ -13,7 +13,7 @@ const HandoutsDetail = () => {
 export default HandoutsDetail;
 
 export async function loader({ params }) {
-    const id = params.classId;
+    const id = params.handoutId;
 
     const response = await fetch(`${baseURL}/ce/v1/krc_handouts_name/` + id);
 
