@@ -1,14 +1,15 @@
 import * as React from "react";
-import {  Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 import InfoIcon from "@mui/icons-material/Info";
-import {
-    useNavigate,
-} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { LoadingButton } from "@mui/lab";
+import { useTheme } from "@mui/material/styles";
 
-const CustomLoadingButton = ({path, text}) => {
 
+const CustomLoadingButton = ({ path, text }) => {
+    const theme = useTheme();
+    const isSmallScreen = theme.breakpoints.values.sm > window.innerWidth;
     const navigate = useNavigate();
     const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -19,13 +20,12 @@ const CustomLoadingButton = ({path, text}) => {
 
     return (
         <LoadingButton
-            // component={reactNavLink}
-            // to={item.slug}
             variant="contained"
             loading={isSubmitting}
             color="secondary"
-            endIcon={<InfoIcon color="bgWhite" />}
+            endIcon={isSmallScreen ? null : <InfoIcon color="bgWhite" />}
             onClick={() => clickHandler(path)}
+            sx={{ width: { xs: "70px", sm: "170px" } }}
         >
             <Typography
                 sx={{
