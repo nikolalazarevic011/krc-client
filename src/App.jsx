@@ -14,6 +14,7 @@ import ClassesDetailPage, {loader as classesDetailLoader} from "./pages/Classes/
 import HandoutsDetail, {loader as handoutsDetailLoader} from "./pages/Handouts/HandoutsDetail";
 import Homework, {loader as homeworkLoader} from "./pages/HomeWork/Homework";
 import HomeworkDetail, {loader as homeworkDetailLoader} from "./pages/HomeWork/HomeworkDetail";
+import ErrorPage from "./pages/ErrorPage"
 
 export const baseURL = "https://krc.kingdomrunningclub.org/wp-json";
 
@@ -22,7 +23,7 @@ const router = createBrowserRouter([
         path: "/",
         element: <Root />,
         loader: tokenLoader,
-        // errorElement: ,
+        errorElement: <ErrorPage/>,
         children: [
             { index: true, element: <ProtectedRoute element={<Home />} /> },
             {

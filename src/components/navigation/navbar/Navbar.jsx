@@ -208,7 +208,7 @@ export default function Navbar() {
                         color="inherit"
                         onClick={handleMenuClose}
                     >
-                        <LogoutIcon onClick={handleMenuClose} />
+                        <LogoutIcon />
                     </IconButton>
                     Logout
                 </MenuItem>

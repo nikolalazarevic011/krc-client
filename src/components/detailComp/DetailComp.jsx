@@ -8,7 +8,10 @@ const DetailComp = ({ data }) => {
         <>
             <Toolbar />
             <Container maxWidth="lg">
-                <VideoPlayer url={data.class_video_url} />
+                <Toolbar />
+                {data.class_video_url && (
+                    <VideoPlayer url={data.class_video_url} />
+                )}
                 <Grid container spacing={3} alignItems="center">
                     <Grid item xs={12} my={3}>
                         <Typography
@@ -16,9 +19,9 @@ const DetailComp = ({ data }) => {
                             mx={3}
                             variant="h6"
                             textAlign="center"
-                            color='secondary'
+                            color="secondary"
                         >
-                          Title : {data.title}
+                            Title : {data.title}
                         </Typography>
                     </Grid>
                     <Grid item xs={12} sm={6} sx={{ textAlign: "center" }}>

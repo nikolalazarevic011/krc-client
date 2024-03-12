@@ -15,7 +15,7 @@ export default HandoutsDetail;
 export async function loader({ params }) {
     const id = params.handoutId;
 
-    const response = await fetch(`${baseURL}/ce/v1/krc_handouts_name/` + id);
+    const response = await fetch(`${baseURL}/ce/v1/krc_handout_name/` + id);
 
     if (!response.ok) {
         throw json(
