@@ -8,9 +8,11 @@
 # testing
 /coverage
 
-# production
-# -build
-/build
+# production include
+-build  
+
+# production  DONT include
+# /build
 
 # misc
 .DS_Store
