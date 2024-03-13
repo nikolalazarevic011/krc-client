@@ -10,6 +10,8 @@ deployment:
         - cd $APPDIR
         - npm install
         - npm run build
+        - ls -la # List files in APPDIR after build to check for build directory
+        - ls -la build # List files in build directory to ensure it's populated
         - /bin/cp -R $APPDIR/build/* $DEPLOYPATH
         # Optional: If you have a specific .htaccess file for SPA routing, copy it to DEPLOYPATH
         # - /bin/cp $APPDIR/.htaccess $DEPLOYPATHi
