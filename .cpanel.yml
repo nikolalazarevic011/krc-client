@@ -12,4 +12,4 @@ deployment:
     - npm run build
     - /bin/cp -R $APPDIR/build/* $DEPLOYPATH
     # Optional: If you have a specific .htaccess file for SPA routing, copy it to DEPLOYPATH
-    # - /bin/cp $APPDIR/.htaccess $DEPLOYPATH
+    # - /bin/cp $APPDIR/.htaccess $DEPLOYPATHi
