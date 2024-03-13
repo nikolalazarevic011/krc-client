@@ -1,6 +1,6 @@
 {
     "name": "my-app",
-    "homepage": "https://krc.kingdomrunningclub.org/running_dashboard/nikola-test/",
+    "homepage": "https://krc.kingdomrunningclub.org/running_dashboard/nikola-test/build/",
     "version": "0.1.0",
     "private": true,
     "dependencies": {

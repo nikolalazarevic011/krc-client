@@ -6,7 +6,6 @@ import { authActions } from "../../store/auth";
 import { json, redirect } from "react-router-dom";
 import store from "../../store";
 
-
 const Login = () => {
     return (
         <>
