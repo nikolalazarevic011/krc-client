@@ -6,7 +6,7 @@ import { UIActions } from "../../store/ui";
 import store from "../../store";
 import { isNotMobile } from "./Root";
 import CustomAccordion from "../helper/CustomAccordion";
-import { baseURL } from "../../App";
+import { basePath, baseURL } from "../../App";
 
 const drawerWidth = 240;
 
@@ -17,7 +17,7 @@ const DrawerComp = () => {
 
     const location = useLocation();
     // Define your login page route
-    const loginPageRoute = "/login";
+    const loginPageRoute = basePath + "/login";
 
     // Check if the current location matches the login page route
     const isLoginPage = location.pathname === loginPageRoute;
@@ -43,7 +43,7 @@ const DrawerComp = () => {
     };
 
     useEffect(() => {
-        responsiveDrawerWith = isNotMobile ? drawerWidth : "100%";
+        // responsiveDrawerWith = isNotMobile ? drawerWidth : "100%";
 
         if (isNotMobile) {
             store.dispatch(UIActions.toggleDrawer(true));

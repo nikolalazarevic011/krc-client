@@ -2,6 +2,7 @@ import { redirect } from "react-router-dom";
 import store from "../../store";
 import { authActions } from "../../store/auth";
 import { UIActions } from "../../store/ui";
+import { basePath } from "../../App";
 
 export function loader() {
     store.dispatch(UIActions.toggleDrawer(false))
@@ -9,5 +10,5 @@ export function loader() {
     localStorage.removeItem("email");
     localStorage.removeItem("niceName");
     store.dispatch(authActions.setToken(null))
-    return redirect("/");
+    return redirect(basePath);
 }

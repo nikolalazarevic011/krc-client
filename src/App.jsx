@@ -16,11 +16,12 @@ import Homework, {loader as homeworkLoader} from "./pages/HomeWork/Homework";
 import HomeworkDetail, {loader as homeworkDetailLoader} from "./pages/HomeWork/HomeworkDetail";
 import ErrorPage from "./pages/ErrorPage"
 
-export const baseURL = "https://krc.kingdomrunningclub.org/wp-json";
+export const baseURL = process.env.REACT_APP_API_URL;
+export const basePath = process.env.REACT_APP_DEFAULT_PATH
 
 const router = createBrowserRouter([
     {
-        path: "/",
+        path: basePath,
         element: <Root />,
         loader: tokenLoader,
         errorElement: <ErrorPage/>,

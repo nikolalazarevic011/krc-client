@@ -28,6 +28,7 @@ import store from "../../../store/index";
 import { UIActions } from "../../../store/ui";
 import { isNotMobile } from "../../navigation/Root";
 import logoPic from "../../../assets/imgs/Logo_white.png";
+import { basePath } from "../../../App";
 
 const Search = styled("div")(({ theme }) => ({
     position: "relative",
@@ -127,7 +128,7 @@ export default function Navbar() {
             {/* add link component with to prop for each */}
             {/* <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
             <MenuItem onClick={handleMenuClose}>My account</MenuItem> */}
-            <Link component={reactNavLink} to={"/logout"}>
+            <Link component={reactNavLink} to={basePath + "logout"}>
                 <MenuItem onClick={handleMenuClose}>
                     <IconButton
                         size="large"
@@ -198,7 +199,7 @@ export default function Navbar() {
                     <p>KRC</p>
                 </MenuItem>
             </Link>
-            <Link component={reactNavLink} to={"/logout"}>
+            <Link component={reactNavLink} to={basePath + "logout"}>
                 <MenuItem onClick={handleMenuClose}>
                     <IconButton
                         size="large"
@@ -237,7 +238,7 @@ export default function Navbar() {
                             <MenuIcon />
                         </IconButton>
                     )}
-                    <Link to={"/"} component={reactNavLink}>
+                    <Link to={process.env.REACT_APP_DEFAULT_URL} component={reactNavLink}>
                         <img
                             src={logoPic}
                             alt="Logo"

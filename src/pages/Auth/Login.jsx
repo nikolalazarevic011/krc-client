@@ -1,10 +1,11 @@
 import React from "react";
 import LoginComp from "../../components/login/LoginComp";
-import { baseURL } from "../../App";
+import { baseURL, basePath } from "../../App";
 import { UIActions } from "../../store/ui";
 import { authActions } from "../../store/auth";
 import { json, redirect } from "react-router-dom";
 import store from "../../store";
+
 
 const Login = () => {
     return (
@@ -61,5 +62,5 @@ export async function action({ request }) {
     store.dispatch(authActions.setToken(resData.token));
     // store.dispatch(UIActions.toggleDrawer(true));
 
-    return redirect("/");
+    return redirect(basePath);
 }

@@ -7,6 +7,7 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import XIcon from "@mui/icons-material/X";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import { useTheme } from "@mui/material/styles";
+import { basePath } from "../../../App";
 
 const Foot1stCol = () => {
     const theme = useTheme();
@@ -29,7 +30,7 @@ const Foot1stCol = () => {
                         width: "39px",
                     }}
                 ></Typography>
-                <NavLink to={"/"}>
+                <NavLink to={basePath}>
                     <img
                         src={logoPic}
                         alt="Logo"

@@ -1,6 +1,8 @@
 import React from 'react'
 import { Container, Typography, Button, Stack } from "@mui/material";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
+import { basePath } from '../App';
+import { Link } from 'react-router-dom';
 
 const ErrorPage = () => {
     return (
@@ -23,9 +25,11 @@ const ErrorPage = () => {
                 We're sorry, but an unexpected error occurred.
             </Typography>
             <Stack spacing={2} direction="row">
-                <Button variant="contained" color="primary" href="/">
+                <Link to={basePath}>
+                <Button variant="contained" color="primary">
                     Go to Home
                 </Button>
+                </Link>
                 <Button
                     variant="outlined"
                     color="primary"
