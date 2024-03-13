@@ -5,8 +5,8 @@ deployment:
         - '[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"'
         - nvm use stable
         - export PATH=$PATH:/opt/cpanel/ea-nodejs10/bin/
-        - export APPDIR=/home/lwccp0/app
-        - export DEPLOYPATH=/home/lwccp0/public_html/testing/krcpreview/running_dashboard/nikola-test # Adjust this path to where you want to deploy your app
+        - export APPDIR=/home/lwccp0/public_html/testing/krcpreview/running_dashboard/nikola-test
+        - export DEPLOYPATH=/home/lwccp0/public_html/testing/krcpreview/running_dashboard/nikola-test2 # Adjust this path to where you want to deploy your app
         - cd $APPDIR
         - npm install
         - npm run build
