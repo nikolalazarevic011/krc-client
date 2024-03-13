@@ -1,15 +1,15 @@
 ---
 deployment:
-  tasks:
-    - export NVM_DIR="$HOME/.nvm"
-    - '[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"'
-    - nvm use stable
-    - export PATH=$PATH:/opt/cpanel/ea-nodejs10/bin/
-    - export APPDIR=/home/lwccp0/app
-    - export DEPLOYPATH=/home/lwccp0/public_html/testing/krcpreview/running_dashboard/nikola-test/build  # Adjust this path to where you want to deploy your app
-    - cd $APPDIR
-    - npm install
-    - npm run build
-    - /bin/cp -R $APPDIR/build/* $DEPLOYPATH
-    # Optional: If you have a specific .htaccess file for SPA routing, copy it to DEPLOYPATH
-    # - /bin/cp $APPDIR/.htaccess $DEPLOYPATHi
+    tasks:
+        - export NVM_DIR="$HOME/.nvm"
+        - '[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"'
+        - nvm use stable
+        - export PATH=$PATH:/opt/cpanel/ea-nodejs10/bin/
+        - export APPDIR=/home/lwccp0/app
+        - export DEPLOYPATH=/home/lwccp0/public_html/testing/krcpreview/running_dashboard/nikola-test # Adjust this path to where you want to deploy your app
+        - cd $APPDIR
+        - npm install
+        - npm run build
+        - /bin/cp -R $APPDIR/build/* $DEPLOYPATH
+        # Optional: If you have a specific .htaccess file for SPA routing, copy it to DEPLOYPATH
+        # - /bin/cp $APPDIR/.htaccess $DEPLOYPATHi
