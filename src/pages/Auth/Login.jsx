@@ -41,7 +41,7 @@ export async function action({ request }) {
         console.log(response);
         console.log(response.statusText);
         console.log(response.url);
-        return response.statusText; //react router automatically extract the data for us
+        return response.statusText; //react router automatically extract the data for us!
     }
 
     if (!response.ok) {
