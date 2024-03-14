@@ -52,7 +52,7 @@ const Foot1stCol = () => {
                     homelessness, and poverty worldwide.
                 </Typography>
                 <Stack direction="row" spacing={1} mt={2}>
-                    <IconButton
+                    {/* <IconButton
                         aria-label="x"
                         color="bgWhite"
                         sx={{
@@ -62,7 +62,7 @@ const Foot1stCol = () => {
                         }}
                     >
                         <XIcon />
-                    </IconButton>
+                    </IconButton> */}
                     <IconButton
                         aria-label="fa"
                         color="bgWhite"
@@ -74,7 +74,7 @@ const Foot1stCol = () => {
                     >
                         <FacebookIcon />
                     </IconButton>
-                    <IconButton
+                    {/* <IconButton
                         aria-label="linkedIn"
                         color="bgWhite"
                         sx={{
@@ -84,7 +84,7 @@ const Foot1stCol = () => {
                         }}
                     >
                         <LinkedInIcon />
-                    </IconButton>
+                    </IconButton> */}
                 </Stack>
             </Box>
         </Grid>

@@ -42,6 +42,7 @@ const DrawerItemListView = ({ data }) => {
         <>
             <Toolbar />
             <Container maxWidth="sm" sx={{ mt: 3 }}>
+                <Typography variant="h5" textAlign='center' my={5}>Click on the item name to view the PDF</Typography>
                 <List>
                     {data.map((item) => (
                         <ListItem

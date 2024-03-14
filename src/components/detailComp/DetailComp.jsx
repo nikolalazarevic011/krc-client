@@ -13,9 +13,9 @@ const DetailComp = ({ data }) => {
                     <VideoPlayer url={data.class_video_url} />
                 )}
                 <Grid container spacing={3} alignItems="center" mb={3}>
-                    <Grid item xs={12} my={3}>
+                    <Grid item xs={12} sx={{my:{xs:4, sm:6}}}>
                         <Typography
-                            mb={3}
+                            mb={0}
                             mx={3}
                             variant="h6"
                             textAlign="center"

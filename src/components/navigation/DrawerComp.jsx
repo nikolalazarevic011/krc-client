@@ -14,6 +14,7 @@ const DrawerComp = () => {
     const [handouts, setHandouts] = useState([]);
     const [classesItems, setClassesItems] = useState([]);
     const [homework, setHomework] = useState([]);
+    const [exercises, setExercises] = useState([]);
 
     const location = useLocation();
     // Define your login page route
@@ -65,11 +66,15 @@ const DrawerComp = () => {
                 const responseHomework = await fetch(
                     `${baseURL}/ce/v1/krc_homework`
                 );
+                const responseExercises = await fetch(
+                    `${baseURL}/wp/v2/krc-exercise`
+                );
 
                 if (
                     !responseHandouts.ok ||
                     !responseClassesItems.ok ||
-                    !responseHomework.ok
+                    !responseHomework.ok ||
+                    !responseExercises
                 ) {
                     throw new Error(
                         "Failed to fetch data from one of the APIs"
@@ -80,6 +85,7 @@ const DrawerComp = () => {
                 const responseDataClassesItems =
                     await responseClassesItems.json();
                 const responseDataHomework = await responseHomework.json();
+                const responseDataExercises = await responseExercises.json();
 
                 // Extracting required fields from each API response
                 const extractedHandouts = responseDataHandouts.map((item) => ({
@@ -104,11 +110,20 @@ const DrawerComp = () => {
                         slug: item.slug,
                     })
                 );
+                const extractedExercises = responseDataExercises.map(
+                    (item) => ({
+                        url: "exercises",
+                        id: item.id,
+                        title: item.title.rendered,
+                        slug: item.id.toString(),
+                    })
+                );
 
                 // Update state variables with extracted data
                 setHandouts(extractedHandouts);
                 setClassesItems(extractedClassesItems);
                 setHomework(extractedDataHomework);
+                setExercises(extractedExercises);
             } catch (error) {
                 console.error("Error fetching data:", error);
             }
@@ -131,18 +146,30 @@ const DrawerComp = () => {
                     >
                         <Toolbar />
                         <List>
-                            <CustomAccordion
-                                title={"Handouts"}
-                                array={handouts}
-                            />
-                            <CustomAccordion
-                                title={"Classes"}
-                                array={classesItems}
-                            />
-                            <CustomAccordion
-                                title={"Homework"}
-                                array={homework}
-                            />
+                            {handouts && (
+                                <CustomAccordion
+                                    title={"Handouts"}
+                                    array={handouts}
+                                />
+                            )}
+                            {classesItems && (
+                                <CustomAccordion
+                                    title={"Classes"}
+                                    array={classesItems}
+                                />
+                            )}
+                            {homework && (
+                                <CustomAccordion
+                                    title={"Homework"}
+                                    array={homework}
+                                />
+                            )}
+                            {exercises && (
+                                <CustomAccordion
+                                    title={"Exercises"}
+                                    array={exercises}
+                                />
+                            )}
                         </List>
                         <Toolbar />
                         <Toolbar />

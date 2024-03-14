@@ -19,7 +19,7 @@ const StyledCard = styled(Card)({
     height: "590px", // Ensure the card takes full height
 });
 
-export default function VideoCardCopy({ title, url, description, toPage }) {
+export default function VideoCardCopy({ title, url, description, toPage, subheader }) {
     // const navigation = useNavigation();
     // const isSubmitting = navigation.state === "loading"
 
@@ -37,15 +37,15 @@ export default function VideoCardCopy({ title, url, description, toPage }) {
             sx={{ maxWidth: "545px", backgroundColor: "primary.light" }}
         >
             <CardHeader
-                sx={{ color: "primary.main", backgroundColor: "primary.light" }}
+                sx={{ color: "primary.main", backgroundColor: "primary.light" , mb:-6 }}
                 title={title}
-                subheader="September 14, 2016"
+                subheader={subheader}
             />
-            <CardMedia>
+            <CardMedia >
                 <VideoPlayer url={url} />
             </CardMedia>
             <CardContent
-                sx={{ backgroundColor: "primary.light", overflow: "auto" }}
+                sx={{ backgroundColor: "primary.light", overflow: "auto"}}
             >
                 <Typography variant="body2" color="text.secondary">
                     {description}

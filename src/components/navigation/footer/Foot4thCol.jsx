@@ -75,7 +75,7 @@ const Foot4thCol = () => {
                         />
                     </Link>
                 </ListItem>
-                <ListItem
+                {/* <ListItem
                     sx={{
                         justifyContent: { xs: "center", md: "start" },
                     }}
@@ -98,7 +98,7 @@ const Foot4thCol = () => {
                     >
                         <ListItemText primary="+1 (708) 697 5000" />
                     </Link>
-                </ListItem>
+                </ListItem> */}
                 <ListItem
                     sx={{
                         justifyContent: { xs: "center", md: "start" },

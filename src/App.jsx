@@ -3,30 +3,47 @@ import { CssBaseline, ThemeProvider } from "@mui/material";
 import { BeautifulTheme } from "./theme/BeautifulTheme";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Root from "./components/navigation/Root";
-import Home from "./pages/HomePage";
-import Handouts , {loader as handoutsLoader}from "./pages/Handouts/Handouts";
+import Home, { loader as homePageLoader } from "./pages/HomePage";
+import Handouts, { loader as handoutsLoader } from "./pages/Handouts/Handouts";
 import Login, { action as LoginAction } from "./pages/Auth/Login";
 import { tokenLoader } from "./util/auth";
 import { loader as LogoutLoader } from "./pages/Auth/LogoutPage";
 import ProtectedRoute from "./util/ProtectedRoute";
 import Classes, { loader as classesLoader } from "./pages/Classes/Classes";
-import ClassesDetailPage, {loader as classesDetailLoader} from "./pages/Classes/ClassesDetailPage";
-import HandoutsDetail, {loader as handoutsDetailLoader} from "./pages/Handouts/HandoutsDetail";
-import Homework, {loader as homeworkLoader} from "./pages/HomeWork/Homework";
-import HomeworkDetail, {loader as homeworkDetailLoader} from "./pages/HomeWork/HomeworkDetail";
-import ErrorPage from "./pages/ErrorPage"
+import ClassesDetailPage, {
+    loader as classesDetailLoader,
+} from "./pages/Classes/ClassesDetailPage";
+import HandoutsDetail, {
+    loader as handoutsDetailLoader,
+} from "./pages/Handouts/HandoutsDetail";
+import Homework, { loader as homeworkLoader } from "./pages/HomeWork/Homework";
+import HomeworkDetail, {
+    loader as homeworkDetailLoader,
+} from "./pages/HomeWork/HomeworkDetail";
+import ErrorPage from "./pages/ErrorPage";
+import Exercises, {
+    loader as exercisesLoader,
+} from "./pages/Exercises/Exercises";
+import ExerciseDetail, {
+    loader as exerciseDetailLoader,
+} from "./pages/Exercises/ExerciseDetail";
+import HomePage from "./pages/HomePage";
 
 export const baseURL = process.env.REACT_APP_API_URL;
-export const basePath = process.env.REACT_APP_DEFAULT_PATH
+export const basePath = process.env.REACT_APP_DEFAULT_PATH;
 
 const router = createBrowserRouter([
     {
         path: basePath,
         element: <Root />,
         loader: tokenLoader,
-        errorElement: <ErrorPage/>,
+        errorElement: <ErrorPage />,
         children: [
-            { index: true, element: <ProtectedRoute element={<Home />} /> },
+            {
+                index: true,
+                loader: homePageLoader,
+                element: <ProtectedRoute element={<Home />} />,
+            },
             {
                 path: "classes",
                 loader: classesLoader,
@@ -57,7 +74,9 @@ const router = createBrowserRouter([
                     {
                         path: ":handoutId",
                         loader: handoutsDetailLoader,
-                        element: <ProtectedRoute element={<HandoutsDetail />} />,
+                        element: (
+                            <ProtectedRoute element={<HandoutsDetail />} />
+                        ),
                     },
                 ],
             },
@@ -73,7 +92,27 @@ const router = createBrowserRouter([
                     {
                         path: ":homeworkId",
                         loader: homeworkDetailLoader,
-                        element: <ProtectedRoute element={<HomeworkDetail />} />,
+                        element: (
+                            <ProtectedRoute element={<HomeworkDetail />} />
+                        ),
+                    },
+                ],
+            },
+            {
+                path: "exercises",
+                loader: exercisesLoader,
+                id: "exercisesLoader",
+                children: [
+                    {
+                        index: true,
+                        element: <ProtectedRoute element={<Exercises />} />,
+                    },
+                    {
+                        path: ":exerciseId",
+                        loader: exerciseDetailLoader,
+                        element: (
+                            <ProtectedRoute element={<ExerciseDetail />} />
+                        ),
                     },
                 ],
             },

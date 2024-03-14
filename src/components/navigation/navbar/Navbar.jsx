@@ -17,7 +17,7 @@ import {
     Search as SearchIcon,
     AccountCircle,
     MoreVert as MoreIcon,
-    X as XIcon,
+    // X as XIcon,
     Facebook as FacebookIcon,
     Home as HomeIcon,
 } from "@mui/icons-material";
@@ -163,7 +163,7 @@ export default function Navbar() {
             open={isMobileMenuOpen}
             onClose={handleMobileMenuClose}
         >
-            <Link href="https://twitter.com/livingwd">
+            {/* <Link href="https://twitter.com/livingwd">
                 <MenuItem>
                     <IconButton
                         size="large"
@@ -176,7 +176,7 @@ export default function Navbar() {
                     </IconButton>
                     <p>X</p>
                 </MenuItem>
-            </Link>
+            </Link> */}
 
             <Link href="https://www.facebook.com/KingdomRunningClub/">
                 <MenuItem>
@@ -266,7 +266,7 @@ export default function Navbar() {
                     {/*  */}
 
                     <Box sx={{ display: { xs: "none", md: "flex" } }}>
-                        <IconButton
+                        {/* <IconButton
                             size="large"
                             color="inherit"
                             href="https://twitter.com/livingwd"
@@ -279,7 +279,7 @@ export default function Navbar() {
                             <Badge>
                                 <XIcon />
                             </Badge>
-                        </IconButton>
+                        </IconButton> */}
                         <IconButton
                             href="https://www.facebook.com/KingdomRunningClub/"
                             size="large"
