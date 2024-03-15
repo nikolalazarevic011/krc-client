@@ -7,9 +7,10 @@ const VideoPlayer = ({ url }) => {
             controls={true}
             url={url}
             width="100%"
-            // height="82vh"
+            // height="300px"
             muted={true}
             playing={false}
+            loop={true}
         />
     );
 };

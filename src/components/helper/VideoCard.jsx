@@ -54,12 +54,11 @@ export default function VideoCardCopy({
                         sx={{
                             color: "primary.main",
                             backgroundColor: "primary.light",
-                            mb: -6,
                         }}
                         title={title}
                         subheader={subheader}
                     />
-                    <CardMedia>
+                    <CardMedia sx={{mt:0}}>
                         <VideoPlayer url={url} />
                     </CardMedia>
                     <CardContent
