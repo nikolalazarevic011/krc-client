@@ -1,15 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Toolbar } from "@mui/material";
 import HomeMain from "../components/home/HomeMain";
-import { useLoaderData } from "react-router-dom";
 import { baseURL } from "../App";
 
 const HomePage = () => {
-    const latest = useLoaderData();
+    const [latest, setLatest] = useState([]);
+    const [loading, setLoading] = useState(true); // Add loading state
+
+    useEffect(() => {
+        async function fetchData() {
+            // Your data fetching logic...
+            try {
+                const [newestClass, newestHomework, newestExercise] =
+                    await loader();
+                setLatest([newestClass, newestHomework, newestExercise]);
+                setLoading(false); // Set loading to false after data is fetched
+            } catch (error) {
+                console.error("Failed to fetch data: ", error);
+                setLoading(false); // Also set loading to false in case of error
+            }
+        }
+        fetchData();
+    }, []);
     return (
         <>
             <Toolbar />
-            <HomeMain data={latest} />
+            <HomeMain data={latest} loading={loading} />
         </>
     );
 };
@@ -64,11 +80,7 @@ export async function loader() {
         const newestExercise = findHighestIdObject(newestExerciseArray);
 
         // Return an object containing the highest id object from each API call
-        return [
-            newestClass,
-            newestHomework,
-            newestExercise,
-        ];
+        return [newestClass, newestHomework, newestExercise];
     } catch (error) {
         // Handle any errors that occurred during fetch or JSON parsing
         throw new Error(error.message);

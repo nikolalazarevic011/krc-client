@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Drawer, List, Toolbar, Stack } from "@mui/material";
+import { Drawer, List, Toolbar, Stack, Skeleton } from "@mui/material";
 import { Outlet, useLocation } from "react-router-dom";
 import { UIActions } from "../../store/ui";
 import store from "../../store";
@@ -15,6 +15,12 @@ const DrawerComp = () => {
     const [classesItems, setClassesItems] = useState([]);
     const [homework, setHomework] = useState([]);
     const [exercises, setExercises] = useState([]);
+    const [loading, setLoading] = useState({
+        handouts: true,
+        classesItems: true,
+        homework: true,
+        exercises: true,
+    });
 
     const location = useLocation();
     // Define your login page route
@@ -124,12 +130,27 @@ const DrawerComp = () => {
                 setClassesItems(extractedClassesItems);
                 setHomework(extractedDataHomework);
                 setExercises(extractedExercises);
+                setLoading({
+                    handouts: false,
+                    classesItems: false,
+                    homework: false,
+                    exercises: false,
+                });
             } catch (error) {
                 console.error("Error fetching data:", error);
             }
         };
         fetchData();
     }, []);
+
+    // Function to render either a Skeleton or a CustomAccordion
+    const renderContentOrSkeleton = (isLoading, dataArray, title) => {
+        return isLoading ? (
+            <Skeleton variant="rectangular" width={210} height={60} />
+        ) : (
+            <CustomAccordion title={title} array={dataArray} />
+        );
+    };
 
     return (
         <>
@@ -146,7 +167,7 @@ const DrawerComp = () => {
                     >
                         <Toolbar />
                         <List>
-                            {handouts && (
+                            {/* {handouts && (
                                 <CustomAccordion
                                     title={"Handouts"}
                                     array={handouts}
@@ -169,7 +190,49 @@ const DrawerComp = () => {
                                     title={"Exercises"}
                                     array={exercises}
                                 />
+                            )} */}
+
+                            <CustomAccordion
+                                title={"Handouts"}
+                                array={handouts}
+                                loading={loading.handouts}
+                            />
+                            <CustomAccordion
+                                title={"Classes"}
+                                array={classesItems}
+                                loading={loading.classesItems}
+                            />
+                            <CustomAccordion
+                                title={"Homework"}
+                                array={homework}
+                                loading={loading.homework}
+                            />
+                            <CustomAccordion
+                                title={"Exercises"}
+                                array={exercises}
+                                loading={loading.exercises}
+                            />
+
+                            {/* {renderContentOrSkeleton(
+                                loading.handouts,
+                                handouts,
+                                "Handouts"
                             )}
+                            {renderContentOrSkeleton(
+                                loading.classesItems,
+                                classesItems,
+                                "Classes"
+                            )}
+                            {renderContentOrSkeleton(
+                                loading.homework,
+                                homework,
+                                "Homework"
+                            )}
+                            {renderContentOrSkeleton(
+                                loading.exercises,
+                                exercises,
+                                "Exercises"
+                            )} */}
                         </List>
                         <Toolbar />
                         <Toolbar />

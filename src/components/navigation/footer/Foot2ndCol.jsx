@@ -17,7 +17,7 @@ import { isNotMobile } from "../Root";
 import { useTheme } from "@mui/material/styles";
 
 const menuList = [
-    { title: "- About Us", path: "" },
+    { title: "- About Us", path: "https://krc.kingdomrunningclub.org/about-who-we-are-v2-5/#" },
     { title: "- Events", path: "" },
     { title: "- Exercise of the Week", path: "" },
     { title: "- Weight Loss Resources", path: "" },

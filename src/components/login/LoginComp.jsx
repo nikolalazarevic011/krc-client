@@ -21,6 +21,7 @@ const LoginComp = () => {
         if (errorData) {
             setOpen(true);
         }
+        setOpen(null);
     };
 
     const handleClose = (event, reason) => {
