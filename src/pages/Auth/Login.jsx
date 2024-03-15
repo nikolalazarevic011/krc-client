@@ -1,9 +1,8 @@
 import React from "react";
 import LoginComp from "../../components/login/LoginComp";
 import { baseURL, basePath } from "../../App";
-import { UIActions } from "../../store/ui";
 import { authActions } from "../../store/auth";
-import { json, redirect } from "react-router-dom";
+import { redirect } from "react-router-dom";
 import store from "../../store";
 
 const Login = () => {
@@ -13,7 +12,6 @@ const Login = () => {
         </>
     );
 };
-
 export default Login;
 
 export async function action({ request }) {
@@ -31,35 +29,42 @@ export async function action({ request }) {
         body: JSON.stringify(authData),
     });
 
-    // handle the response
+    // Handle the response for specific error statuses
     if (
         response.status === 422 ||
         response.status === 401 ||
         response.status === 403
     ) {
-        console.log(response);
-        console.log(response.statusText);
-        console.log(response.url);
-        return response.statusText; //react router automatically extract the data for us!
+        const customMessage = "Invalid credentials";
+        return customMessage; // React Router automatically extract the data for us in the component we use error from router!
     }
 
     if (!response.ok) {
-        throw json(
-            { message: "Could not authenticate the user" },
-            { status: 500 }
-        );
+        return response.statusText;
     }
 
-    //! managing the token , backend should return the 'token' key so i can extract it from the response
     const resData = await response.json();
-    const token = resData.token;
 
-    localStorage.setItem("token", token);
-    localStorage.setItem("email", resData.user_email);
-    localStorage.setItem("niceName", resData.user_nicename);
-    store.dispatch(authActions.setUserEmail(resData.user_email));
+    // Check for user roles
+    const userRoles = resData.profile.user_role;
+    const isAdminOrMember =
+        userRoles.includes("administrator") ||
+        userRoles.includes("um_krc-member");
+
+    if (!isAdminOrMember) {
+        const customMessage = "You need to be a KRC member or Admin to proceed";
+        return customMessage;
+    }
+
+    // User is either an admin or a krc-member, proceed to set localStorage and dispatch actions
+    localStorage.setItem("token", resData.token);
+    localStorage.setItem("email", resData.profile.user_email);
+    localStorage.setItem("niceName", resData.profile.user_nicename);
+    // Assuming store and authActions are available in the scope
+    store.dispatch(authActions.setUserEmail(resData.profile.user_email));
     store.dispatch(authActions.setToken(resData.token));
     // store.dispatch(UIActions.toggleDrawer(true));
 
+    // Redirect the user to the basePath
     return redirect(basePath);
 }

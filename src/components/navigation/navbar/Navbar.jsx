@@ -250,7 +250,7 @@ export default function Navbar() {
                             }}
                         />
                     </Link>
-                    {token && (
+                    {/* {token && (
                         <Search>
                             <SearchIconWrapper>
                                 <SearchIcon />
@@ -260,8 +260,8 @@ export default function Navbar() {
                                 inputProps={{ "aria-label": "search" }}
                             />
                         </Search>
-                    )}
-                    {/* to puch things to the right */}
+                    )} */}
+                    {/* to push things to the right */}
                     <Box sx={{ flexGrow: 1 }} />
                     {/*  */}
 

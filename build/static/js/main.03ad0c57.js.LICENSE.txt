@@ -114,6 +114,4 @@
 
 //! kad napravis loader za token ubaci
 
-//! managing the token , backend should return the 'token' key so i can extract it from the response
-
 //! return token ? element : <Navigate to="/login" />;  delete / before login to get relative path

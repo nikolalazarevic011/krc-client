@@ -121,7 +121,7 @@ const Home = ({ data }) => {
                                 description={
                                     exerciseOfWeek.class_week_description
                                 }
-                                toPage={"exercise"}
+                                toPage={"exercises"}
                                 subheader={'Newest Exercise'}
                             />
                         </Grid>
