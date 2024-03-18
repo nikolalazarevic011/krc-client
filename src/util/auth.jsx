@@ -4,14 +4,15 @@ export function getAuthToken() {
     //old way
     // const token = localStorage.getItem("token");
 
-    //new, still named token tho...
-    const token = localStorage.getItem("krc_member_login");
+    //new
+    const token = localStorage.getItem("token")
+    const isLoggedIn = localStorage.getItem("krc_member_login");
 
-    if (!token) {
+    if (!token && !isLoggedIn) {
         return null;
     }
 
-    return token;
+    return true;
 }
 
 export function tokenLoader() {

@@ -23,8 +23,6 @@ function Root() {
         }
     }, [toggleDrawer]);
 
-    //! kad napravis loader za token ubaci
-
     const simpleStyles = {
         content: {
             marginLeft: marginLeft,

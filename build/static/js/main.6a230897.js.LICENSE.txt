@@ -112,6 +112,4 @@
 
 //! for links poppins font does it work? no
 
-//! kad napravis loader za token ubaci
-
 //! return token ? element : <Navigate to="/login" />;  delete / before login to get relative path
