@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialUISlice = { toggleDrawer: false };
+const initialUISlice = { toggleDrawer: false, isLoading: false };
 
 const UISlice = createSlice({
     name: "ui",
@@ -9,6 +9,9 @@ const UISlice = createSlice({
         toggleDrawer(state, action) {
             state.toggleDrawer = action.payload;
         },
+        isLoading(state, action) {
+            state.isLoading = action.payload
+        }
     },
 });
 

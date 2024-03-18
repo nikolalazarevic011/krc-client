@@ -1,7 +1,11 @@
 import { redirect, useLocation } from "react-router-dom";
 
 export function getAuthToken() {
-    const token = localStorage.getItem("token");
+    //old way
+    // const token = localStorage.getItem("token");
+
+    //new, still named token tho...
+    const token = localStorage.getItem("krc_member_login");
 
     if (!token) {
         return null;
@@ -14,4 +18,3 @@ export function tokenLoader() {
     const token = getAuthToken();
     return token;
 }
-

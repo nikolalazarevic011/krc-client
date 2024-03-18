@@ -5,7 +5,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Root from "./components/navigation/Root";
 import Home, { loader as homePageLoader } from "./pages/HomePage";
 import Handouts, { loader as handoutsLoader } from "./pages/Handouts/Handouts";
-import Login, { action as LoginAction } from "./pages/Auth/Login";
+import Login, { action as LoginAction , loader as loginLoader} from "./pages/Auth/Login";
 import { tokenLoader } from "./util/auth";
 import { loader as LogoutLoader } from "./pages/Auth/LogoutPage";
 import ProtectedRoute from "./util/ProtectedRoute";
@@ -119,6 +119,7 @@ const router = createBrowserRouter([
             {
                 path: "login",
                 element: <Login />,
+                // loader: loginLoader,
                 action: LoginAction, // for token
             },
             { path: "logout", loader: LogoutLoader },
