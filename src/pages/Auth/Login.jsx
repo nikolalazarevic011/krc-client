@@ -68,15 +68,3 @@ export async function action({ request }) {
     // Redirect the user to the basePath
     return redirect(basePath);
 }
-
-
-//I''ll do it in the util/auth instead
-// export async function loader () {
-//     const isMember = localStorage.getItem("krc_member_login")
-//     if (isMember) {
-//         return redirect(basePath)
-//     } else {
-//         return redirect("login")
-//     }
-
-// }

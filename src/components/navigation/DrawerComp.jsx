@@ -143,15 +143,6 @@ const DrawerComp = () => {
         fetchData();
     }, []);
 
-    // Function to render either a Skeleton or a CustomAccordion
-    const renderContentOrSkeleton = (isLoading, dataArray, title) => {
-        return isLoading ? (
-            <Skeleton variant="rectangular" width={210} height={60} />
-        ) : (
-            <CustomAccordion title={title} array={dataArray} />
-        );
-    };
-
     return (
         <>
             {!isLoginPage && (
@@ -167,31 +158,6 @@ const DrawerComp = () => {
                     >
                         <Toolbar />
                         <List>
-                            {/* {handouts && (
-                                <CustomAccordion
-                                    title={"Handouts"}
-                                    array={handouts}
-                                />
-                            )}
-                            {classesItems && (
-                                <CustomAccordion
-                                    title={"Classes"}
-                                    array={classesItems}
-                                />
-                            )}
-                            {homework && (
-                                <CustomAccordion
-                                    title={"Homework"}
-                                    array={homework}
-                                />
-                            )}
-                            {exercises && (
-                                <CustomAccordion
-                                    title={"Exercises"}
-                                    array={exercises}
-                                />
-                            )} */}
-
                             <CustomAccordion
                                 title={"Handouts"}
                                 array={handouts}
@@ -212,27 +178,6 @@ const DrawerComp = () => {
                                 array={exercises}
                                 loading={loading.exercises}
                             />
-
-                            {/* {renderContentOrSkeleton(
-                                loading.handouts,
-                                handouts,
-                                "Handouts"
-                            )}
-                            {renderContentOrSkeleton(
-                                loading.classesItems,
-                                classesItems,
-                                "Classes"
-                            )}
-                            {renderContentOrSkeleton(
-                                loading.homework,
-                                homework,
-                                "Homework"
-                            )}
-                            {renderContentOrSkeleton(
-                                loading.exercises,
-                                exercises,
-                                "Exercises"
-                            )} */}
                         </List>
                         <Toolbar />
                         <Toolbar />

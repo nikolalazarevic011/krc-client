@@ -7,13 +7,13 @@ const DetailComp = ({ data }) => {
     return (
         <>
             <Toolbar />
-            <Container maxWidth="lg">
+            <Container maxWidth="lg" sx={{mt:2}}>
                 {/* <Toolbar /> */}
                 {data.class_video_url && (
                     <VideoPlayer url={data.class_video_url} />
                 )}
                 <Grid container spacing={3} alignItems="center" mb={3}>
-                    <Grid item xs={12} sx={{my:{xs:4, sm:6}}}>
+                    <Grid item xs={12} sx={{ my: { xs: 4, sm: 6 } }}>
                         <Typography
                             mb={0}
                             mx={3}
@@ -24,7 +24,13 @@ const DetailComp = ({ data }) => {
                             Title : {data.title}
                         </Typography>
                     </Grid>
-                    <Grid item xs={12} sm={6} sx={{ textAlign: "center" }}>
+                    <Grid
+                    
+                        item
+                        xs={12}
+                        sm={data.class_document_1 ? 6 : 12}
+                        sx={{ textAlign: "center", mt:-3 }}
+                    >
                         <Typography variant="body1" color="text.secondary">
                             Description :
                         </Typography>
@@ -32,20 +38,22 @@ const DetailComp = ({ data }) => {
                             {data.class_week_description}
                         </Typography>
                     </Grid>
-                    <Grid item xs={12} sm={6} sx={{ textAlign: "center" }}>
-                        <Link
-                            href={data.class_document_1}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            <Button
-                                variant="contained"
-                                sx={{ backgroundColor: "secondary.main" }}
+                    {data.class_document_1 && (
+                        <Grid item xs={12} sm={6} sx={{ textAlign: "center" }}>
+                            <Link
+                                href={data.class_document_1}
+                                target="_blank"
+                                rel="noopener noreferrer"
                             >
-                                View PDF
-                            </Button>
-                        </Link>
-                    </Grid>
+                                <Button
+                                    variant="contained"
+                                    sx={{ backgroundColor: "secondary.main" }}
+                                >
+                                    View PDF
+                                </Button>
+                            </Link>
+                        </Grid>
+                    )}
                 </Grid>
             </Container>
         </>
