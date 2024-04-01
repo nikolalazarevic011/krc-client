@@ -12,12 +12,11 @@ import VideoPlayer from "./VideoPlayer";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { useState } from "react";
 
-const StyledCard = styled(Card)({
+const StyledCard = styled(Card)(({ theme, hasUrl }) => ({
     display: "grid",
     gridTemplateRows: "auto 1fr auto", // Header, content, and actions areas
-    height: "590px", // Ensure the card takes full height
-});
-
+    height: hasUrl ? "590px" : "250px", // Conditional height based on hasUrl
+}));
 export default function VideoCardCopy({
     title,
     url,
@@ -25,6 +24,7 @@ export default function VideoCardCopy({
     toPage,
     subheader,
     loading,
+    toDetailsPage,
 }) {
     // const navigation = useNavigation();
     // const isSubmitting = navigation.state === "loading"
@@ -33,13 +33,18 @@ export default function VideoCardCopy({
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     //for only a singe button of 3 cards on main page to spin
-    const clickHandler = () => {
+    const viewAllHandler = () => {
         setIsSubmitting(true);
         navigate(toPage);
+    };
+    const viewDetailHandler = () => {
+        setIsSubmitting(true);
+        navigate(toDetailsPage);
     };
     return (
         <StyledCard
             sx={{ maxWidth: "545px", backgroundColor: "primary.light" }}
+            hasUrl={!!url}
         >
             {loading ? (
                 <>
@@ -58,9 +63,11 @@ export default function VideoCardCopy({
                         title={title}
                         subheader={subheader}
                     />
-                    <CardMedia sx={{mt:0}}>
-                        <VideoPlayer url={url} />
-                    </CardMedia>
+                    {url && (
+                        <CardMedia sx={{ mt: 0 }}>
+                            <VideoPlayer url={url} />
+                        </CardMedia>
+                    )}
                     <CardContent
                         sx={{
                             backgroundColor: "primary.light",
@@ -78,8 +85,21 @@ export default function VideoCardCopy({
                         <LoadingButton
                             variant="contained"
                             loading={isSubmitting}
-                            sx={{ backgroundColor: "secondary.main" }}
-                            onClick={clickHandler}
+                            sx={{
+                                backgroundColor: "secondary.main",
+                            }}
+                            onClick={viewDetailHandler}
+                        >
+                            View Details
+                        </LoadingButton>
+                        <LoadingButton
+                            variant="contained"
+                            loading={isSubmitting}
+                            sx={{
+                                backgroundColor: "secondary.main",
+                                marginLeft: "auto",
+                            }}
+                            onClick={viewAllHandler}
                         >
                             View All
                         </LoadingButton>

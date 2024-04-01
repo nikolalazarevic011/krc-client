@@ -5,7 +5,7 @@ import { Container, Grid, Toolbar, Typography } from "@mui/material";
 const HomeMain = ({ data, loading }) => {
     // Accept loading prop
     // Assuming data is an array of objects and has at least 3 objects if not loading
-    const content = data.length ? data : Array(3).fill({}); // Fallback content if data is empty
+    const content = data.length ? data : Array(4).fill({}); // Fallback content if data is empty
 
     // Function to determine the toPage value based on the index, since i don't get url from api, that would be ideal
     const getPageAndSubheader = (index) => {
@@ -13,9 +13,20 @@ const HomeMain = ({ data, loading }) => {
             case 0:
                 return { toPage: "classes", subheader: "Latest class" };
             case 1:
-                return { toPage: "homework", subheader: "Latest homework" };
+                return {
+                    toPage: "homework",
+                    subheader: "Homework of the week",
+                };
             case 2:
-                return { toPage: "exercises", subheader: "Latest exercise" };
+                return {
+                    toPage: "exercises",
+                    subheader: "Exercise of the week",
+                };
+            case 3:
+                return {
+                    toPage: "handouts",
+                    subheader: "Handout of the week",
+                };
             default:
                 return { toPage: "", subheader: "" }; // Default values if needed
         }
@@ -31,6 +42,8 @@ const HomeMain = ({ data, loading }) => {
                     {content.map((item, index) => {
                         const { toPage, subheader } =
                             getPageAndSubheader(index);
+                             // Construct the toDetailsPage string
+                        const toDetailsPage = `/${toPage}/${item.slug || ""}`;
                         return (
                             <Grid item xs={12} sm={4} key={index}>
                                 <VideoCard
@@ -40,6 +53,7 @@ const HomeMain = ({ data, loading }) => {
                                         item.class_week_description || ""
                                     }
                                     toPage={toPage} // Dynamically set toPage based on index
+                                    toDetailsPage={toDetailsPage}
                                     subheader={subheader}
                                     loading={loading} // Pass loading state to VideoCard
                                 />

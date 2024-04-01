@@ -11,9 +11,9 @@ const HomePage = () => {
         async function fetchData() {
             // Your data fetching logic...
             try {
-                const [newestClass, newestHomework, newestExercise] =
+                const [newestClass, newestHomework, newestExercise, newestHandout] =
                     await loader();
-                setLatest([newestClass, newestHomework, newestExercise]);
+                setLatest([newestClass, newestHomework, newestExercise, newestHandout]);
                 setLoading(false); // Set loading to false after data is fetched
             } catch (error) {
                 console.error("Failed to fetch data: ", error);
@@ -36,6 +36,7 @@ export async function loader() {
     const url1 = `${baseURL}/ce/v1/krc_classes`;
     const url2 = `${baseURL}/ce/v1/krc_homework`;
     const url3 = `${baseURL}/wp/v2/krc-exercise`;
+    const url4 = `${baseURL}/ce/v1/krc_handouts`;
 
     try {
         // Execute all fetch requests concurrently
@@ -43,6 +44,7 @@ export async function loader() {
             fetch(url1),
             fetch(url2),
             fetch(url3),
+            fetch(url4),
         ]);
 
         // Check if any of the responses are not ok
@@ -51,7 +53,7 @@ export async function loader() {
         }
 
         // Parse JSON responses concurrently
-        const [data1, data2, data3] = await Promise.all(
+        const [data1, data2, data3,data4] = await Promise.all(
             responses.map((response) => response.json())
         );
 
@@ -65,6 +67,7 @@ export async function loader() {
         // Find the object with the highest id in each dataset
         const newestClass = findHighestIdObject(data1);
         const newestHomework = findHighestIdObject(data2);
+        //exercise gotta be transformed first, because it's default return form wp, other 2 alan optimized to the list below, that's why you're manipulating it first
         const newestExerciseArray = data3.map((item) => ({
             id: item.id,
             title: item.title.rendered,
@@ -78,9 +81,10 @@ export async function loader() {
             class_document_3: item.acf.class_document_3,
         }));
         const newestExercise = findHighestIdObject(newestExerciseArray);
+        const newestHandout = findHighestIdObject(data4)
 
         // Return an object containing the highest id object from each API call
-        return [newestClass, newestHomework, newestExercise];
+        return [newestClass, newestHomework, newestExercise, newestHandout];
     } catch (error) {
         // Handle any errors that occurred during fetch or JSON parsing
         throw new Error(error.message);
