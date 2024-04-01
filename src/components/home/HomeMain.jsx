@@ -8,16 +8,16 @@ const HomeMain = ({ data, loading }) => {
     const content = data.length ? data : Array(3).fill({}); // Fallback content if data is empty
 
     // Function to determine the toPage value based on the index, since i don't get url from api, that would be ideal
-    const getToPageValue = (index) => {
+    const getPageAndSubheader = (index) => {
         switch (index) {
             case 0:
-                return "classes";
+                return { toPage: "classes", subheader: "Latest class" };
             case 1:
-                return "homework";
+                return { toPage: "homework", subheader: "Latest homework" };
             case 2:
-                return "exercises";
+                return { toPage: "exercises", subheader: "Latest exercise" };
             default:
-                return ""; // Default value if needed
+                return { toPage: "", subheader: "" }; // Default values if needed
         }
     };
     return (
@@ -28,19 +28,24 @@ const HomeMain = ({ data, loading }) => {
                     {/* Your text here */}
                 </Typography>
                 <Grid container spacing={3}>
-                    {content.map((item, index) => (
-                        <Grid item xs={12} sm={4} key={index}>
-                            <VideoCard
-                                title={item.title || ""}
-                                url={item.class_video_url || ""}
-                                description={item.class_week_description || ""}
-                                // toPage={item.url || ""}
-                                toPage={getToPageValue(index)} // Dynamically set toPage based on index
-                                subheader={item.subheader || ""}
-                                loading={loading} // Pass loading state to VideoCard
-                            />
-                        </Grid>
-                    ))}
+                    {content.map((item, index) => {
+                        const { toPage, subheader } =
+                            getPageAndSubheader(index);
+                        return (
+                            <Grid item xs={12} sm={4} key={index}>
+                                <VideoCard
+                                    title={item.title || ""}
+                                    url={item.class_video_url || ""}
+                                    description={
+                                        item.class_week_description || ""
+                                    }
+                                    toPage={toPage} // Dynamically set toPage based on index
+                                    subheader={subheader}
+                                    loading={loading} // Pass loading state to VideoCard
+                                />
+                            </Grid>
+                        );
+                    })}
                 </Grid>
             </Container>
             <Toolbar />

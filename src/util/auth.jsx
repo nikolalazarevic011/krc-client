@@ -6,9 +6,10 @@ export function getAuthToken() {
 
     //new
     const token = localStorage.getItem("token")
-    const isLoggedIn = localStorage.getItem("krc_member_login");
+    // const isLoggedIn = localStorage.getItem("krc_member_login");
 
-    if (!token && !isLoggedIn) {
+    // if (!token && !isLoggedIn) {
+    if (!token) {
         return null;
     }
 
