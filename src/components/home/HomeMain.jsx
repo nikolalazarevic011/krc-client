@@ -42,8 +42,9 @@ const HomeMain = ({ data, loading }) => {
                     {content.map((item, index) => {
                         const { toPage, subheader } =
                             getPageAndSubheader(index);
-                             // Construct the toDetailsPage string
-                        const toDetailsPage = `${toPage}/${item.slug || ""}`;
+                        // Construct the toDetailsPage string
+                        // const toDetailsPage = `${toPage}/${item.slug || ""}`;
+                        const toDetailsPage = item.class_document_1;
                         return (
                             <Grid item xs={12} sm={4} key={index}>
                                 <VideoCard

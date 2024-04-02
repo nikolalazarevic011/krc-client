@@ -15,7 +15,7 @@ import { useState } from "react";
 const StyledCard = styled(Card)(({ theme, hasUrl }) => ({
     display: "grid",
     gridTemplateRows: "auto 1fr auto", // Header, content, and actions areas
-    height: hasUrl ? "590px" : "250px", // Conditional height based on hasUrl
+    height: hasUrl ? "610px" : "250px", // Conditional height based on hasUrl
 }));
 export default function VideoCardCopy({
     title,
@@ -36,11 +36,15 @@ export default function VideoCardCopy({
     const viewAllHandler = () => {
         setIsSubmitting(true);
         navigate(toPage);
+        setIsSubmitting(false);
     };
+    
     const viewDetailHandler = () => {
         setIsSubmitting(true);
-        navigate(toDetailsPage);
+        window.open(toDetailsPage, '_blank');
+        setIsSubmitting(false);
     };
+
     return (
         <StyledCard
             sx={{ maxWidth: "545px", backgroundColor: "primary.light" }}
@@ -82,6 +86,8 @@ export default function VideoCardCopy({
                         disableSpacing
                         sx={{ backgroundColor: "primary.light" }}
                     >
+                        {toDetailsPage && (
+
                         <LoadingButton
                             variant="contained"
                             loading={isSubmitting}
@@ -92,6 +98,7 @@ export default function VideoCardCopy({
                         >
                             View Details
                         </LoadingButton>
+                        )}
                         <LoadingButton
                             variant="contained"
                             loading={isSubmitting}

@@ -17,12 +17,13 @@ import { isNotMobile } from "../Root";
 import { useTheme } from "@mui/material/styles";
 
 const menuList = [
-    { title: "- About Us", path: "https://krc.kingdomrunningclub.org/about-who-we-are-v2-5/#" },
-    { title: "- Events", path: "" },
-    { title: "- Exercise of the Week", path: "" },
-    { title: "- Weight Loss Resources", path: "" },
-    { title: "- Nutrition Archive", path: "" },
-    { title: "- Recipe Archive", path: "" },
+    { title: "- About Us", path: "https://kingdomrunningclub.org/about-who-we-are/" },
+    { title: "- Events", path: "https://kingdomrunningclub.org/events/" },
+    // { title: "- Exercise of the Week", path: "" },
+    // { title: "- Weight Loss Resources", path: "" },
+    // { title: "- Nutrition Archive", path: "" },
+    // { title: "- Recipe Archive", path: "" },
+    { title: "- Running Blog", path: "https://kingdomrunningclub.org/blog" },
 ];
 
 const Foot2ndCol = () => {
