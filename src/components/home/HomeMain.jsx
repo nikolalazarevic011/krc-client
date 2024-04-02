@@ -43,7 +43,7 @@ const HomeMain = ({ data, loading }) => {
                         const { toPage, subheader } =
                             getPageAndSubheader(index);
                              // Construct the toDetailsPage string
-                        const toDetailsPage = `/${toPage}/${item.slug || ""}`;
+                        const toDetailsPage = `${toPage}/${item.slug || ""}`;
                         return (
                             <Grid item xs={12} sm={4} key={index}>
                                 <VideoCard
