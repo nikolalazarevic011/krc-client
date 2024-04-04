@@ -11,9 +11,18 @@ const HomePage = () => {
         async function fetchData() {
             // Your data fetching logic...
             try {
-                const [newestClass, newestHomework, newestExercise, newestHandout] =
-                    await loader();
-                setLatest([newestClass, newestHomework, newestExercise, newestHandout]);
+                const [
+                    newestClass,
+                    newestHomework,
+                    newestExercise,
+                    newestHandout,
+                ] = await loader();
+                setLatest([
+                    newestClass,
+                    newestHomework,
+                    newestExercise,
+                    newestHandout,
+                ]);
                 setLoading(false); // Set loading to false after data is fetched
             } catch (error) {
                 console.error("Failed to fetch data: ", error);
@@ -24,7 +33,7 @@ const HomePage = () => {
     }, []);
     return (
         <>
-            <Toolbar />
+            {/* <Toolbar /> */}
             <HomeMain data={latest} loading={loading} />
         </>
     );
@@ -53,7 +62,7 @@ export async function loader() {
         }
 
         // Parse JSON responses concurrently
-        const [data1, data2, data3,data4] = await Promise.all(
+        const [data1, data2, data3, data4] = await Promise.all(
             responses.map((response) => response.json())
         );
 
@@ -81,10 +90,10 @@ export async function loader() {
             class_document_3: item.acf.class_document_3,
         }));
         const newestExercise = findHighestIdObject(newestExerciseArray);
-        const newestHandout = findHighestIdObject(data4)
+        const newestHandout = findHighestIdObject(data4);
 
         // Return an object containing the highest id object from each API call
-        return [newestClass, newestHomework, newestExercise, newestHandout];
+        return [newestClass, newestExercise, newestHomework, newestHandout];
     } catch (error) {
         // Handle any errors that occurred during fetch or JSON parsing
         throw new Error(error.message);

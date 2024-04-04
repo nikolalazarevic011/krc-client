@@ -6,17 +6,21 @@ import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 import Typography from "@mui/material/Typography";
-import { Skeleton } from "@mui/material";
+import { Box, Skeleton } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import VideoPlayer from "./VideoPlayer";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { useState } from "react";
 
-const StyledCard = styled(Card)(({ theme, hasUrl }) => ({
+const StyledCard = styled(Card, {
+    shouldForwardProp: (prop) => prop !== "hasurl" && prop !== "loading", // Do not forward 'hasurl' or 'loading' prop to the DOM element
+})(({ theme, hasurl, loading }) => ({
     display: "grid",
     gridTemplateRows: "auto 1fr auto", // Header, content, and actions areas
-    height: hasUrl ? "610px" : "250px", // Conditional height based on hasUrl
+    // height: hasurl ? "610px" : "293.3px", // Conditional height based on hasurl
+    height: loading ? "610px" : hasurl ? "610px" : "293.3px",
 }));
+
 export default function VideoCardCopy({
     title,
     url,
@@ -38,24 +42,30 @@ export default function VideoCardCopy({
         navigate(toPage);
         setIsSubmitting(false);
     };
-    
+
     const viewDetailHandler = () => {
         setIsSubmitting(true);
-        window.open(toDetailsPage, '_blank');
+        window.open(toDetailsPage, "_blank");
         setIsSubmitting(false);
     };
 
     return (
         <StyledCard
             sx={{ maxWidth: "545px", backgroundColor: "primary.light" }}
-            hasUrl={!!url}
+            hasurl={!!url}
+            loading={loading} // Pass loading as a prop
         >
             {loading ? (
                 <>
-                    <Skeleton variant="text" width="20%" height={60} />
-                    <Skeleton variant="rectangular" width="100%" height={194} />
-                    <Skeleton variant="text" width="60%" height={60} />
-                    <Skeleton variant="text" width="20%" height={60} />
+                    <Skeleton variant="text" width="20%" height={50} />
+                    <Skeleton variant="text" width="40%" height={50} />
+                    <Skeleton
+                        variant="rectangular"
+                        width="100%"
+                        height="350px"
+                    />
+                    <Skeleton variant="text" width="30%" height={50} />
+                    <Skeleton variant="text" width="20%" height={50} />
                 </>
             ) : (
                 <>
@@ -87,17 +97,16 @@ export default function VideoCardCopy({
                         sx={{ backgroundColor: "primary.light" }}
                     >
                         {toDetailsPage && (
-
-                        <LoadingButton
-                            variant="contained"
-                            loading={isSubmitting}
-                            sx={{
-                                backgroundColor: "secondary.main",
-                            }}
-                            onClick={viewDetailHandler}
-                        >
-                            View Details
-                        </LoadingButton>
+                            <LoadingButton
+                                variant="contained"
+                                loading={isSubmitting}
+                                sx={{
+                                    backgroundColor: "secondary.main",
+                                }}
+                                onClick={viewDetailHandler}
+                            >
+                                View Details
+                            </LoadingButton>
                         )}
                         <LoadingButton
                             variant="contained"
