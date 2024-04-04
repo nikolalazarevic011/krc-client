@@ -56,7 +56,6 @@ const LoginComp = () => {
                     display: "flex",
                 }}
             >
-                {/* <Toolbar /> */}
                 <Grid
                     item
                     xs={9}
@@ -76,9 +75,7 @@ const LoginComp = () => {
                     >
                         <CardContent sx={{ color: "secondary.main" }}>
                             <Typography
-                                // fontSize={}
                                 sx={{}}
-                                // gutterBottom
                             >
                                 Login
                             </Typography>
