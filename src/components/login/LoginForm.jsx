@@ -3,9 +3,8 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import CircularProgress from "@mui/material/CircularProgress";
 import { Form } from "react-router-dom";
-import LoadingButton from '@mui/lab/LoadingButton';
+import LoadingButton from "@mui/lab/LoadingButton";
 import { Typography } from "@mui/material";
-
 
 const LoginForm = ({ isSubmitting, handleClick }) => {
     return (
@@ -28,7 +27,7 @@ const LoginForm = ({ isSubmitting, handleClick }) => {
                 name="username"
                 autoComplete="username"
                 autoFocus
-                sx={{ mb: -1, }}
+                sx={{ mb: -1 }}
             />
             <TextField
                 variant="outlined"
@@ -41,19 +40,18 @@ const LoginForm = ({ isSubmitting, handleClick }) => {
                 id="password"
                 autoComplete="password"
             />
-            {/* Use LoadingButton component instead of Button */}
             <LoadingButton
                 type="submit"
                 color="secondary"
                 fullWidth
                 variant="contained"
-                loading={isSubmitting}  // Set loading prop to isSubmitting
+                loading={isSubmitting}
                 onClick={handleClick}
-                sx={{ position: "relative"  }}
+                sx={{ position: "relative" }}
             >
-                    <Typography color="bgWhite.main">{isSubmitting ? "Submitting" : "Sign In"}</Typography>
-
-                
+                <Typography color="bgWhite.main">
+                    {isSubmitting ? "Submitting" : "Sign In"}
+                </Typography>
             </LoadingButton>
         </Form>
     );
