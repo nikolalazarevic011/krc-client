@@ -6,7 +6,7 @@ import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 import Typography from "@mui/material/Typography";
-import { Box, Skeleton } from "@mui/material";
+import { Box, Link, Skeleton } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import VideoPlayer from "./VideoPlayer";
 import LoadingButton from "@mui/lab/LoadingButton";
@@ -29,6 +29,12 @@ export default function VideoCardCopy({
     subheader,
     loading,
     toDetailsPage,
+    link1Href,
+    link1Title,
+    link2Href,
+    link2Title,
+    link3Href,
+    link3Title,
 }) {
     // const navigation = useNavigation();
     // const isSubmitting = navigation.state === "loading"
@@ -91,6 +97,13 @@ export default function VideoCardCopy({
                         <Typography variant="body2" color="text.secondary">
                             {description}
                         </Typography>
+                        {link1Href && (
+                                <Box mt={2}>
+                                    <Link href={link1Href}>{link1Title}</Link>
+                                    <Link href={link2Href}>{link2Title}</Link>
+                                    <Link href={link3Href}>{link3Title}</Link>
+                                </Box>
+                        )}
                     </CardContent>
                     <CardActions
                         disableSpacing

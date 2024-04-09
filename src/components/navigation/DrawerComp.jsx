@@ -105,7 +105,7 @@ const DrawerComp = () => {
                         url: "classes",
                         id: item.id,
                         title: item.title,
-                        slug: item.slug,
+                        slug: item.class_number,
                     })
                 );
                 const extractedDataHomework = responseDataHomework.map(
@@ -164,6 +164,7 @@ const DrawerComp = () => {
                                 loading={loading.handouts}
                             />
                             <CustomAccordion
+                        
                                 title={"Classes"}
                                 array={classesItems}
                                 loading={loading.classesItems}

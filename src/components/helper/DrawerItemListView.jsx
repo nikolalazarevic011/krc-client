@@ -19,6 +19,9 @@ import { LoadingButton } from "@mui/lab";
 import CustomLoadingButton from "./CustomLoadingButton";
 
 const DrawerItemListView = ({ data }) => {
+    const location = useLocation();
+
+    const isOnClassesRoute = location.pathname === '/classes';
     //blocked by CORS, should be working?
 
     // const handleDownload = (path, fileName) => {
@@ -50,7 +53,8 @@ const DrawerItemListView = ({ data }) => {
                             sx={{my:{xs:2, sm:false}}}
                             secondaryAction={
                                 <CustomLoadingButton
-                                    path={item.slug}
+
+                                    path={isOnClassesRoute ? item.class_number : item.slug}
                                     text={"View Details"}
                                 ></CustomLoadingButton>
                             }

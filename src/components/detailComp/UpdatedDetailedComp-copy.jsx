@@ -2,16 +2,18 @@ import React from "react";
 import VideoCard from "../helper/VideoCard";
 import { Container, Grid, Toolbar, Typography } from "@mui/material";
 
-const HomeMain = ({ data, loading }) => {
+const UpdatedDetailedComp = ({ data, loading }) => {
     // Accept loading prop
-    // Assuming data is an array of objects and has at least 3 objects if not loading
-    const content = data.length ? data : Array(3).fill({}); // Fallback content if data is empty
+    // Assuming 'data' is either an object or null/undefined.
+    // const content = data ? [data] : Array(3).fill({}); // Wrap it in an array if it exists, otherwise create an array with empty objects as a fallback
+    const content =
+        data && Object.keys(data).length > 0 ? [data] : Array(3).fill({});
 
     // Function to determine the toPage value based on the index, since i don't get url from api, that would be ideal
     const getPageAndSubheader = (index) => {
         switch (index) {
             case 0:
-                return { toPage: "classes", subheader: "Class Replay" };
+                return { toPage: "classes", subheader: "Latest class" };
             case 1:
                 return {
                     toPage: "exercises",
@@ -31,7 +33,7 @@ const HomeMain = ({ data, loading }) => {
             case 1:
                 return {
                     toPage: "handouts",
-                    subheader: "Handouts or/and weekly challenges",
+                    subheader: "Handout of the week",
                 };
             default:
                 return { toPage: "", subheader: "" }; // Default values if needed
@@ -41,8 +43,8 @@ const HomeMain = ({ data, loading }) => {
         <>
             <Toolbar />
             <Container sx={{ maxWidth: { xs: "sm", md: "xl" } }}>
-                <Typography mb={3} mx={3} mt={2} variant="h5" textAlign="center">
-                    {'Latest class information '}
+                <Typography mb={3} mx={3} variant="h5" textAlign="center">
+                    {/* Your text here */}
                 </Typography>
                 <Grid container spacing={3}>
                     {/* First two VideoCard components take up half the width on md and above */}
@@ -109,4 +111,4 @@ const HomeMain = ({ data, loading }) => {
     );
 };
 
-export default HomeMain;
+export default UpdatedDetailedComp;
