@@ -8,8 +8,11 @@ import {
     Typography,
     Skeleton,
 } from "@mui/material";
+import { useParams } from "react-router-dom";
 
 const UpdatedDetailedComp = ({ data, loading }) => {
+    const { classId } = useParams();
+
     return (
         <>
             <Container sx={{ maxWidth: { xs: "sm", md: "xl" } }}>
@@ -74,11 +77,15 @@ const UpdatedDetailedComp = ({ data, loading }) => {
                                             title={data.homework_title || ""}
                                             // url={data.class_video_url || ""}
                                             description={
-                                                data.homework_week_description ||
-                                                ""
+                                                classId !==
+                                                data.newestClass
+                                                    ? "No longer available"
+                                                    : data.homework_week_description ||
+                                                      ""
                                             }
-                                            toPage={"/homework"}
-                                            toDetailsPage={data.homework_pdf}
+                                            // toPage={"/homework"}
+                                            toDetailsPage={classId !== data.newestClass ? null : data.homework_pdf}
+
                                             subheader={"Homework of the week"}
                                             loading={false}
                                         />

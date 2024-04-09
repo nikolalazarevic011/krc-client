@@ -98,11 +98,11 @@ export default function VideoCardCopy({
                             {description}
                         </Typography>
                         {link1Href && (
-                                <Box mt={2}>
-                                    <Link href={link1Href}>{link1Title}</Link>
-                                    <Link href={link2Href}>{link2Title}</Link>
-                                    <Link href={link3Href}>{link3Title}</Link>
-                                </Box>
+                            <Box mt={2}>
+                                <Link href={link1Href}>{link1Title}</Link>
+                                <Link href={link2Href}>{link2Title}</Link>
+                                <Link href={link3Href}>{link3Title}</Link>
+                            </Box>
                         )}
                     </CardContent>
                     <CardActions
@@ -121,17 +121,19 @@ export default function VideoCardCopy({
                                 View Details
                             </LoadingButton>
                         )}
-                        <LoadingButton
-                            variant="contained"
-                            loading={isSubmitting}
-                            sx={{
-                                backgroundColor: "secondary.main",
-                                marginLeft: "auto",
-                            }}
-                            onClick={viewAllHandler}
-                        >
-                            View All
-                        </LoadingButton>
+                        {toPage && (
+                            <LoadingButton
+                                variant="contained"
+                                loading={isSubmitting}
+                                sx={{
+                                    backgroundColor: "secondary.main",
+                                    marginLeft: "auto",
+                                }}
+                                onClick={viewAllHandler}
+                            >
+                                View All
+                            </LoadingButton>
+                        )}
                     </CardActions>
                 </>
             )}

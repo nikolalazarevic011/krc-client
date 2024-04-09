@@ -10,34 +10,14 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
 const ClassesDetailPage = () => {
-    const { classId } = useParams(); // This is the URL parameter
     const singleClass = useLoaderData();
-    const [isValidClass, setIsValidClass] = useState(false); // State to track if the class is valid
-
-    useEffect(() => {
-        // Check if singleClass has a matching class_number with classId
-        if (singleClass && singleClass.class_number.toString() === classId) {
-            setIsValidClass(true); // Set to true if they match
-        } else {
-            setIsValidClass(false); // Set to false if they don't match or singleClass is undefined
-        }
-    }, [classId, singleClass]); // Depend on classId and singleClass
 
     const loading = useSelector((state) => state.ui.isLoading);
 
     return (
-        // <>
-        //     <Toolbar />
-        //     <UpdatedDetailedComp data={singleClass} loading={loading} />
-        // </>
         <>
             <Toolbar />
-            {isValidClass ? (
-                <UpdatedDetailedComp data={singleClass} loading={loading} />
-            ) : (
-                // Optionally, render something else if the class is not valid
-                <div>Loading or class not found...</div>
-            )}
+            <UpdatedDetailedComp data={singleClass} loading={loading} />
         </>
     );
 };
@@ -46,7 +26,6 @@ export default ClassesDetailPage;
 
 export async function loader({ params }) {
     const id = params.classId;
-    // const id = localStorage.getItem("selectedClassNumber")
     store.dispatch(UIActions.isLoading(true));
 
     const response = await fetch(`${baseURL}/ce/v1/krc_classes`);
@@ -70,11 +49,17 @@ export async function loader({ params }) {
         if (!classData) {
             throw json({ message: `Class with id ${id} not found.` });
         }
+        // Find the highest class_number
+        const highestClassNumber = Math.max(
+            ...data.map((cls) => parseInt(cls.class_number))
+        );
 
-        const transformedData = { ...classData };
+        const transformedData = {
+            ...classData,
+            newestClass: highestClassNumber.toString(),
+        };
         // console.log(transformedData);
         store.dispatch(UIActions.isLoading(false));
-        // localStorage.removeItem("selectedClassNumber");
         return transformedData;
     }
 }

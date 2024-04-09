@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Drawer, List, Toolbar, Stack, Skeleton } from "@mui/material";
-import { Outlet, useLocation } from "react-router-dom";
+import { Drawer, List, Toolbar, Stack, Skeleton , Box, CircularProgress} from "@mui/material";
+import { Outlet, useLocation, useNavigation } from "react-router-dom";
 import { UIActions } from "../../store/ui";
 import store from "../../store";
 import { isNotMobile } from "./Root";
@@ -21,6 +21,8 @@ const DrawerComp = () => {
         homework: true,
         exercises: true,
     });
+    const navigation = useNavigation(); // Use useNavigation hook to access navigation state
+    const isNavigating = navigation.state === 'loading'; // Check if the navigation state is 'loading'
 
     const location = useLocation();
     // Define your login page route
@@ -185,7 +187,13 @@ const DrawerComp = () => {
                     </Drawer>
                 </Stack>
             )}
-            <Outlet />
+            {isNavigating ? (
+                <Box display="flex" justifyContent="center" alignItems="center" height="100vh">
+                    <CircularProgress />
+                </Box>
+            ) : (
+                <Outlet />
+            )}
         </>
     );
 };
