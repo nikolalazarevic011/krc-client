@@ -53,7 +53,7 @@ const UpdatedDetailedComp = ({ data, loading }) => {
                                     url={data.class_video_url}
                                     description={data.class_week_description}
                                     toDetailsPage={data.class_document_1}
-                                    toPage={"/classes"}
+                                    toPage={"classes"}
                                     subheader="Class Replay"
                                     loading={false}
                                 />
@@ -63,7 +63,7 @@ const UpdatedDetailedComp = ({ data, loading }) => {
                                     title={data.exercise_title}
                                     url={data.exercize_video}
                                     description={data.exercise_week_description}
-                                    toPage={"/exercises"}
+                                    toPage={"exercises"}
                                     toDetailsPage={data.exercize_pdf}
                                     subheader="Exercise of the Week"
                                     loading={false}
@@ -99,7 +99,7 @@ const UpdatedDetailedComp = ({ data, loading }) => {
                                                 data.handout_week_description ||
                                                 ""
                                             }
-                                            toPage={"/handouts"}
+                                            toPage={"handouts"}
                                             toDetailsPage={
                                                 data.class_document_1
                                             }
