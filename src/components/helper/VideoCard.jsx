@@ -17,7 +17,6 @@ const StyledCard = styled(Card, {
 })(({ theme, hasurl, loading }) => ({
     display: "grid",
     gridTemplateRows: "auto 1fr auto", // Header, content, and actions areas
-    // height: hasurl ? "610px" : "293.3px", // Conditional height based on hasurl
     height: loading ? "610px" : hasurl ? "610px" : "293.3px",
 }));
 
@@ -100,7 +99,7 @@ export default function VideoCardCopy({
                         </Typography>
                         {link1Href && (
                             <>
-                                <Typography variant="body2">
+                                <Typography variant="body2" sx={{mt:0.5}}>
                                     More Handouts :
                                 </Typography>
 
@@ -109,7 +108,7 @@ export default function VideoCardCopy({
                                     // divider={
                                     //     <Divider orientation="horizontal" flexItem sx={{width:'30%'}}/>
                                     // }
-                                    spacing={1}
+                                    spacing={0.2}
                                 >
                                     <Link href={link1Href}>{link1Title}</Link>
                                     <Link href={link2Href}>{link2Title}</Link>
