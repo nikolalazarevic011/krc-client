@@ -34,8 +34,7 @@ const UpdatedDetailedComp = ({ data, loading }) => {
                         variant="h5"
                         textAlign="center"
                     >
-                        {`${data.title}`}
-                        {basePath}
+                        {`${data.title}`}               
                     </Typography>
                 )}
                 <Grid container spacing={3}>
