@@ -9,6 +9,7 @@ import {
     Skeleton,
 } from "@mui/material";
 import { useParams } from "react-router-dom";
+import { basePath } from "../../App";
 
 const UpdatedDetailedComp = ({ data, loading }) => {
     const { classId } = useParams();
@@ -33,7 +34,7 @@ const UpdatedDetailedComp = ({ data, loading }) => {
                         variant="h5"
                         textAlign="center"
                     >
-                        {`${data.title} ${data.class_text} information`}
+                        {`${data.title}`}
                     </Typography>
                 )}
                 <Grid container spacing={3}>
@@ -53,7 +54,7 @@ const UpdatedDetailedComp = ({ data, loading }) => {
                                     url={data.class_video_url}
                                     description={data.class_week_description}
                                     toDetailsPage={data.class_document_1}
-                                    toPage={"/classes"}
+                                    toPage={`${basePath}classes`}
                                     subheader="Class Replay"
                                     loading={false}
                                 />
@@ -63,7 +64,7 @@ const UpdatedDetailedComp = ({ data, loading }) => {
                                     title={data.exercise_title}
                                     url={data.exercize_video}
                                     description={data.exercise_week_description}
-                                    toPage={"/exercises"}
+                                    toPage={`${basePath}exercises`}
                                     toDetailsPage={data.exercize_pdf}
                                     subheader="Exercise of the Week"
                                     loading={false}
@@ -82,7 +83,7 @@ const UpdatedDetailedComp = ({ data, loading }) => {
                                                     : data.homework_week_description ||
                                                       ""
                                             }
-                                            // toPage={"/homework"}
+                                            // toPage={`${basePath}homework`}
                                             toDetailsPage={
                                                 classId !== data.newestClass
                                                     ? null
@@ -99,7 +100,7 @@ const UpdatedDetailedComp = ({ data, loading }) => {
                                                 data.handout_week_description ||
                                                 ""
                                             }
-                                            toPage={"/handouts"}
+                                            toPage={`${basePath}handouts`}
                                             toDetailsPage={
                                                 data.class_document_1
                                             }
