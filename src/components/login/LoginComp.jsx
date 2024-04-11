@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Grid, Toolbar, Typography } from "@mui/material";
-import background from "../../assets/imgs/gary-butterfield-XGKSeGYGP0A-unsplash.jpg";
+// import background from "../../assets/imgs/gary-butterfield-XGKSeGYGP0A-unsplash.jpg";
+import background from "../../assets/imgs/krc_runner.png";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import LoginForm from "./LoginForm";
@@ -15,7 +16,7 @@ import {
     DialogContentText,
     DialogTitle,
     IconButton,
-    Divider
+    Divider,
 } from "@mui/material";
 
 const LoginComp = () => {
@@ -71,20 +72,24 @@ const LoginComp = () => {
                     backgroundImage: `url('${background}')`,
                     backgroundRepeat: "no-repeat",
                     backgroundSize: "cover",
-                    backgroundPositionY: { xs: "0px", sm: "-19vh" },
-                    backgroundPositionX: { xs: "-96vh", sm: "0" },
-                    transform: "scalex(-1)",
+                    backgroundPositionY: { xs: "-0px", sm: "-5vh" },
+                    backgroundPositionX: { xs: "-56vh", sm: "0" },
+                    // transform: "scalex(-1)",
                     display: "flex",
                 }}
             >
+                <Grid item xs={4} sm={7}></Grid>
                 <Grid
                     item
-                    xs={9}
+                    xs={8}
                     sm={5}
+                    
                     textAlign="center"
-                    sx={{
-                        transform: "scalex(-1)",
-                    }}
+                    sx={
+                        {
+                            transform: "scalex(1)",
+                        }
+                    }
                 >
                     <Card
                         sx={{
@@ -147,8 +152,8 @@ const LoginComp = () => {
                                 If you already have an account, close and
                                 proceed to Login.
                             </DialogContentText>
-                            <Divider sx={{ my: 2 }} /> {/* Here's the Divider with margin for spacing */}
-
+                            <Divider sx={{ my: 2 }} />{" "}
+                            {/* Here's the Divider with margin for spacing */}
                             <DialogContentText>
                                 To access our online portal, KRC members seeking
                                 registration should follow these steps:
@@ -194,7 +199,6 @@ const LoginComp = () => {
                         message={errorData}
                     />
                 </Grid>
-                <Grid item xs={false} sm={5}></Grid>
             </Grid>
         </>
     );

@@ -2,12 +2,10 @@ import { Toolbar } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { baseURL } from "../../App";
 import { json, useLoaderData } from "react-router-dom";
-import DetailComp from "../../components/detailComp/DetailComp";
 import UpdatedDetailedComp from "../../components/detailComp/UpdatedDetailedComp";
 import store from "../../store";
 import { UIActions } from "../../store/ui";
 import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
 
 const ClassesDetailPage = () => {
     const singleClass = useLoaderData();
@@ -31,8 +29,6 @@ export async function loader({ params }) {
     const response = await fetch(`${baseURL}/ce/v1/krc_classes`);
 
     if (!response.ok) {
-        console.log("first er");
-
         throw json(
             { message: "Could not fetch details for this class." },
             {
@@ -58,7 +54,6 @@ export async function loader({ params }) {
             ...classData,
             newestClass: highestClassNumber.toString(),
         };
-        // console.log(transformedData);
         store.dispatch(UIActions.isLoading(false));
         return transformedData;
     }

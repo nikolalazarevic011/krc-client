@@ -77,15 +77,17 @@ const UpdatedDetailedComp = ({ data, loading }) => {
                                             title={data.homework_title || ""}
                                             // url={data.class_video_url || ""}
                                             description={
-                                                classId !==
-                                                data.newestClass
+                                                classId !== data.newestClass
                                                     ? "No longer available"
                                                     : data.homework_week_description ||
                                                       ""
                                             }
                                             // toPage={"/homework"}
-                                            toDetailsPage={classId !== data.newestClass ? null : data.homework_pdf}
-
+                                            toDetailsPage={
+                                                classId !== data.newestClass
+                                                    ? null
+                                                    : data.homework_pdf
+                                            }
                                             subheader={"Homework of the week"}
                                             loading={false}
                                         />
@@ -99,10 +101,20 @@ const UpdatedDetailedComp = ({ data, loading }) => {
                                             }
                                             toPage={"/handouts"}
                                             toDetailsPage={
-                                                data.class_handouts[0]
+                                                data.class_document_1
                                             }
-                                            link1Href={data.class_handouts[1]}
-                                            link1Title={"Additional Handout"}
+                                            link1Href={data.class_document_2}
+                                            link1Title={
+                                                data.handout_doc_2_title
+                                            }
+                                            link2Href={data.class_document_3}
+                                            link2Title={
+                                                data.handout_doc_3_title
+                                            }
+                                            link3Href={data.class_document_4}
+                                            link3Title={
+                                                data.handout_doc_4_title
+                                            }
                                             subheader={
                                                 "Handouts or/and weekly challenges"
                                             }

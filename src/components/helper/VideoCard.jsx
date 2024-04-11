@@ -6,7 +6,7 @@ import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
 import Typography from "@mui/material/Typography";
-import { Box, Link, Skeleton } from "@mui/material";
+import { Box, Link, Skeleton, Divider, Stack } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import VideoPlayer from "./VideoPlayer";
 import LoadingButton from "@mui/lab/LoadingButton";
@@ -92,17 +92,30 @@ export default function VideoCardCopy({
                         sx={{
                             backgroundColor: "primary.light",
                             overflow: "auto",
+                            mt: -1.5,
                         }}
                     >
                         <Typography variant="body2" color="text.secondary">
                             {description}
                         </Typography>
                         {link1Href && (
-                            <Box mt={2}>
-                                <Link href={link1Href}>{link1Title}</Link>
-                                <Link href={link2Href}>{link2Title}</Link>
-                                <Link href={link3Href}>{link3Title}</Link>
-                            </Box>
+                            <>
+                                <Typography variant="body2">
+                                    More Handouts :
+                                </Typography>
+
+                                <Stack
+                                    mt={1}
+                                    // divider={
+                                    //     <Divider orientation="horizontal" flexItem sx={{width:'30%'}}/>
+                                    // }
+                                    spacing={1}
+                                >
+                                    <Link href={link1Href}>{link1Title}</Link>
+                                    <Link href={link2Href}>{link2Title}</Link>
+                                    <Link href={link3Href}>{link3Title}</Link>
+                                </Stack>
+                            </>
                         )}
                     </CardContent>
                     <CardActions
