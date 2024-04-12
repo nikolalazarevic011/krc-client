@@ -13,7 +13,6 @@ import { basePath } from "../../App";
 
 const UpdatedDetailedComp = ({ data, loading }) => {
     const { classId } = useParams();
-
     return (
         <>
             <Container sx={{ maxWidth: { xs: "sm", md: "xl" } }}>
@@ -34,7 +33,7 @@ const UpdatedDetailedComp = ({ data, loading }) => {
                         variant="h5"
                         textAlign="center"
                     >
-                        {`${data.title}`}               
+                        {`${data.title}`}
                     </Typography>
                 )}
                 <Grid container spacing={3}>
@@ -67,31 +66,61 @@ const UpdatedDetailedComp = ({ data, loading }) => {
                                     toPage={`${basePath}exercises`}
                                     toDetailsPage={data.exercize_pdf}
                                     subheader="Exercise of the Week"
-                                    loading={false}
+                                    link1Href={data.exercize_pdfs[1]}
+                                    link1Title={data.exercise_2_title}
+                                    link2Href={data.exercize_pdfs[2]}
+                                    link2Title={data.exercise_3_title || ''}
+                                    link3Href={data.exercize_pdfs[3]}
+                                    link3Title={data.handout_doc_4_title}
                                 />
                             </Grid>
                             {/* Third and Fourth VideoCard components are placed in a nested Grid container */}
                             <Grid item xs={12} md={4}>
                                 <Grid container spacing={3} direction="column">
                                     <Grid item xs={12}>
-                                        <VideoCard
-                                            title={data.homework_title || ""}
-                                            // url={data.class_video_url || ""}
-                                            description={
-                                                classId !== data.newestClass
-                                                    ? "No longer available"
-                                                    : data.homework_week_description ||
-                                                      ""
-                                            }
-                                            // toPage={`${basePath}homework`}
-                                            toDetailsPage={
-                                                classId !== data.newestClass
-                                                    ? null
-                                                    : data.homework_pdf
-                                            }
-                                            subheader={"Homework of the week"}
-                                            loading={false}
-                                        />
+                                        {!classId ? (
+                                            <VideoCard
+                                                title={
+                                                    data.homework_title || ""
+                                                }
+                                                // url={data.class_video_url || ""}
+                                                description={
+                                                    data.homework_week_description ||
+                                                    ""
+                                                }
+                                                // toPage={`${basePath}homework`}
+                                                toDetailsPage={
+                                                    data.homework_pdf || ""
+                                                }
+                                                subheader={
+                                                    "Homework of the week"
+                                                }
+                                                loading={false}
+                                            />
+                                        ) : (
+                                            <VideoCard
+                                                title={
+                                                    data.homework_title || ""
+                                                }
+                                                // url={data.class_video_url || ""}
+                                                description={
+                                                    classId !== data.newestClass
+                                                        ? "No longer available"
+                                                        : data.homework_week_description ||
+                                                          ""
+                                                }
+                                                // toPage={`${basePath}homework`}
+                                                toDetailsPage={
+                                                    classId !== data.newestClass
+                                                        ? null
+                                                        : data.homework_pdf
+                                                }
+                                                subheader={
+                                                    "Homework of the week"
+                                                }
+                                                loading={false}
+                                            />
+                                        )}
                                     </Grid>
                                     <Grid item xs={12} md={3}>
                                         <VideoCard

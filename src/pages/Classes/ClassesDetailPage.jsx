@@ -42,9 +42,11 @@ export async function loader({ params }) {
         const classData = data.find(
             (cls) => cls.class_number.toString() === id
         );
+        
         if (!classData) {
             throw json({ message: `Class with id ${id} not found.` });
         }
+
         // Find the highest class_number
         const highestClassNumber = Math.max(
             ...data.map((cls) => parseInt(cls.class_number))
@@ -54,6 +56,7 @@ export async function loader({ params }) {
             ...classData,
             newestClass: highestClassNumber.toString(),
         };
+
         store.dispatch(UIActions.isLoading(false));
         return transformedData;
     }

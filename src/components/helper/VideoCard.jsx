@@ -99,8 +99,8 @@ export default function VideoCardCopy({
                         </Typography>
                         {link1Href && (
                             <>
-                                <Typography variant="body2" sx={{mt:0.5}}>
-                                    More Handouts :
+                                <Typography variant="body2" sx={{ mt: 0.5 }}>
+                                    More Links :
                                 </Typography>
 
                                 <Stack
@@ -110,9 +110,22 @@ export default function VideoCardCopy({
                                     // }
                                     spacing={0.2}
                                 >
-                                    <Link href={link1Href}>{link1Title}</Link>
-                                    <Link href={link2Href}>{link2Title}</Link>
-                                    <Link href={link3Href}>{link3Title}</Link>
+                                    {link1Href && (
+                                        <Link href={link1Href}>
+                                            {link1Title}
+                                        </Link>
+                                    )}
+                                    {link2Href && (
+                                        <Link href={link2Href}>
+                                            {link2Title}
+                                        </Link>
+                                    )}
+
+                                    {link3Href && (
+                                        <Link href={link3Href}>
+                                            {link3Title}
+                                        </Link>
+                                    )}
                                 </Stack>
                             </>
                         )}
