@@ -8,13 +8,17 @@ import {
     Typography,
     Skeleton,
 } from "@mui/material";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import { basePath } from "../../App";
 
 const UpdatedDetailedComp = ({ data, loading }) => {
-    const { classId } = useParams();
+    const { classId } = useParams(); // how homework card
+    const location = useLocation();
+
+    const isBasePath = location.pathname === basePath;
     return (
         <>
+            <Toolbar />
             <Container sx={{ maxWidth: { xs: "sm", md: "xl" } }}>
                 {loading ? (
                     <Box
@@ -33,7 +37,9 @@ const UpdatedDetailedComp = ({ data, loading }) => {
                         variant="h5"
                         textAlign="center"
                     >
-                        {`${data.title}`}
+                        {isBasePath
+                            ? "Latest class information"
+                            : `${data.title} information`}
                     </Typography>
                 )}
                 <Grid container spacing={3}>
@@ -69,7 +75,7 @@ const UpdatedDetailedComp = ({ data, loading }) => {
                                     link1Href={data.exercize_pdfs[1]}
                                     link1Title={data.exercise_2_title}
                                     link2Href={data.exercize_pdfs[2]}
-                                    link2Title={data.exercise_3_title || ''}
+                                    link2Title={data.exercise_3_title || ""}
                                     link3Href={data.exercize_pdfs[3]}
                                     link3Title={data.handout_doc_4_title}
                                 />

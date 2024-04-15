@@ -14,7 +14,6 @@ const ClassesDetailPage = () => {
 
     return (
         <>
-            <Toolbar />
             <UpdatedDetailedComp data={singleClass} loading={loading} />
         </>
     );
