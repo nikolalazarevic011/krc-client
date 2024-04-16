@@ -6,6 +6,7 @@ import {
     AccordionDetails,
     ListItemButton,
     Button,
+    Link,
     ListItemText,
     Typography,
     Stack,
@@ -17,7 +18,7 @@ import store from "../../store";
 import { isNotMobile } from "../../components/navigation/Root";
 import { NavLink as reactNavLink, useLocation } from "react-router-dom";
 
-const CustomAccordion = ({ title, array, loading }) => {
+const CustomAccordion = ({ title, array, loading, url }) => {
     const location = useLocation();
 
     const classes = {
@@ -34,6 +35,8 @@ const CustomAccordion = ({ title, array, loading }) => {
         }
     };
 
+    const openInNewTab = url === "handouts" || url === "homework";
+
     return (
         <Accordion sx={classes.list}>
             <AccordionSummary
@@ -48,13 +51,13 @@ const CustomAccordion = ({ title, array, loading }) => {
                     {loading
                         ? Array.from(new Array(4)).map((_, index) => (
                               <Stack key={index} spacing={2}>
-                                  <Skeleton variant="rounded" height={48}  />
-                                  <Skeleton variant="text" height={4}/>
+                                  <Skeleton variant="rounded" height={48} />
+                                  <Skeleton variant="text" height={4} />
                               </Stack>
                           ))
                         : array.map((item, index) => (
                               <Stack key={index}>
-                                  <Button
+                                  <Link
                                       sx={{
                                           borderBottom:
                                               index === array.length - 1
@@ -64,14 +67,19 @@ const CustomAccordion = ({ title, array, loading }) => {
                                               `/${item.slug}` &&
                                               classes.activeItem), // Apply selected style if the path matches
                                       }}
-                                      fullWidth
                                       component={reactNavLink}
-                                      to={`${item.url}/${item.slug}`}
+                                      to={
+                                          openInNewTab
+                                              ? item.slug
+                                              : `${url}/${item.slug}`
+                                      }
+                                      target={openInNewTab ? "_blank" : ""}
+                                      rel="noopener noreferrer"
                                       onClick={handleMenuItemClick}
                                   >
                                       <ListItemButton>
                                           <Typography
-                                              variant="body2"
+                                              variant="body1"
                                               sx={{
                                                   color: "primary.main",
                                               }}
@@ -79,7 +87,7 @@ const CustomAccordion = ({ title, array, loading }) => {
                                               {item.title}
                                           </Typography>
                                       </ListItemButton>
-                                  </Button>
+                                  </Link>
                               </Stack>
                           ))}
                 </List>

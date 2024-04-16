@@ -1,6 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { Drawer, List, Toolbar, Stack, Skeleton , Box, CircularProgress} from "@mui/material";
+import {
+    Drawer,
+    List,
+    Toolbar,
+    Stack,
+    Skeleton,
+    Box,
+    CircularProgress,
+} from "@mui/material";
 import { Outlet, useLocation, useNavigation } from "react-router-dom";
 import { UIActions } from "../../store/ui";
 import store from "../../store";
@@ -11,18 +19,15 @@ import { basePath, baseURL } from "../../App";
 const drawerWidth = 240;
 
 const DrawerComp = () => {
-    const [handouts, setHandouts] = useState([]);
-    const [classesItems, setClassesItems] = useState([]);
-    const [homework, setHomework] = useState([]);
-    const [exercises, setExercises] = useState([]);
-    const [loading, setLoading] = useState({
-        handouts: true,
-        classesItems: true,
-        homework: true,
-        exercises: true,
+    const [data, setData] = useState({
+        handouts: [],
+        classesItems: [],
+        homework: [],
+        exercises: [],
     });
+    const [loading, setLoading] = useState(true);
     const navigation = useNavigation(); // Use useNavigation hook to access navigation state
-    const isNavigating = navigation.state === 'loading'; // Check if the navigation state is 'loading'
+    const isNavigating = navigation.state === "loading"; // Check if the navigation state is 'loading'
 
     const location = useLocation();
     // Define your login page route
@@ -52,8 +57,6 @@ const DrawerComp = () => {
     };
 
     useEffect(() => {
-        // responsiveDrawerWith = isNotMobile ? drawerWidth : "100%";
-
         if (isNotMobile) {
             store.dispatch(UIActions.toggleDrawer(true));
         } else {
@@ -65,83 +68,119 @@ const DrawerComp = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const responseHandouts = await fetch(
-                    `${baseURL}/ce/v1/krc_handouts`
-                );
-                const responseClassesItems = await fetch(
-                    `${baseURL}/ce/v1/krc_classes`
-                );
-                const responseHomework = await fetch(
-                    `${baseURL}/ce/v1/krc_homework`
-                );
-                const responseExercises = await fetch(
-                    `${baseURL}/wp/v2/krc-exercise`
-                );
+                const response = await fetch(`${baseURL}/ce/v1/krc_classes`);
+                if (!response.ok)
+                    throw new Error("Failed to fetch classes data");
 
-                if (
-                    !responseHandouts.ok ||
-                    !responseClassesItems.ok ||
-                    !responseHomework.ok ||
-                    !responseExercises
-                ) {
-                    throw new Error(
-                        "Failed to fetch data from one of the APIs"
-                    );
-                }
+                const classesData = await response.json();
 
-                const responseDataHandouts = await responseHandouts.json();
-                const responseDataClassesItems =
-                    await responseClassesItems.json();
-                const responseDataHomework = await responseHomework.json();
-                const responseDataExercises = await responseExercises.json();
+                const newHandouts = [];
+                const newClasses = [];
+                let allHomework = [];
+                const newExercises = [];
 
-                // Extracting required fields from each API response
-                const extractedHandouts = responseDataHandouts.map((item) => ({
-                    url: "handouts",
-                    id: item.id,
-                    title: item.title,
-                    slug: item.slug,
-                }));
-                const extractedClassesItems = responseDataClassesItems.map(
-                    (item) => ({
-                        url: "classes",
-                        id: item.id,
-                        title: item.title,
-                        slug: item.class_number,
-                    })
-                );
-                const extractedDataHomework = responseDataHomework.map(
-                    (item) => ({
-                        url: "homework",
-                        id: item.id,
-                        title: item.title,
-                        slug: item.slug,
-                    })
-                );
-                const extractedExercises = responseDataExercises.map(
-                    (item) => ({
-                        url: "exercises",
-                        id: item.id,
-                        title: item.title.rendered,
-                        slug: item.id.toString(),
-                    })
-                );
+                // Iterate through classes data to collect content
+                classesData.forEach((classItem) => {
+                    newClasses.push({
+                        id: classItem.id,
+                        title: classItem.title,
+                        slug: classItem.class_number,
+                    });
 
-                // Update state variables with extracted data
-                setHandouts(extractedHandouts);
-                setClassesItems(extractedClassesItems);
-                setHomework(extractedDataHomework);
-                setExercises(extractedExercises);
-                setLoading({
-                    handouts: false,
-                    classesItems: false,
-                    homework: false,
-                    exercises: false,
+                    //handouts
+                    if (classItem.class_document_1) {
+                        newHandouts.push({
+                            id: classItem.id,
+                            slug: classItem.class_document_1,
+                            title:
+                                classItem.handout_title || "Class Document 1",
+                        });
+                    }
+                    if (classItem.class_document_2) {
+                        newHandouts.push({
+                            id: classItem.id,
+                            slug: classItem.class_document_2,
+                            title:
+                                classItem.handout_doc_2_title ||
+                                "Class Document 2",
+                        });
+                    }
+                    if (classItem.class_document_3) {
+                        newHandouts.push({
+                            id: classItem.id,
+                            slug: classItem.class_document_3,
+                            title:
+                                classItem.handout_doc_3_title ||
+                                "Class Document 3",
+                        });
+                    }
+                    if (classItem.class_document_4) {
+                        newHandouts.push({
+                            id: classItem.id,
+                            slug: classItem.class_document_4,
+                            title:
+                                classItem.handout_doc_4_title ||
+                                "Class Document 4",
+                        });
+                    }
+
+                    //homework
+                    // Collect all homework entries
+                    if (classItem.homework_pdf) {
+                        allHomework.push({
+                            id: classItem.id,
+                            slug: classItem.homework_pdf,
+                            title: classItem.homework_title,
+                            classNumber: parseInt(classItem.class_number, 10),
+                        });
+                    }
+                    //exercise
+                    if (classItem.exercize_video || classItem.exercize_pdf) {
+                        newExercises.push({
+                            title: classItem.exercise_title,
+                            slug: classItem.exercise_title,
+                        });
+                    }
+
+                    if(classItem.exercize_pdfs[1]) {
+                        newExercises.push({
+                            title: classItem.exercise_2_title,
+                            slug: classItem.exercise_2_title,
+                        });
+                    }
+                    if(classItem.exercize_pdfs[2]) {
+                        newExercises.push({
+                            title: classItem.exercise_3_title,
+                            slug: classItem.exercise_3_title,
+                        });
+                    }
+                    if(classItem.exercize_pdfs[3]) {
+                        newExercises.push({
+                            title: classItem.exercise_4_title,
+                            slug: classItem.exercise_4_title,
+                        });
+                    }
                 });
+
+                // Find the newest homework entry based on the highest class number
+                const newestHomework = allHomework.reduce((max, item) => {
+                    return max.classNumber > item.classNumber ? max : item;
+                }, allHomework[0] || null); // Default to the first item or null if empty
+
+                // Update state with collected content
+                setData({
+                    handouts: newHandouts,
+                    classesItems: newClasses,
+                    homework: newestHomework ? [newestHomework] : [],  // Ensure it's an array
+                    exercises: newExercises,
+                });
+                setLoading(false);
             } catch (error) {
-                console.error("Error fetching data:", error);
+                console.error("Error loading data:", error);
+                setLoading(false);
             }
         };
+
         fetchData();
     }, []);
 
@@ -162,24 +201,27 @@ const DrawerComp = () => {
                         <List>
                             <CustomAccordion
                                 title={"Handouts"}
-                                array={handouts}
-                                loading={loading.handouts}
+                                url={"handouts"}
+                                array={data.handouts}
+                                loading={loading}
                             />
                             <CustomAccordion
-                        
                                 title={"Classes"}
-                                array={classesItems}
-                                loading={loading.classesItems}
+                                url={"classes"}
+                                array={data.classesItems}
+                                loading={loading}
                             />
                             <CustomAccordion
                                 title={"Homework"}
-                                array={homework}
-                                loading={loading.homework}
+                                url={"homework"}
+                                array={data.homework}
+                                loading={loading}
                             />
                             <CustomAccordion
                                 title={"Exercises"}
-                                array={exercises}
-                                loading={loading.exercises}
+                                url={"exercises"}
+                                array={data.exercises}
+                                loading={loading}
                             />
                         </List>
                         <Toolbar />
@@ -188,7 +230,12 @@ const DrawerComp = () => {
                 </Stack>
             )}
             {isNavigating ? (
-                <Box display="flex" justifyContent="center" alignItems="center" height="100vh">
+                <Box
+                    display="flex"
+                    justifyContent="center"
+                    alignItems="center"
+                    height="100vh"
+                >
                     <CircularProgress />
                 </Box>
             ) : (

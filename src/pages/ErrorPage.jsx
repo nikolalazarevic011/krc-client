@@ -1,10 +1,14 @@
-import React from 'react'
+import React from "react";
 import { Container, Typography, Button, Stack } from "@mui/material";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
-import { basePath } from '../App';
-import { Link } from 'react-router-dom';
+import { basePath } from "../App";
+import { Link, useNavigation } from "react-router-dom";
+import LoadingButton from "@mui/lab/LoadingButton";
 
 const ErrorPage = () => {
+    const navigation = useNavigation(); // Use useNavigation hook to access navigation state
+    const isNavigating = navigation.state === "loading"; // Check if the navigation state is 'loading'
+
     return (
         <Container
             component="main"
@@ -26,9 +30,13 @@ const ErrorPage = () => {
             </Typography>
             <Stack spacing={2} direction="row">
                 <Link to={basePath}>
-                <Button variant="contained" color="primary">
-                    Go to Home
-                </Button>
+                    <LoadingButton
+                        loading={isNavigating}
+                        variant="contained"
+                        color="primary"
+                    >
+                        Go to Home
+                    </LoadingButton>
                 </Link>
                 <Button
                     variant="outlined"
