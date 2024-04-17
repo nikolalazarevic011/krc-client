@@ -23,9 +23,9 @@ const CustomLoadingButton = ({ path, text }) => {
             variant="contained"
             loading={isSubmitting}
             color="secondary"
-            endIcon={isSmallScreen ? null : <InfoIcon color="bgWhite" />}
+            // endIcon={isSmallScreen ? null : <InfoIcon color="bgWhite" />}
             onClick={() => clickHandler(path)}
-            sx={{ width: { xs: "70px", sm: "170px" } }}
+            sx={{ width: { xs: "70px", sm: "150px" } }}
         >
             <Typography
                 sx={{

@@ -23,58 +23,37 @@ const DrawerItemListView = ({ data }) => {
     const location = useLocation();
 
     // const isOnClassesRoute = location.pathname === '/classes';
-    // const isOnClassesRoute = location.pathname === basePath || location.pathname === '/classes' ;
-
-    //blocked by CORS, should be working?
-
-    // const handleDownload = (path, fileName) => {
-    //     fetch(path)
-    //         .then((response) => response.blob())
-    //         .then((blob) => {
-    //             const url = window.URL.createObjectURL(new Blob([blob]));
-    //             const link = document.createElement("a");
-    //             link.href = url;
-    //             link.setAttribute("download", fileName);
-    //             document.body.appendChild(link);
-    //             link.click();
-    //             link.parentNode.removeChild(link);
-    //         })
-    //         .catch((error) => {
-    //             console.error("Error downloading file:", error);
-    //         });
-    // };
+    const isOnClassesRoute = location.pathname === `${basePath}classes/` || location.pathname === '/classes' ;
 
     return (
         <>
             <Toolbar />
             <Container maxWidth="sm" sx={{ mt: 3 }}>
-                <Typography variant="h5" textAlign='center' my={5}>Click on the item name to view the PDF</Typography>
+                <Typography variant="h5" textAlign="center" my={5} color='secondary.main'>
+                    All available classes
+                </Typography>
                 <List>
                     {data.map((item) => (
                         <ListItem
                             key={item.id}
-                            sx={{my:{xs:2, sm:false}}}
+                            sx={{ my: { xs: 2, sm: false } }}
                             secondaryAction={
                                 <CustomLoadingButton
-
-                                    // path={isOnClassesRoute ? item.class_number : item.slug}
-                                    path={ item.class_number}
+                                    path={isOnClassesRoute ? item.class_number : item.slug}
                                     text={"View Details"}
                                 ></CustomLoadingButton>
                             }
                         >
                             <ListItemAvatar>
                                 <Avatar>
-                                    <PictureAsPdfIcon />
+                                    <InfoIcon />
                                 </Avatar>
                             </ListItemAvatar>
-                            <Link
-                                href={item.class_document_1}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                <ListItemText primary={item.title} />
-                            </Link>
+
+                            <ListItemText
+                                primary={item.title}
+                                sx={{ color: "secondary.main" }}
+                            />
                         </ListItem>
                     ))}
                 </List>
