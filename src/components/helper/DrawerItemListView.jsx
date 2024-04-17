@@ -19,7 +19,7 @@ import { LoadingButton } from "@mui/lab";
 import CustomLoadingButton from "./CustomLoadingButton";
 import { basePath } from "../../App";
 
-const DrawerItemListView = ({ data }) => {
+const DrawerItemListView = ({ data, route }) => {
     const location = useLocation();
 
     // const isOnClassesRoute = location.pathname === '/classes';
@@ -40,9 +40,9 @@ const DrawerItemListView = ({ data }) => {
                     All available classes
                 </Typography>
                 <List>
-                    {data.map((item) => (
+                    {data.map((item, index) => (
                         <ListItem
-                            key={item.id}
+                            key={index}
                             sx={{ my: { xs: 2, sm: false } }}
                             secondaryAction={
                                 <CustomLoadingButton
@@ -52,6 +52,7 @@ const DrawerItemListView = ({ data }) => {
                                             : item.slug
                                     }
                                     text={"View Details"}
+                                    route={route}
                                 ></CustomLoadingButton>
                             }
                         >

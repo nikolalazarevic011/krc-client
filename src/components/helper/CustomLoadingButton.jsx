@@ -6,8 +6,7 @@ import { useState } from "react";
 import { LoadingButton } from "@mui/lab";
 import { useTheme } from "@mui/material/styles";
 
-
-const CustomLoadingButton = ({ path, text }) => {
+const CustomLoadingButton = ({ path, text, route }) => {
     const theme = useTheme();
     const isSmallScreen = theme.breakpoints.values.sm > window.innerWidth;
     const navigate = useNavigate();
@@ -15,7 +14,14 @@ const CustomLoadingButton = ({ path, text }) => {
 
     const clickHandler = (path) => {
         setIsSubmitting(true);
-        navigate(path);
+        if (route === "handouts") {
+            // Open the link in a new tab
+            window.open(path, "_blank");
+        } else {
+            // Navigate within the app
+            navigate(path);
+        }
+        setIsSubmitting(false);
     };
 
     return (

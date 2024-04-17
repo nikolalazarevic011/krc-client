@@ -11,31 +11,49 @@ const Exercises = () => {
 export default Exercises;
 
 export async function loader() {
-    const response = await fetch(`${baseURL}/wp/v2/krc-exercise/`);
+    const response = await fetch(`${baseURL}/ce/v1/krc_classes`);
+
+    // we need id, title and some kind of slug
     if (!response.ok) {
         throw json(
-            { message: "Could not fetch exercises." },
+            { message: "Could not fetch classes." },
             {
                 status: 500,
             }
         );
     } else {
-        const data = await response.json();
+        const classesData = await response.json();
 
-        // Transform the data to the desired format
-        const transformedData = data.map((item) => ({
-            id: item.id,
-            title: item.title.rendered,
-            content: item.content.rendered,
-            slug: item.id.toString(),
-            class_text: item.acf.class_text,
-            class_video_url: item.acf.class_video_url,
-            class_week_description: item.acf.class_week_description,
-            class_document_1: item.acf.class_document_1,
-            class_document_2: item.acf.class_document_2,
-            class_document_3: item.acf.class_document_3,
-        }));
+        const allExercises = [];
 
-        return transformedData;
+        classesData.forEach((classItem) => {
+            if (classItem.exercize_video || classItem.exercize_pdf) {
+                allExercises.push({
+                    title: classItem.exercise_title,
+                    slug: classItem.exercise_title,
+                });
+            }
+
+            if(classItem.exercize_pdfs[1]) {
+                allExercises.push({
+                    title: classItem.exercise_2_title,
+                    slug: classItem.exercise_2_title,
+                });
+            }
+            if(classItem.exercize_pdfs[2]) {
+                allExercises.push({
+                    title: classItem.exercise_3_title,
+                    slug: classItem.exercise_3_title,
+                });
+            }
+            if(classItem.exercize_pdfs[3]) {
+                allExercises.push({
+                    title: classItem.exercise_4_title,
+                    slug: classItem.exercise_4_title,
+                });
+            }
+        });
+        console.log(allExercises);
+        return allExercises;
     }
 }
