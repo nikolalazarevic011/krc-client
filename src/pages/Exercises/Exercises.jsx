@@ -53,7 +53,6 @@ export async function loader() {
                 });
             }
         });
-        console.log(allExercises);
         return allExercises;
     }
 }

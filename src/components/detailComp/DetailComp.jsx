@@ -10,7 +10,7 @@ const DetailComp = ({ data }) => {
             <Container maxWidth="lg" sx={{mt:2}}>
                 {/* <Toolbar /> */}
                 {data.class_video_url && (
-                    <VideoPlayer url={data.class_video_url} />
+                    <VideoPlayer url={data.class_video_url} detailComp={true} />
                 )}
                 <Grid container spacing={3} alignItems="center" mb={3}>
                     <Grid item xs={12} sx={{ my: { xs: 4, sm: 6 } }}>
