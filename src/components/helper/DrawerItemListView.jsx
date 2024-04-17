@@ -17,11 +17,14 @@ import {
 import { useState } from "react";
 import { LoadingButton } from "@mui/lab";
 import CustomLoadingButton from "./CustomLoadingButton";
+import { basePath } from "../../App";
 
 const DrawerItemListView = ({ data }) => {
     const location = useLocation();
 
-    const isOnClassesRoute = location.pathname === '/classes';
+    // const isOnClassesRoute = location.pathname === '/classes';
+    const isOnClassesRoute = location.pathname === '/classes' || location.pathname === basePath;
+
     //blocked by CORS, should be working?
 
     // const handleDownload = (path, fileName) => {
