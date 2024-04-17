@@ -23,7 +23,7 @@ const DrawerItemListView = ({ data }) => {
     const location = useLocation();
 
     // const isOnClassesRoute = location.pathname === '/classes';
-    const isOnClassesRoute = location.pathname === '/classes' || location.pathname === basePath;
+    const isOnClassesRoute = location.pathname === basePath || location.pathname === '/classes' ;
 
     //blocked by CORS, should be working?
 
