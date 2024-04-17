@@ -22,13 +22,8 @@ import { basePath } from "../../App";
 const DrawerItemListView = ({ data }) => {
     const location = useLocation();
 
-    // Normalize paths by removing any trailing slashes for consistent comparison
-    const normalizePath = (path) => path.replace(/\/$/, "");
-
-    // Check if current location is either on /classes or matches the basePath
-    const isOnClassesRoute =
-        normalizePath(location.pathname) === "/classes" ||
-        normalizePath(location.pathname) === normalizePath(basePath);
+    // const isOnClassesRoute = location.pathname === '/classes';
+    // const isOnClassesRoute = location.pathname === basePath || location.pathname === '/classes' ;
 
     //blocked by CORS, should be working?
 
@@ -53,21 +48,17 @@ const DrawerItemListView = ({ data }) => {
         <>
             <Toolbar />
             <Container maxWidth="sm" sx={{ mt: 3 }}>
-                <Typography variant="h5" textAlign="center" my={5}>
-                    Click on the item name to view the PDF
-                </Typography>
+                <Typography variant="h5" textAlign='center' my={5}>Click on the item name to view the PDF</Typography>
                 <List>
                     {data.map((item) => (
                         <ListItem
                             key={item.id}
-                            sx={{ my: { xs: 2, sm: false } }}
+                            sx={{my:{xs:2, sm:false}}}
                             secondaryAction={
                                 <CustomLoadingButton
-                                    path={
-                                        isOnClassesRoute
-                                            ? item.class_number
-                                            : item.slug
-                                    }
+
+                                    // path={isOnClassesRoute ? item.class_number : item.slug}
+                                    path={ item.class_number}
                                     text={"View Details"}
                                 ></CustomLoadingButton>
                             }
