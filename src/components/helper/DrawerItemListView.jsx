@@ -23,13 +23,20 @@ const DrawerItemListView = ({ data }) => {
     const location = useLocation();
 
     // const isOnClassesRoute = location.pathname === '/classes';
-    const isOnClassesRoute = location.pathname === `${basePath}classes/` || location.pathname === '/classes' ;
+    const isOnClassesRoute =
+        location.pathname === `${basePath}classes` ||
+        location.pathname === "/classes";
 
     return (
         <>
             <Toolbar />
             <Container maxWidth="sm" sx={{ mt: 3 }}>
-                <Typography variant="h5" textAlign="center" my={5} color='secondary.main'>
+                <Typography
+                    variant="h5"
+                    textAlign="center"
+                    my={5}
+                    color="secondary.main"
+                >
                     All available classes
                 </Typography>
                 <List>
@@ -39,7 +46,11 @@ const DrawerItemListView = ({ data }) => {
                             sx={{ my: { xs: 2, sm: false } }}
                             secondaryAction={
                                 <CustomLoadingButton
-                                    path={isOnClassesRoute ? item.class_number : item.slug}
+                                    path={
+                                        isOnClassesRoute
+                                            ? item.class_number
+                                            : item.slug
+                                    }
                                     text={"View Details"}
                                 ></CustomLoadingButton>
                             }
