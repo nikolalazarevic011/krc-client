@@ -9,7 +9,7 @@ const Classes = () => {
 
     return (
         <>
-            <DrawerItemListView data={classes} />
+            <DrawerItemListView data={classes} route={'classes'} />
         </>
     );
 };

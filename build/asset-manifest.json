@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/running_dashboard/members/build/static/css/main.c79874db.css",
-    "main.js": "/running_dashboard/members/build/static/js/main.93155c9a.js",
+    "main.js": "/running_dashboard/members/build/static/js/main.0f934832.js",
     "reactPlayerYouTube.js": "/running_dashboard/members/build/static/js/reactPlayerYouTube.dc4d4edf.chunk.js",
     "reactPlayerSoundCloud.js": "/running_dashboard/members/build/static/js/reactPlayerSoundCloud.f0557ab2.chunk.js",
     "reactPlayerVimeo.js": "/running_dashboard/members/build/static/js/reactPlayerVimeo.9c14526e.chunk.js",
@@ -16,11 +16,11 @@
     "reactPlayerKaltura.js": "/running_dashboard/members/build/static/js/reactPlayerKaltura.08150dfe.chunk.js",
     "reactPlayerFilePlayer.js": "/running_dashboard/members/build/static/js/reactPlayerFilePlayer.caf3797e.chunk.js",
     "reactPlayerPreview.js": "/running_dashboard/members/build/static/js/reactPlayerPreview.dd413dde.chunk.js",
-    "static/media/krc_runner.png": "/running_dashboard/members/build/static/media/krc_runner.ee3adde2bbd389209274.png",
+    "static/media/LoginPic1.png": "/running_dashboard/members/build/static/media/LoginPic1.70198490d173d21e6c3b.png",
     "static/media/Logo_white.png": "/running_dashboard/members/build/static/media/Logo_white.6b98b27b897471247fda.png",
     "index.html": "/running_dashboard/members/build/index.html",
     "main.c79874db.css.map": "/running_dashboard/members/build/static/css/main.c79874db.css.map",
-    "main.93155c9a.js.map": "/running_dashboard/members/build/static/js/main.93155c9a.js.map",
+    "main.0f934832.js.map": "/running_dashboard/members/build/static/js/main.0f934832.js.map",
     "reactPlayerYouTube.dc4d4edf.chunk.js.map": "/running_dashboard/members/build/static/js/reactPlayerYouTube.dc4d4edf.chunk.js.map",
     "reactPlayerSoundCloud.f0557ab2.chunk.js.map": "/running_dashboard/members/build/static/js/reactPlayerSoundCloud.f0557ab2.chunk.js.map",
     "reactPlayerVimeo.9c14526e.chunk.js.map": "/running_dashboard/members/build/static/js/reactPlayerVimeo.9c14526e.chunk.js.map",
@@ -38,6 +38,6 @@
   },
   "entrypoints": [
     "static/css/main.c79874db.css",
-    "static/js/main.93155c9a.js"
+    "static/js/main.0f934832.js"
   ]
 }

@@ -37,7 +37,7 @@ const DrawerItemListView = ({ data, route }) => {
                     my={5}
                     color="secondary.main"
                 >
-                    All available classes
+                    All available {route}
                 </Typography>
                 <List>
                     {data.map((item, index) => (

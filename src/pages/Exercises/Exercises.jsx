@@ -5,7 +5,7 @@ import { json, useLoaderData, useRouteLoaderData } from "react-router-dom";
 
 const Exercises = () => {
     const exercises = useRouteLoaderData("exercisesLoader");
-    return <DrawerItemListView data={exercises} />;
+    return <DrawerItemListView data={exercises} route={'exercises'} />;
 };
 
 export default Exercises;

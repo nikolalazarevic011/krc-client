@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Grid, Toolbar, Typography } from "@mui/material";
-// import background from "../../assets/imgs/gary-butterfield-XGKSeGYGP0A-unsplash.jpg";
-import background from "../../assets/imgs/krc_runner.png";
+import background from "../../assets/imgs/LoginPic1.png";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import LoginForm from "./LoginForm";
@@ -72,17 +71,17 @@ const LoginComp = () => {
                     backgroundImage: `url('${background}')`,
                     backgroundRepeat: "no-repeat",
                     backgroundSize: "cover",
-                    backgroundPositionY: { xs: "-0px", sm: "-5vh" },
-                    backgroundPositionX: { xs: "-56vh", sm: "0" },
+                    backgroundPositionY: { xs: "-0px", sm: "-1vh" },
+                    backgroundPositionX: { xs: "-84vh", sm: "0vh" },
                     // transform: "scalex(-1)",
                     display: "flex",
                 }}
             >
-                <Grid item xs={4} sm={7}></Grid>
+                <Grid item xs={4} sm={8}></Grid>
                 <Grid
                     item
                     xs={8}
-                    sm={5}
+                    sm={4}
                     
                     textAlign="center"
                     sx={
@@ -141,7 +140,7 @@ const LoginComp = () => {
                                 target="_blank"
                                 sx={{ textDecoration: "none", marginRight: 2 }}
                             >
-                                Forget Password
+                                Password Reset
                             </Link>
                         </CardActions>
                     </Card>
