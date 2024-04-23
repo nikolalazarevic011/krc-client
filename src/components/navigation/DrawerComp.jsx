@@ -15,6 +15,7 @@ import store from "../../store";
 import { isNotMobile } from "./Root";
 import CustomAccordion from "../helper/CustomAccordion";
 import { basePath, baseURL } from "../../App";
+import { resourceActions } from "../../store/resources";
 
 const drawerWidth = 240;
 
@@ -24,6 +25,7 @@ const DrawerComp = () => {
         classesItems: [],
         homework: [],
         exercises: [],
+        resources: [],
     });
     const [loading, setLoading] = useState(true);
     const navigation = useNavigation(); // Use useNavigation hook to access navigation state
@@ -69,15 +71,21 @@ const DrawerComp = () => {
         const fetchData = async () => {
             try {
                 const response = await fetch(`${baseURL}/ce/v1/krc_classes`);
+                const responseResources = await fetch(
+                    `${baseURL}/ce/v1/krc_handouts`
+                );
+
                 if (!response.ok)
                     throw new Error("Failed to fetch classes data");
 
                 const classesData = await response.json();
+                const resourcesData = await responseResources.json();
 
                 const newHandouts = [];
                 const newClasses = [];
                 let allHomework = [];
                 const newExercises = [];
+                const newResources = [];
 
                 // Iterate through classes data to collect content
                 classesData.forEach((classItem) => {
@@ -142,24 +150,41 @@ const DrawerComp = () => {
                         });
                     }
 
-                    if(classItem.exercize_pdfs[1]) {
+                    if (classItem.exercize_pdfs[1]) {
                         newExercises.push({
                             title: classItem.exercise_2_title,
                             slug: classItem.exercise_2_title,
                         });
                     }
-                    if(classItem.exercize_pdfs[2]) {
+                    if (classItem.exercize_pdfs[2]) {
                         newExercises.push({
                             title: classItem.exercise_3_title,
                             slug: classItem.exercise_3_title,
                         });
                     }
-                    if(classItem.exercize_pdfs[3]) {
+                    if (classItem.exercize_pdfs[3]) {
                         newExercises.push({
                             title: classItem.exercise_4_title,
                             slug: classItem.exercise_4_title,
                         });
                     }
+                });
+
+                //recourses
+                resourcesData.forEach((resourceItem) => {
+                    const title =
+                        resourceItem.slug.charAt(0).toUpperCase() +
+                        resourceItem.slug.slice(1); // Capitalize first letter
+
+                    newResources.push({
+                        id: resourceItem.id,
+                        slug: resourceItem.slug,
+                        title: title,
+                        handouts: resourceItem.handouts.map((handout) => ({
+                            title: handout.title,
+                            slug: handout.file,
+                        })),
+                    });
                 });
 
                 // Find the newest homework entry based on the highest class number
@@ -171,9 +196,12 @@ const DrawerComp = () => {
                 setData({
                     handouts: newHandouts,
                     classesItems: newClasses,
-                    homework: newestHomework ? [newestHomework] : [],  // Ensure it's an array
+                    homework: newestHomework ? [newestHomework] : [], // Ensure it's an array
                     exercises: newExercises,
+                    resources: newResources,
                 });
+
+                store.dispatch(resourceActions.setResourceState(newResources));
                 setLoading(false);
             } catch (error) {
                 console.error("Error loading data:", error);
@@ -221,6 +249,12 @@ const DrawerComp = () => {
                                 title={"Exercises"}
                                 url={"exercises"}
                                 array={data.exercises}
+                                loading={loading}
+                            />
+                            <CustomAccordion
+                                title={"Resources"}
+                                url={"resources"}
+                                array={data.resources}
                                 loading={loading}
                             />
                         </List>

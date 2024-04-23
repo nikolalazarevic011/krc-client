@@ -94,9 +94,11 @@ export default function VideoCardCopy({
                             mt: -1.5,
                         }}
                     >
-                        <Typography variant="body2" color="text.secondary">
-                            {description}
-                        </Typography>
+                        {description && (
+                            <Typography variant="body2" color="text.secondary">
+                                {description}
+                            </Typography>
+                        )}
                         {link1Href && (
                             <>
                                 <Typography variant="body2" sx={{ mt: 0.5 }}>

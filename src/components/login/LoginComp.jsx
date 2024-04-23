@@ -151,13 +151,13 @@ const LoginComp = () => {
                                 If you already have an account, close and
                                 proceed to Login.
                             </DialogContentText>
-                            <Divider sx={{ my: 2 }} />{" "}
+                            <Divider sx={{ my: 2 }} />
                             {/* Here's the Divider with margin for spacing */}
                             <DialogContentText>
                                 To access our online portal, KRC members seeking
                                 registration should follow these steps:
                                 <br />
-                                Navigate to the following{" "}
+                                Navigate to the following
                                 <Link href="https://kingdomrunningclub.org/member-register/">
                                     link
                                 </Link>
@@ -174,7 +174,7 @@ const LoginComp = () => {
                                 }}
                             >
                                 For further assistance, please feel free to
-                                contact us via email at{" "}
+                                contact us via email at
                                 <Link href="mailto:web@livingwd.org">
                                     web@livingwd.org
                                 </Link>

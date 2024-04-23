@@ -55,7 +55,7 @@ const UpdatedDetailedComp = ({ data, loading }) => {
                         <>
                             <Grid item xs={12} md={4}>
                                 <VideoCard
-                                    title={data.title}
+                                    title={data.class_title}
                                     url={data.class_video_url}
                                     description={data.class_week_description}
                                     toDetailsPage={data.class_document_1}

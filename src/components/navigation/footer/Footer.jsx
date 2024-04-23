@@ -25,14 +25,13 @@ const Footer = () => {
             >
                 <Grid
                     container
-                    spacing={3}
+                    spacing={5}
                     sx={{
-                        // color: theme.palette.background.main,
                         color: "background.main",
                     }}
                 >
                     {/* First row! */}
-                    <Footer1stRow />
+                    {/* <Footer1stRow /> */}
                 </Grid>
 
                 {/* Second row */}

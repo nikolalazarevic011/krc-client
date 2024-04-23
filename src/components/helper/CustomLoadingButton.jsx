@@ -7,14 +7,14 @@ import { LoadingButton } from "@mui/lab";
 import { useTheme } from "@mui/material/styles";
 
 const CustomLoadingButton = ({ path, text, route }) => {
-    const theme = useTheme();
-    const isSmallScreen = theme.breakpoints.values.sm > window.innerWidth;
+    // const theme = useTheme();
+    // const isSmallScreen = theme.breakpoints.values.sm > window.innerWidth;
     const navigate = useNavigate();
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     const clickHandler = (path) => {
         setIsSubmitting(true);
-        if (route === "handouts") {
+        if (route === "handouts" || route === "resources") {
             // Open the link in a new tab
             window.open(path, "_blank");
         } else {
@@ -31,7 +31,7 @@ const CustomLoadingButton = ({ path, text, route }) => {
             color="secondary"
             // endIcon={isSmallScreen ? null : <InfoIcon color="bgWhite" />}
             onClick={() => clickHandler(path)}
-            sx={{ width: { xs: "70px", sm: "150px" } }}
+            sx={{ width: { xs: "30px", sm: "150px" } }}
         >
             <Typography
                 sx={{

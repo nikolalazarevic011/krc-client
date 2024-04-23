@@ -27,6 +27,9 @@ import Exercises, {
 import ExerciseDetail, {
     loader as exerciseDetailLoader,
 } from "./pages/Exercises/ExerciseDetail";
+import Resources, {
+    loader as resourcesLoader,
+} from "./pages/Resources/Resources";
 
 export const baseURL = process.env.REACT_APP_API_URL;
 export const basePath = process.env.REACT_APP_DEFAULT_PATH;
@@ -112,6 +115,17 @@ const router = createBrowserRouter([
                         element: (
                             <ProtectedRoute element={<ExerciseDetail />} />
                         ),
+                    },
+                ],
+            },
+            {
+                path: "resources/*",
+                loader: resourcesLoader,
+                id: "resourcesLoader",
+                children: [
+                    {
+                        path: ":resourceId",
+                        element: <ProtectedRoute element={<Resources />} />,
                     },
                 ],
             },
