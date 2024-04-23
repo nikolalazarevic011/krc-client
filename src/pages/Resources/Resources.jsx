@@ -12,7 +12,7 @@ const Resources = () => {
 
     return (
         <>
-            <DrawerItemListView data={resources} route={`${resourceId} resources`} />
+            <DrawerItemListView data={resources} route={'resources'} title={`${resourceId} resources`} />
         </>
     );
 };

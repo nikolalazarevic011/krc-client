@@ -13,13 +13,15 @@ import CustomLoadingButton from "./CustomLoadingButton";
 import { basePath } from "../../App";
 import { isNotMobile } from "../navigation/Root";
 
-const DrawerItemListView = ({ data, route }) => {
+const DrawerItemListView = ({ data, route , title}) => {
     const location = useLocation();
 
     const isOnClassesRoute =
         location.pathname === `${basePath}classes` ||
         location.pathname === "/classes";
         
+        const displayTitle = title ? title : route;
+
 
     return (
         <>
@@ -31,7 +33,7 @@ const DrawerItemListView = ({ data, route }) => {
                     my={5}
                     color="secondary.main"
                 >
-                    All available {route}
+                    All available {displayTitle}
                 </Typography>
                 <List sx={{mb:2}}>
                     {data.map((item, index) => (
