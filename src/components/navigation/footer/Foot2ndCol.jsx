@@ -17,12 +17,31 @@ import { isNotMobile } from "../Root";
 import { useTheme } from "@mui/material/styles";
 
 const menuList = [
-    { title: "- About Us", path: "https://kingdomrunningclub.org/about-who-we-are/" },
+    {
+        title: "- About Us",
+        path: "https://kingdomrunningclub.org/about-who-we-are/",
+    },
     { title: "- Events", path: "https://kingdomrunningclub.org/events/" },
-    // { title: "- Exercise of the Week", path: "" },
-    // { title: "- Weight Loss Resources", path: "" },
-    // { title: "- Nutrition Archive", path: "" },
-    // { title: "- Recipe Archive", path: "" },
+    {
+        title: "- Member Resources",
+        path: "https://kingdomrunningclub.org/resources",
+    },
+    {
+        title: "- Fitness Checklist",
+        path: "https://kingdomrunningclub.org/fitness-checklist/",
+    },
+    {
+        title: "- Exercise of the Week",
+        path: "https://kingdomrunningclub.org/excercise-guide/",
+    },
+    {
+        title: "- Nutrition of the Week",
+        path: "https://kingdomrunningclub.org/nutrition-guide/",
+    },
+    {
+        title: "- Runners' Kitchen",
+        path: "https://kingdomrunningclub.org/runners-kitchen/",
+    },
     { title: "- Running Blog", path: "https://kingdomrunningclub.org/blog" },
 ];
 
