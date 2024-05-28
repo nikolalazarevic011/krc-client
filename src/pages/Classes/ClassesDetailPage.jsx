@@ -2,7 +2,7 @@ import { Toolbar } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { baseURL } from "../../App";
 import { json, useLoaderData } from "react-router-dom";
-import UpdatedDetailedComp from "../../components/detailComp/UpdatedDetailedComp";
+import UpdatedDetailedComp from "../../components/home and classes page/UpdatedDetailedComp";
 import store from "../../store";
 import { UIActions } from "../../store/ui";
 import { useSelector } from "react-redux";
@@ -41,7 +41,7 @@ export async function loader({ params }) {
         const classData = data.find(
             (cls) => cls.class_number.toString() === id
         );
-        
+
         if (!classData) {
             throw json({ message: `Class with id ${id} not found.` });
         }

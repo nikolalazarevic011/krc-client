@@ -7,9 +7,11 @@ import {
     Box,
     Typography,
     Skeleton,
+    Button,
 } from "@mui/material";
 import { useParams, useLocation } from "react-router-dom";
 import { basePath } from "../../App";
+import CustomLoadingButton from "../helper/CustomLoadingButton";
 
 const UpdatedDetailedComp = ({ data, loading }) => {
     const { classId } = useParams(); // how homework card
@@ -30,17 +32,33 @@ const UpdatedDetailedComp = ({ data, loading }) => {
                         <Skeleton variant="text" width="40%" height={50} />
                     </Box>
                 ) : (
-                    <Typography
-                        mb={3}
-                        mx={3}
-                        mt={3}
-                        variant="h5"
-                        textAlign="center"
-                    >
-                        {isBasePath
-                            ? "Latest class information"
-                            : `${data.title} information`}
-                    </Typography>
+                    <>
+                        <Typography
+                            mb={3}
+                            mx={3}
+                            mt={3}
+                            variant="h5"
+                            textAlign="center"
+                        >
+                            {isBasePath
+                                ? "Latest class information"
+                                : `${data.title} information`}
+                        </Typography>
+                        <Box display="flex" justifyContent="center">
+                            <Button
+                                variant="contained"
+                                size="large"
+                                href="https://form.jotform.com/231454157893059"
+                                color="secondary"
+                                sx={{
+                                    color: "white",
+                                    my: 2,
+                                }}
+                            >
+                                Get Your Certification Here
+                            </Button>
+                        </Box>
+                    </>
                 )}
                 <Grid container spacing={3}>
                     {loading ? (
@@ -58,7 +76,7 @@ const UpdatedDetailedComp = ({ data, loading }) => {
                                     title={data.class_title}
                                     url={data.class_video_url}
                                     description={data.class_week_description}
-                                    toDetailsPage={data.class_document_1}
+                                    // toDetailsPage={data.class_document_1} // all class docs are now in the handout card
                                     toPage={`${basePath}classes`}
                                     subheader="Class Replay"
                                     loading={false}
