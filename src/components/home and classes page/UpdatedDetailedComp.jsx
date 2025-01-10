@@ -44,7 +44,7 @@ const UpdatedDetailedComp = ({ data, loading }) => {
                                 ? "Latest class information"
                                 : `${data.title} information`}
                         </Typography>
-                        <Box display="flex" justifyContent="center">
+                        {/* <Box display="flex" justifyContent="center">
                             <Button
                                 variant="contained"
                                 size="large"
@@ -57,7 +57,7 @@ const UpdatedDetailedComp = ({ data, loading }) => {
                             >
                                 Get Your Certification Here
                             </Button>
-                        </Box>
+                        </Box> */}
                     </>
                 )}
                 <Grid container spacing={3}>

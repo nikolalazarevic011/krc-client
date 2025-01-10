@@ -1,3 +1,4 @@
+//! NOT IN USE - WE OPEN THE EXERCISES IN NEW TAB, SAME AS HANDOUTDETAIL PAGE AND HOMEWORKDETAIL PAGE
 import React from "react";
 import { baseURL } from "../../App";
 import { json, useLoaderData } from "react-router-dom";
