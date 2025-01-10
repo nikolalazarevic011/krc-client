@@ -110,6 +110,10 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+//! NOT IN USE 
+
+//! NOT IN USE - WE OPEN THE EXERCISES IN NEW TAB, SAME AS HANDOUTDETAIL PAGE AND HOMEWORKDETAIL PAGE
+
 //! for links poppins font does it work? no
 
 //! return token ? element : <Navigate to="/login" />;  delete / before login to get relative path
