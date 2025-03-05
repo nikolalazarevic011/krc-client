@@ -34,6 +34,10 @@ export default function VideoCardCopy({
     link2Title,
     link3Href,
     link3Title,
+    link4Href,
+    link4Title,
+    link5Href,
+    link5Title,
 }) {
     // const navigation = useNavigation();
     // const isSubmitting = navigation.state === "loading"
@@ -90,7 +94,6 @@ export default function VideoCardCopy({
                     <CardContent
                         sx={{
                             backgroundColor: "primary.light",
-                            overflow: "auto",
                             mt: -1.5,
                         }}
                     >
@@ -101,15 +104,18 @@ export default function VideoCardCopy({
                         )}
                         {link1Href && (
                             <>
-                                <Typography variant="body2" sx={{ mt: 0.5 }}>
+                                {/* "More Links :" stays fixed */}
+                                <Typography variant="body2" sx={{ mt: -1 }}>
                                     More Links :
                                 </Typography>
 
+                                {/* Make the links scrollable */}
                                 <Stack
                                     mt={1}
-                                    // divider={
-                                    //     <Divider orientation="horizontal" flexItem sx={{width:'30%'}}/>
-                                    // }
+                                    sx={{
+                                        maxHeight: "100px", // Adjust height as needed
+                                        overflowY: "auto", // Enables scrolling only for links
+                                    }}
                                     spacing={0.2}
                                 >
                                     {link1Href && (
@@ -122,10 +128,19 @@ export default function VideoCardCopy({
                                             {link2Title}
                                         </Link>
                                     )}
-
                                     {link3Href && (
                                         <Link href={link3Href}>
                                             {link3Title}
+                                        </Link>
+                                    )}
+                                    {link4Href && (
+                                        <Link href={link4Href}>
+                                            {link4Title}
+                                        </Link>
+                                    )}
+                                    {link5Href && (
+                                        <Link href={link5Href}>
+                                            {link5Title}
                                         </Link>
                                     )}
                                 </Stack>

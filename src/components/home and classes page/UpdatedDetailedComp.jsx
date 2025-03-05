@@ -229,6 +229,18 @@ const UpdatedDetailedComp = ({ data, loading }) => {
                                                 link3Title={
                                                     data.handout_doc_4_title
                                                 }
+                                                link4Href={
+                                                    data.class_document_5
+                                                }
+                                                link4Title={
+                                                    data.handout_doc_5_title
+                                                }
+                                                link5Href={
+                                                    data.class_document_6
+                                                }
+                                                link5Title={
+                                                    data.handout_doc_6_title
+                                                }
                                                 subheader={
                                                     "Handouts or/and weekly challenges"
                                                 }
