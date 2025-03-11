@@ -56,7 +56,6 @@ export async function loader({ params }) {
             newestClass: highestClassNumber.toString(),
         };
 
-            store.dispatch(UIActions.isLoading(false));
             store.dispatch(UIActions.isLoading(false));  //shouldn't be here because then in the main component up, UIActions.isLoading will always be false, u need useEffect in the up component and inside (store.dispatch(UIActions.isLoading(false));) when the singleClass is changed, see example on JIRA IN-37 nikolawork account
         return transformedData;
     }

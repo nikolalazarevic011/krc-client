@@ -102,7 +102,7 @@ export default function VideoCardCopy({
                                 {description}
                             </Typography>
                         )}
-                        {link1Href && (
+                        {(link1Href || link2Href) && (
                             <>
                                 {/* "More Links :" stays fixed */}
                                 <Typography variant="body2" sx={{ mt: -1 }}>

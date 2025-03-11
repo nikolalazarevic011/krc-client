@@ -118,6 +118,7 @@ const UpdatedDetailedComp = ({ data, loading }) => {
                                     />
                                 </Grid>
                                 <Grid item xs={12} md={4}>
+                                    {/* Exercise of the Week Card */}
                                     <VideoCard
                                         title={data.exercise_title}
                                         url={data.exercize_video}
@@ -127,21 +128,12 @@ const UpdatedDetailedComp = ({ data, loading }) => {
                                         toPage={`${basePath}exercises`}
                                         toDetailsPage={data.exercize_pdf}
                                         subheader="Exercise of the Week"
-                                        link1Href={
-                                            data.exercize_pdfs &&
-                                            data.exercize_pdfs[1]
-                                        }
                                         link1Title={data.exercise_2_title}
-                                        link2Href={
-                                            data.exercize_pdfs &&
-                                            data.exercize_pdfs[2]
-                                        }
+                                        link1Href={data.exercize_2_video}
                                         link2Title={data.exercise_3_title || ""}
-                                        link3Href={
-                                            data.exercize_pdfs &&
-                                            data.exercize_pdfs[3]
-                                        }
-                                        link3Title={data.handout_doc_4_title}
+                                        link2Href={data.exercize_3_video}
+                                        link3Title={data.exercise_4_title}
+                                        link3Href={data.exercize_4_video}
                                     />
                                 </Grid>
                                 {/* Third and Fourth VideoCard components are placed in a nested Grid container */}
