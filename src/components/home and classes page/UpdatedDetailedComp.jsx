@@ -150,17 +150,27 @@ const UpdatedDetailedComp = ({ data, loading }) => {
                                                         data.homework_title ||
                                                         ""
                                                     }
-                                                    // url={data.class_video_url || ""}
+                                                    subheader={
+                                                        "Homework of the week"
+                                                    }
                                                     description={
                                                         data.homework_week_description ||
                                                         ""
                                                     }
-                                                    // toPage={`${basePath}homework`}
                                                     toDetailsPage={
                                                         data.homework_pdf || ""
                                                     }
-                                                    subheader={
-                                                        "Homework of the week"
+                                                    link1Title={
+                                                        data.homework_pdf_2_title
+                                                    }
+                                                    link1Href={
+                                                        data.homework_pdfs[1]
+                                                    }
+                                                    link2Title={
+                                                        data.homework_pdf_3_title
+                                                    }
+                                                    link2Href={
+                                                        data.homework_pdfs[2]
                                                     }
                                                     loading={false}
                                                 />
