@@ -161,16 +161,16 @@ const UpdatedDetailedComp = ({ data, loading }) => {
                                                         data.homework_pdf || ""
                                                     }
                                                     link1Title={
-                                                        data.homework_pdf_2_title
+                                                        data.homework_pdf_2_title || ""
                                                     }
                                                     link1Href={
-                                                        data.homework_pdfs[1]
+                                                        data.homework_pdfs?.[1] || ""
                                                     }
                                                     link2Title={
-                                                        data.homework_pdf_3_title
+                                                        data.homework_pdf_3_title || ""
                                                     }
                                                     link2Href={
-                                                        data.homework_pdfs[2]
+                                                        data.homework_pdfs?.[2] || ""
                                                     }
                                                     loading={false}
                                                 />
