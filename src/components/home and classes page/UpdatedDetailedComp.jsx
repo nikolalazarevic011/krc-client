@@ -85,6 +85,22 @@ const UpdatedDetailedComp = ({ data, loading }) => {
                                 Get Your Certification Here
                             </Button>
                         </Box> */}
+                        {/* //! Week winners */}
+                        <Box display="flex" justifyContent="center">
+                            <Button
+                                variant="contained"
+                                size="large"
+                                target="blank"
+                                href="http://kingdomrunningclub.org/wp-content/uploads/2025/03/week-2-winners.jpg"
+                                color="secondary"
+                                sx={{
+                                    color: "white",
+                                    my: 2,
+                                }}
+                            >
+                                Week 2 Winners!
+                            </Button>
+                        </Box>
                     </>
                 )}
                 {!noActiveClasses && (
