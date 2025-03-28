@@ -102,7 +102,6 @@ const UpdatedDetailedComp = ({ data, loading }) => {
                             </Button>
                         </Box> */}
                         {/* //! Week winners end*/}
-
                     </>
                 )}
                 {!noActiveClasses && (
@@ -179,16 +178,22 @@ const UpdatedDetailedComp = ({ data, loading }) => {
                                                         data.homework_pdf || ""
                                                     }
                                                     link1Title={
-                                                        data.homework_pdf_2_title || ""
+                                                        data.homework_pdf_2_title ||
+                                                        ""
                                                     }
                                                     link1Href={
-                                                        data.homework_pdfs?.[1] || ""
+                                                        data
+                                                            .homework_pdfs?.[1] ||
+                                                        ""
                                                     }
                                                     link2Title={
-                                                        data.homework_pdf_3_title || ""
+                                                        data.homework_pdf_3_title ||
+                                                        ""
                                                     }
                                                     link2Href={
-                                                        data.homework_pdfs?.[2] || ""
+                                                        data
+                                                            .homework_pdfs?.[2] ||
+                                                        ""
                                                     }
                                                     loading={false}
                                                 />
@@ -260,6 +265,60 @@ const UpdatedDetailedComp = ({ data, loading }) => {
                                                 }
                                                 link5Title={
                                                     data.handout_doc_6_title
+                                                }
+                                                link6Href={
+                                                    data.class_document_7
+                                                }
+                                                link6Title={
+                                                    data.handout_doc_7_title
+                                                }
+                                                link7Href={
+                                                    data.class_document_8
+                                                }
+                                                link7Title={
+                                                    data.handout_doc_8_title
+                                                }
+                                                link8Href={
+                                                    data.class_document_9
+                                                }
+                                                link8Title={
+                                                    data.handout_doc_9_title
+                                                }
+                                                link9Href={
+                                                    data.class_document_10
+                                                }
+                                                link9Title={
+                                                    data.handout_doc_10_title
+                                                }
+                                                link10Href={
+                                                    data.class_document_11
+                                                }
+                                                link10Title={
+                                                    data.handout_doc_11_title
+                                                }
+                                                link11Href={
+                                                    data.class_document_12
+                                                }
+                                                link11Title={
+                                                    data.handout_doc_12_title
+                                                }
+                                                link12Href={
+                                                    data.class_document_13
+                                                }
+                                                link12Title={
+                                                    data.handout_doc_13_title
+                                                }
+                                                link13Href={
+                                                    data.class_document_14
+                                                }
+                                                link13Title={
+                                                    data.handout_doc_14_title
+                                                }
+                                                link14Href={
+                                                    data.class_document_15
+                                                }
+                                                link14Title={
+                                                    data.handout_doc_15_title
                                                 }
                                                 subheader={
                                                     "Handouts or/and weekly challenges"

@@ -17,7 +17,7 @@ const StyledCard = styled(Card, {
 })(({ theme, hasurl, loading }) => ({
     display: "grid",
     gridTemplateRows: "auto 1fr auto", // Header, content, and actions areas
-    height: loading ? "610px" : hasurl ? "610px" : "293.3px",
+    height: loading ? "710px" : hasurl ? "770px" : "373.3px",
 }));
 
 export default function VideoCardCopy({
@@ -38,6 +38,26 @@ export default function VideoCardCopy({
     link4Title,
     link5Href,
     link5Title,
+    link6Href,
+    link6Title,
+    link7Href,
+    link7Title,
+    link8Href,
+    link8Title,
+    link9Href,
+    link9Title,
+    link10Href,
+    link10Title,
+    link11Href,
+    link11Title,
+    link12Href,
+    link12Title,
+    link13Href,
+    link13Title,
+    link14Href,
+    link14Title,
+    link15Href,
+    link15Title,
 }) {
     // const navigation = useNavigation();
     // const isSubmitting = navigation.state === "loading"
@@ -113,7 +133,7 @@ export default function VideoCardCopy({
                                 <Stack
                                     mt={1}
                                     sx={{
-                                        maxHeight: "100px", // Adjust height as needed
+                                        maxHeight: "190px", // Adjust height as needed
                                         overflowY: "auto", // Enables scrolling only for links
                                     }}
                                     spacing={0.2}
@@ -141,6 +161,56 @@ export default function VideoCardCopy({
                                     {link5Href && (
                                         <Link href={link5Href}>
                                             {link5Title}
+                                        </Link>
+                                    )}
+                                    {link6Href && (
+                                        <Link href={link6Href}>
+                                            {link6Title}
+                                        </Link>
+                                    )}
+                                    {link7Href && (
+                                        <Link href={link7Href}>
+                                            {link7Title}
+                                        </Link>
+                                    )}
+                                    {link8Href && (
+                                        <Link href={link8Href}>
+                                            {link8Title}
+                                        </Link>
+                                    )}
+                                    {link9Href && (
+                                        <Link href={link9Href}>
+                                            {link9Title}
+                                        </Link>
+                                    )}
+                                    {link10Href && (
+                                        <Link href={link10Href}>
+                                            {link10Title}
+                                        </Link>
+                                    )}
+                                    {link11Href && (
+                                        <Link href={link11Href}>
+                                            {link11Title}
+                                        </Link>
+                                    )}
+                                    {link12Href && (
+                                        <Link href={link12Href}>
+                                            {link12Title}
+                                        </Link>
+                                    )}
+                                    {link13Href && (
+                                        <Link href={link13Href}>
+                                            {link13Title}
+                                        </Link>
+                                    )}
+                                    {link14Href && (
+                                        <Link href={link14Href}>
+                                            {link14Title}
+                                        </Link>
+                                    )}
+                                    {link15Href && (
+                                        <Link href={link15Href}>
+                                            {link15Title}
                                         </Link>
                                     )}
                                 </Stack>
