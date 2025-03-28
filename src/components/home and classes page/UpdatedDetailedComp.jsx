@@ -86,7 +86,7 @@ const UpdatedDetailedComp = ({ data, loading }) => {
                             </Button>
                         </Box> */}
                         {/* //! Week winners */}
-                        <Box display="flex" justifyContent="center">
+                        {/* <Box display="flex" justifyContent="center">
                             <Button
                                 variant="contained"
                                 size="large"
@@ -100,7 +100,9 @@ const UpdatedDetailedComp = ({ data, loading }) => {
                             >
                                 Week 2 Winners!
                             </Button>
-                        </Box>
+                        </Box> */}
+                        {/* //! Week winners end*/}
+
                     </>
                 )}
                 {!noActiveClasses && (
