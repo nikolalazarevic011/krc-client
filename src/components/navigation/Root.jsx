@@ -8,6 +8,7 @@ import Navbar from "./navbar/Navbar";
 import Footer from "./footer/Footer";
 
 export const isNotMobile = window.innerWidth >= 435;
+export const isLaptop = window.innerWidth >= 1445;
 
 function Root() {
     const token = useLoaderData();

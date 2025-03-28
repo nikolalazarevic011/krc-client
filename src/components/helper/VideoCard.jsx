@@ -11,13 +11,13 @@ import { useNavigate } from "react-router-dom";
 import VideoPlayer from "./VideoPlayer";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { useState } from "react";
-
+import { isLaptop } from "../navigation/Root";
 const StyledCard = styled(Card, {
     shouldForwardProp: (prop) => prop !== "hasurl" && prop !== "loading", // Do not forward 'hasurl' or 'loading' prop to the DOM element
 })(({ theme, hasurl, loading }) => ({
     display: "grid",
     gridTemplateRows: "auto 1fr auto", // Header, content, and actions areas
-    height: loading ? "710px" : hasurl ? "770px" : "373.3px",
+    height: loading ? "770px" : hasurl ? "770px" : "373.3px",
 }));
 
 export default function VideoCardCopy({
@@ -133,7 +133,8 @@ export default function VideoCardCopy({
                                 <Stack
                                     mt={1}
                                     sx={{
-                                        maxHeight: "190px", // Adjust height as needed
+                                        // maxHeight: "160px", // Adjust height as needed
+                                        maxHeight: isLaptop ? "190px" : "160px", // Adjust height as needed
                                         overflowY: "auto", // Enables scrolling only for links
                                     }}
                                     spacing={0.2}
