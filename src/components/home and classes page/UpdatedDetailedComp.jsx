@@ -134,7 +134,7 @@ const UpdatedDetailedComp = ({ data, loading }) => {
                                         loading={false}
                                         link1Title={"Part 2"}
                                         link1Href={
-                                            "https://youtu.be/9TUXg2zRWvc"
+                                            "https://bwm.cdn.piksel.tech/mm/flvmedia/5007/m/F/C/mF_Class3Part2video-4055116.mp4"
                                         }
                                     />
                                 </Grid>
