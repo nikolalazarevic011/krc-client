@@ -132,6 +132,10 @@ const UpdatedDetailedComp = ({ data, loading }) => {
                                         toPage={`${basePath}classes`}
                                         subheader="Class Replay"
                                         loading={false}
+                                        link1Title={"Part 2"}
+                                        link1Href={
+                                            "https://youtu.be/9TUXg2zRWvc"
+                                        }
                                     />
                                 </Grid>
                                 <Grid item xs={12} md={4}>
