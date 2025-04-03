@@ -17,7 +17,7 @@ const StyledCard = styled(Card, {
 })(({ theme, hasurl, loading }) => ({
     display: "grid",
     gridTemplateRows: "auto 1fr auto", // Header, content, and actions areas
-    height: loading ? "770px" : hasurl ? "770px" : "373.3px",
+    // height: loading ? "770px" : hasurl ? "770px" : "373.3px",
 }));
 
 export default function VideoCardCopy({
@@ -125,7 +125,7 @@ export default function VideoCardCopy({
                         {(link1Href || link2Href) && (
                             <>
                                 {/* "More Links :" stays fixed */}
-                                <Typography variant="body2" sx={{ mt: -1 }}>
+                                <Typography variant="body2" sx={{ mt: 1 }}>
                                     More Links :
                                 </Typography>
 
