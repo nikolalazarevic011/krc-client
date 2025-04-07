@@ -132,10 +132,10 @@ const UpdatedDetailedComp = ({ data, loading }) => {
                                         toPage={`${basePath}classes`}
                                         subheader="Class Replay"
                                         loading={false}
-                                        link1Title={"Part 2"}
-                                        link1Href={
-                                            "https://bwm.cdn.piksel.tech/mm/flvmedia/5007/m/F/C/mF_Class3Part2video-4055116.mp4"
-                                        }
+                                        // link1Title={"Part 2"}
+                                        // link1Href={
+                                        //     "https://bwm.cdn.piksel.tech/mm/flvmedia/5007/m/F/C/mF_Class3Part2video-4055116.mp4"
+                                        // }
                                     />
                                 </Grid>
                                 <Grid item xs={12} md={4}>
