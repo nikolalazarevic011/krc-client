@@ -77,8 +77,7 @@ export default function VideoCardCopy({
     link24Href,
     link24Title,
     link25Href,
-    link25Title
-    
+    link25Title,
 }) {
     // const navigation = useNavigation();
     // const isSubmitting = navigation.state === "loading"
@@ -163,6 +162,11 @@ export default function VideoCardCopy({
                                     {link1Href && (
                                         <Link href={link1Href}>
                                             {link1Title}
+                                        </Link>
+                                    )}
+                                    {link24Href && (
+                                        <Link href={link24Href}>
+                                            {link24Title}
                                         </Link>
                                     )}
                                     {link2Href && (
@@ -273,11 +277,6 @@ export default function VideoCardCopy({
                                     {link23Href && (
                                         <Link href={link23Href}>
                                             {link23Title}
-                                        </Link>
-                                    )}
-                                    {link24Href && (
-                                        <Link href={link24Href}>
-                                            {link24Title}
                                         </Link>
                                     )}
                                     {link25Href && (
