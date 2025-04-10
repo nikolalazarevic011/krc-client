@@ -324,6 +324,66 @@ const UpdatedDetailedComp = ({ data, loading }) => {
                                                 link14Title={
                                                     data.handout_doc_15_title
                                                 }
+                                                link15Href={
+                                                    data.class_document_16
+                                                }
+                                                link15Title={
+                                                    data.handout_doc_16_title
+                                                }
+                                                link16Href={
+                                                    data.class_document_17
+                                                }
+                                                link16Title={
+                                                    data.handout_doc_17_title
+                                                }
+                                                link17Href={
+                                                    data.class_document_18
+                                                }
+                                                link17Title={
+                                                    data.handout_doc_18_title
+                                                }
+                                                link18Href={
+                                                    data.class_document_19
+                                                }
+                                                link18Title={
+                                                    data.handout_doc_19_title
+                                                }
+                                                link19Href={
+                                                    data.class_document_20
+                                                }
+                                                link19Title={
+                                                    data.handout_doc_20_title
+                                                }
+                                                link20Href={
+                                                    data.class_document_21
+                                                }
+                                                link20Title={
+                                                    data.handout_doc_21_title
+                                                }
+                                                link21Href={
+                                                    data.class_document_22
+                                                }
+                                                link21Title={
+                                                    data.handout_doc_22_title
+                                                }
+                                                link22Href={
+                                                    data.class_document_23
+                                                }
+                                                link22Title={
+                                                    data.handout_doc_23_title
+                                                }
+                                                link23Href={
+                                                    data.class_document_24
+                                                }
+                                                link23Title={
+                                                    data.handout_doc_24_title
+                                                }
+                                                link24Href={
+                                                    data.class_document_25
+                                                }
+                                                link24Title={
+                                                    data.handout_doc_25_title
+                                                }
                                                 subheader={
                                                     "Handouts or/and weekly challenges"
                                                 }

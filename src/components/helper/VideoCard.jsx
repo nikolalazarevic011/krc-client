@@ -58,6 +58,27 @@ export default function VideoCardCopy({
     link14Title,
     link15Href,
     link15Title,
+    link16Href,
+    link16Title,
+    link17Href,
+    link17Title,
+    link18Href,
+    link18Title,
+    link19Href,
+    link19Title,
+    link20Href,
+    link20Title,
+    link21Href,
+    link21Title,
+    link22Href,
+    link22Title,
+    link23Href,
+    link23Title,
+    link24Href,
+    link24Title,
+    link25Href,
+    link25Title
+    
 }) {
     // const navigation = useNavigation();
     // const isSubmitting = navigation.state === "loading"
@@ -134,7 +155,7 @@ export default function VideoCardCopy({
                                     mt={1}
                                     sx={{
                                         // maxHeight: "160px", // Adjust height as needed
-                                        maxHeight: isLaptop ? "190px" : "160px", // Adjust height as needed
+                                        // maxHeight: isLaptop ? "190px" : "160px", // Adjust height as needed
                                         overflowY: "auto", // Enables scrolling only for links
                                     }}
                                     spacing={0.2}
@@ -212,6 +233,56 @@ export default function VideoCardCopy({
                                     {link15Href && (
                                         <Link href={link15Href}>
                                             {link15Title}
+                                        </Link>
+                                    )}
+                                    {link16Href && (
+                                        <Link href={link16Href}>
+                                            {link16Title}
+                                        </Link>
+                                    )}
+                                    {link17Href && (
+                                        <Link href={link17Href}>
+                                            {link17Title}
+                                        </Link>
+                                    )}
+                                    {link18Href && (
+                                        <Link href={link18Href}>
+                                            {link18Title}
+                                        </Link>
+                                    )}
+                                    {link19Href && (
+                                        <Link href={link19Href}>
+                                            {link19Title}
+                                        </Link>
+                                    )}
+                                    {link20Href && (
+                                        <Link href={link20Href}>
+                                            {link20Title}
+                                        </Link>
+                                    )}
+                                    {link21Href && (
+                                        <Link href={link21Href}>
+                                            {link21Title}
+                                        </Link>
+                                    )}
+                                    {link22Href && (
+                                        <Link href={link22Href}>
+                                            {link22Title}
+                                        </Link>
+                                    )}
+                                    {link23Href && (
+                                        <Link href={link23Href}>
+                                            {link23Title}
+                                        </Link>
+                                    )}
+                                    {link24Href && (
+                                        <Link href={link24Href}>
+                                            {link24Title}
+                                        </Link>
+                                    )}
+                                    {link25Href && (
+                                        <Link href={link25Href}>
+                                            {link25Title}
                                         </Link>
                                     )}
                                 </Stack>
