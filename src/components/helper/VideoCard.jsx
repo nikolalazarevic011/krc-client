@@ -12,6 +12,8 @@ import VideoPlayer from "./VideoPlayer";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { useState } from "react";
 import { isLaptop } from "../navigation/Root";
+import { useEffect } from "react";
+
 const StyledCard = styled(Card, {
     shouldForwardProp: (prop) => prop !== "hasurl" && prop !== "loading", // Do not forward 'hasurl' or 'loading' prop to the DOM element
 })(({ theme, hasurl, loading }) => ({
@@ -20,7 +22,7 @@ const StyledCard = styled(Card, {
     // height: loading ? "770px" : hasurl ? "770px" : "373.3px",
 }));
 
-export default function VideoCardCopy({
+export default function VideoCard({
     title,
     url,
     description,
@@ -28,6 +30,8 @@ export default function VideoCardCopy({
     subheader,
     loading,
     toDetailsPage,
+    class_document_title,
+    class_document_pdf,
     link1Href,
     link1Title,
     link2Href,
@@ -78,6 +82,26 @@ export default function VideoCardCopy({
     link24Title,
     link25Href,
     link25Title,
+    link26Href,
+    link26Title,
+    link27Href,
+    link27Title,
+    link28Href,
+    link28Title,
+    link29Href,
+    link29Title,
+    link30Href,
+    link30Title,
+    link31Href,
+    link31Title,
+    link32Href,
+    link32Title,
+    link33Href,
+    link33Title,
+    link34Href,
+    link34Title,
+    link35Href,
+    link35Title,
 }) {
     // const navigation = useNavigation();
     // const isSubmitting = navigation.state === "loading"
@@ -142,7 +166,7 @@ export default function VideoCardCopy({
                                 {description}
                             </Typography>
                         )}
-                        {(link1Href || link2Href) && (
+                        {(class_document_pdf || link1Href || link2Href) && (
                             <>
                                 {/* "More Links :" stays fixed */}
                                 <Typography variant="body2" sx={{ mt: 1 }}>
@@ -159,6 +183,11 @@ export default function VideoCardCopy({
                                     }}
                                     spacing={0.2}
                                 >
+                                    {class_document_pdf && (
+                                        <Link href={class_document_pdf}>
+                                            {class_document_title}
+                                        </Link>
+                                    )}
                                     {link1Href && (
                                         <Link href={link1Href}>
                                             {link1Title}
@@ -282,6 +311,56 @@ export default function VideoCardCopy({
                                     {link25Href && (
                                         <Link href={link25Href}>
                                             {link25Title}
+                                        </Link>
+                                    )}
+                                    {link26Href && (
+                                        <Link href={link26Href}>
+                                            {link26Title}
+                                        </Link>
+                                    )}
+                                    {link27Href && (
+                                        <Link href={link27Href}>
+                                            {link27Title}
+                                        </Link>
+                                    )}
+                                    {link28Href && (
+                                        <Link href={link28Href}>
+                                            {link28Title}
+                                        </Link>
+                                    )}
+                                    {link29Href && (
+                                        <Link href={link29Href}>
+                                            {link29Title}
+                                        </Link>
+                                    )}
+                                    {link30Href && (
+                                        <Link href={link30Href}>
+                                            {link30Title}
+                                        </Link>
+                                    )}
+                                    {link31Href && (
+                                        <Link href={link31Href}>
+                                            {link31Title}
+                                        </Link>
+                                    )}
+                                    {link32Href && (
+                                        <Link href={link32Href}>
+                                            {link32Title}
+                                        </Link>
+                                    )}
+                                    {link33Href && (
+                                        <Link href={link33Href}>
+                                            {link33Title}
+                                        </Link>
+                                    )}
+                                    {link34Href && (
+                                        <Link href={link34Href}>
+                                            {link34Title}
+                                        </Link>
+                                    )}
+                                    {link35Href && (
+                                        <Link href={link35Href}>
+                                            {link35Title}
                                         </Link>
                                     )}
                                 </Stack>

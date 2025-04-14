@@ -12,6 +12,7 @@ import {
 import { useParams, useLocation } from "react-router-dom";
 import { basePath } from "../../App";
 import CustomLoadingButton from "../helper/CustomLoadingButton";
+import { useEffect } from "react";
 
 const UpdatedDetailedComp = ({ data, loading }) => {
     const { classId } = useParams(); // how homework card
@@ -132,10 +133,12 @@ const UpdatedDetailedComp = ({ data, loading }) => {
                                         toPage={`${basePath}classes`}
                                         subheader="Class Replay"
                                         loading={false}
-                                        // link1Title={"Part 2"}
-                                        // link1Href={
-                                        //     "https://bwm.cdn.piksel.tech/mm/flvmedia/5007/m/F/C/mF_Class3Part2video-4055116.mp4"
-                                        // }
+                                        class_document_title={
+                                            data.class_document_title
+                                        }
+                                        class_document_pdf={
+                                            data.class_document_pdf
+                                        }
                                     />
                                 </Grid>
                                 <Grid item xs={12} md={4}>
@@ -383,6 +386,66 @@ const UpdatedDetailedComp = ({ data, loading }) => {
                                                 }
                                                 link24Title={
                                                     data.handout_doc_25_title
+                                                }
+                                                link25Href={
+                                                    data.class_document_26
+                                                }
+                                                link25Title={
+                                                    data.handout_doc_26_title
+                                                }
+                                                link26Href={
+                                                    data.class_document_27
+                                                }
+                                                link26Title={
+                                                    data.handout_doc_27_title
+                                                }
+                                                link27Href={
+                                                    data.class_document_28
+                                                }
+                                                link27Title={
+                                                    data.handout_doc_28_title
+                                                }
+                                                link28Href={
+                                                    data.class_document_29
+                                                }
+                                                link28Title={
+                                                    data.handout_doc_29_title
+                                                }
+                                                link29Href={
+                                                    data.class_document_30
+                                                }
+                                                link29Title={
+                                                    data.handout_doc_30_title
+                                                }
+                                                link30Href={
+                                                    data.class_document_31
+                                                }
+                                                link30Title={
+                                                    data.handout_doc_31_title
+                                                }
+                                                link31Href={
+                                                    data.class_document_32
+                                                }
+                                                link31Title={
+                                                    data.handout_doc_32_title
+                                                }
+                                                link32Href={
+                                                    data.class_document_33
+                                                }
+                                                link32Title={
+                                                    data.handout_doc_33_title
+                                                }
+                                                link33Href={
+                                                    data.class_document_34
+                                                }
+                                                link33Title={
+                                                    data.handout_doc_34_title
+                                                }
+                                                link34Href={
+                                                    data.class_document_35
+                                                }
+                                                link34Title={
+                                                    data.handout_doc_35_title
                                                 }
                                                 subheader={
                                                     "Handouts or/and weekly challenges"
