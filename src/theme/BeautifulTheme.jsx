@@ -47,6 +47,10 @@ const BeautifulTheme = createTheme({
     components: {
         //! for links poppins font does it work? no
         MuiLink: {
+            defaultProps: {
+                target: "_blank",
+                rel: "noopener noreferrer",
+            },
             styleOverrides: {
                 root: {
                     color: "#9AC339",

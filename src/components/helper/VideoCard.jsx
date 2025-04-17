@@ -166,7 +166,7 @@ export default function VideoCard({
                                 {description}
                             </Typography>
                         )}
-                        {(class_document_pdf || link1Href || link2Href) && (
+                        {(class_document_pdf || toDetailsPage || link1Href || link2Href) && (
                             <>
                                 {/* "More Links :" stays fixed */}
                                 <Typography variant="body2" sx={{ mt: 1 }}>
@@ -186,6 +186,11 @@ export default function VideoCard({
                                     {class_document_pdf && (
                                         <Link href={class_document_pdf}>
                                             {class_document_title}
+                                        </Link>
+                                    )}
+                                    {toDetailsPage && (
+                                        <Link href={toDetailsPage}>
+                                            {title}
                                         </Link>
                                     )}
                                     {link1Href && (
