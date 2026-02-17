@@ -11,15 +11,20 @@ import {
     Typography,
     Stack,
     Skeleton,
+    useMediaQuery,
+    useTheme,
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+// import { isNotMobile } from "../../components/navigation/Root";
 import { UIActions } from "../../store/ui";
 import store from "../../store";
-import { isNotMobile } from "../../components/navigation/Root";
+// import { isNotMobile } from "../../components/navigation/Root";
 import { NavLink as reactNavLink, useLocation } from "react-router-dom";
 
 const CustomAccordion = ({ title, array, loading, url }) => {
     const location = useLocation();
+    const theme = useTheme();
+    const isNotMobile = useMediaQuery(theme.breakpoints.up("sm"));
 
     const classes = {
         list: {

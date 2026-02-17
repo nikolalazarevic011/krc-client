@@ -7,11 +7,16 @@ import { Box } from "@mui/material";
 import Navbar from "./navbar/Navbar";
 import Footer from "./footer/Footer";
 
-export const isNotMobile = window.innerWidth >= 435;
-export const isLaptop = window.innerWidth >= 1445;
+import { useTheme, useMediaQuery } from "@mui/material";
+
+// export const isNotMobile = window.innerWidth >= 435;
+// export const isLaptop = window.innerWidth >= 1445;
 
 function Root() {
     const token = useLoaderData();
+    const theme = useTheme();
+    const isNotMobile = useMediaQuery(theme.breakpoints.up("sm")); // or use a custom breakpoint if needed, e.g. '(min-width:435px)'
+
     // const token = false;
     let toggleDrawer = useSelector((state) => state.ui.toggleDrawer);
     const [marginLeft, setMarginLeft] = useState(null);
@@ -20,8 +25,10 @@ function Root() {
         //so the user option icon don't get pushed to the right on mobile devices
         if (isNotMobile) {
             setMarginLeft(toggleDrawer ? 240 : 0);
+        } else {
+            setMarginLeft(0); // Reset margin on mobile
         }
-    }, [toggleDrawer]);
+    }, [toggleDrawer, isNotMobile]);
 
     const simpleStyles = {
         content: {

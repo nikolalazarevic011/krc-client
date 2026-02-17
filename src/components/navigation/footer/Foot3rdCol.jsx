@@ -9,23 +9,39 @@ import {
     ListItem,
     ListItemButton,
     ListItemText,
-    Stack,
     TextField,
     Typography,
+    useMediaQuery,
 } from "@mui/material";
-import { isNotMobile } from "../Root";
+// import { isNotMobile } from "../Root";
 import { useTheme } from "@mui/material/styles";
 
 const menuList = [
-    { title: "- Running Program", path: "https://kingdomrunningclub.org/about-us-program-description" },
-    { title: "- Fitness and Performance", path: "https://kingdomrunningclub.org/fitness-checklist/" },
-    { title: "- FAQ's", path: "https://kingdomrunningclub.org/about-frequently-asked-questions" },
-    { title: "- Initiatives", path: "https://kingdomrunningclub.org/about-putting-feet-to-faith" },
-    { title: "- Testimonials", path: "https://kingdomrunningclub.org/testimonials" },
+    {
+        title: "- Running Program",
+        path: "https://kingdomrunningclub.org/about-us-program-description",
+    },
+    {
+        title: "- Fitness and Performance",
+        path: "https://kingdomrunningclub.org/fitness-checklist/",
+    },
+    {
+        title: "- FAQ's",
+        path: "https://kingdomrunningclub.org/about-frequently-asked-questions",
+    },
+    {
+        title: "- Initiatives",
+        path: "https://kingdomrunningclub.org/about-putting-feet-to-faith",
+    },
+    {
+        title: "- Testimonials",
+        path: "https://kingdomrunningclub.org/testimonials",
+    },
 ];
 
 const Foot3rdCol = () => {
     const theme = useTheme();
+    const isNotMobile = useMediaQuery(theme.breakpoints.up("sm"));
 
     return (
         <Grid item xs={12} sm={6} md={3}>

@@ -4,24 +4,31 @@ import ListItem from "@mui/material/ListItem";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import ListItemText from "@mui/material/ListItemText";
 import Avatar from "@mui/material/Avatar";
-import { Container, Toolbar, Typography } from "@mui/material";
+import {
+    Container,
+    Toolbar,
+    Typography,
+    useMediaQuery,
+    useTheme,
+} from "@mui/material";
 
 import InfoIcon from "@mui/icons-material/Info";
 import { useLocation } from "react-router-dom";
 
 import CustomLoadingButton from "./CustomLoadingButton";
 import { basePath } from "../../App";
-import { isNotMobile } from "../navigation/Root";
+// import { isNotMobile } from "../navigation/Root";
 
-const DrawerItemListView = ({ data, route , title}) => {
+const DrawerItemListView = ({ data, route, title }) => {
     const location = useLocation();
+    const theme = useTheme();
+    const isNotMobile = useMediaQuery(theme.breakpoints.up("sm"));
 
     const isOnClassesRoute =
         location.pathname === `${basePath}classes` ||
         location.pathname === "/classes";
-        
-        const displayTitle = title ? title : route;
 
+    const displayTitle = title ? title : route;
 
     return (
         <>
@@ -35,7 +42,7 @@ const DrawerItemListView = ({ data, route , title}) => {
                 >
                     All available {displayTitle}
                 </Typography>
-                <List sx={{mb:2}}>
+                <List sx={{ mb: 2 }}>
                     {data.map((item, index) => (
                         <ListItem
                             key={index}
@@ -47,9 +54,8 @@ const DrawerItemListView = ({ data, route , title}) => {
                                             ? item.class_number
                                             : item.slug
                                     }
-                                    text={isNotMobile? 'View Details' : 'Open'}
+                                    text={isNotMobile ? "View Details" : "Open"}
                                     route={route}
-
                                 ></CustomLoadingButton>
                             }
                         >
@@ -63,10 +69,14 @@ const DrawerItemListView = ({ data, route , title}) => {
                                 primary={item.title}
                                 sx={{
                                     color: "secondary.main",
-                                    maxWidth: { xs: '60%', sm: '75%', md: '85%' }, // Adjust these values as needed
+                                    maxWidth: {
+                                        xs: "60%",
+                                        sm: "75%",
+                                        md: "85%",
+                                    }, // Adjust these values as needed
                                     // whiteSpace: 'nowrap',
-                                    overflow: 'hidden',
-                                    textOverflow: 'ellipsis' // Adds an ellipsis if the text is too long
+                                    overflow: "hidden",
+                                    textOverflow: "ellipsis", // Adds an ellipsis if the text is too long
                                 }}
                             />
                         </ListItem>

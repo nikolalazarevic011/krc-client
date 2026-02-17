@@ -11,6 +11,8 @@ import {
     MenuItem,
     Menu,
     Link,
+    useMediaQuery,
+    useTheme,
 } from "@mui/material";
 import {
     Menu as MenuIcon,
@@ -26,7 +28,7 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import { useSelector } from "react-redux";
 import store from "../../../store/index";
 import { UIActions } from "../../../store/ui";
-import { isNotMobile } from "../../navigation/Root";
+// import { isNotMobile } from "../../navigation/Root";
 import logoPic from "../../../assets/imgs/Logo_white.png";
 import { basePath } from "../../../App";
 
@@ -77,7 +79,12 @@ export default function Navbar() {
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
-    let token = localStorage.getItem("token");
+    const theme = useTheme();
+    const isNotMobile = useMediaQuery(theme.breakpoints.up("sm"));
+
+    let token =
+        localStorage.getItem("token") ||
+        localStorage.getItem("krc_member_login");
 
     let isDrawerOpen = useSelector((state) => state.ui.toggleDrawer);
 
@@ -238,7 +245,10 @@ export default function Navbar() {
                             <MenuIcon />
                         </IconButton>
                     )}
-                    <Link to={process.env.REACT_APP_DEFAULT_URL} component={reactNavLink}>
+                    <Link
+                        to={process.env.REACT_APP_DEFAULT_URL}
+                        component={reactNavLink}
+                    >
                         <img
                             src={logoPic}
                             alt="Logo"

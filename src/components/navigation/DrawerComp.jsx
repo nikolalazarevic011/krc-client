@@ -8,11 +8,13 @@ import {
     Skeleton,
     Box,
     CircularProgress,
+    useTheme,
+    useMediaQuery,
 } from "@mui/material";
 import { Outlet, useLocation, useNavigation } from "react-router-dom";
 import { UIActions } from "../../store/ui";
 import store from "../../store";
-import { isNotMobile } from "./Root";
+// import { isNotMobile } from "./Root";
 import CustomAccordion from "../helper/CustomAccordion";
 import { basePath, baseURL } from "../../App";
 import { resourceActions } from "../../store/resources";
@@ -37,6 +39,9 @@ const DrawerComp = () => {
 
     // Check if the current location matches the login page route
     const isLoginPage = location.pathname === loginPageRoute;
+
+    const theme = useTheme();
+    const isNotMobile = useMediaQuery(theme.breakpoints.up("sm"));
 
     let toggleDrawer = useSelector((state) => state.ui.toggleDrawer);
     let responsiveDrawerWith = isNotMobile ? drawerWidth : "100%";
@@ -64,7 +69,7 @@ const DrawerComp = () => {
         } else {
             store.dispatch(UIActions.toggleDrawer(false));
         }
-    }, [responsiveDrawerWith]);
+    }, [responsiveDrawerWith, isNotMobile]);
 
     // fetch the drawer contents
     useEffect(() => {
@@ -72,7 +77,7 @@ const DrawerComp = () => {
             try {
                 const response = await fetch(`${baseURL}/ce/v1/krc_classes`);
                 const responseResources = await fetch(
-                    `${baseURL}/ce/v1/krc_handouts`
+                    `${baseURL}/ce/v1/krc_handouts`,
                 );
 
                 if (!response.ok)

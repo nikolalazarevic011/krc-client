@@ -12,8 +12,9 @@ import {
     Stack,
     TextField,
     Typography,
+    useMediaQuery,
 } from "@mui/material";
-import { isNotMobile } from "../Root";
+// import { isNotMobile } from "../Root";
 import { useTheme } from "@mui/material/styles";
 
 const menuList = [
@@ -47,6 +48,7 @@ const menuList = [
 
 const Foot2ndCol = () => {
     const theme = useTheme();
+    const isNotMobile = useMediaQuery(theme.breakpoints.up("sm"));
 
     return (
         <Grid item xs={12} sm={6} md={3}>

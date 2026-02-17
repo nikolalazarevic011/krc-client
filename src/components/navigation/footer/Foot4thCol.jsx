@@ -6,8 +6,9 @@ import {
     ListItem,
     ListItemText,
     Typography,
+    useMediaQuery,
 } from "@mui/material";
-import { isNotMobile } from "../Root";
+// import { isNotMobile } from "../Root";
 import { useTheme } from "@mui/material/styles";
 import EmailIcon from "@mui/icons-material/Email";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
@@ -18,6 +19,7 @@ import Avatar from "@mui/material/Avatar";
 
 const Foot4thCol = () => {
     const theme = useTheme();
+    const isNotMobile = useMediaQuery(theme.breakpoints.up("sm"));
 
     return (
         <Grid item xs={12} sm={6} md={3}>
@@ -51,8 +53,7 @@ const Foot4thCol = () => {
                 >
                     <ListItemAvatar
                         sx={{
-                        justifyContent: { xs: "center", md: "start" },
-
+                            justifyContent: { xs: "center", md: "start" },
                         }}
                     >
                         <Avatar

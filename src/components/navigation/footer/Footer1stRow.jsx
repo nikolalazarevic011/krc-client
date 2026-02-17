@@ -1,11 +1,18 @@
 import React from "react";
-import { Button, Grid, Stack, TextField, Typography } from "@mui/material";
-import { isNotMobile } from "../Root";
+import {
+    Button,
+    Grid,
+    Stack,
+    TextField,
+    Typography,
+    useMediaQuery,
+} from "@mui/material";
+// import { isNotMobile } from "../Root";
 import { useTheme } from "@mui/material/styles";
-
 
 const Footer1stRow = () => {
     const theme = useTheme();
+    const isNotMobile = useMediaQuery(theme.breakpoints.up("sm"));
 
     return (
         <Grid item xs={12}>
@@ -30,7 +37,7 @@ const Footer1stRow = () => {
                     variant="outlined"
                     color="background"
                     focused
-                    placeholder='example@example.com'
+                    placeholder="example@example.com"
                     inputProps={{
                         sx: { color: "white" },
                     }}
