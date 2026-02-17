@@ -16,10 +16,10 @@ import ClassesDetailPage, {
 import HandoutsDetail, {
     loader as handoutsDetailLoader,
 } from "./pages/Handouts/HandoutsDetail";
-import Homework, { loader as homeworkLoader } from "./pages/Homework/Homework";
+import Homework, { loader as homeworkLoader } from "./pages/HomeWork/Homework";
 import HomeworkDetail, {
     loader as homeworkDetailLoader,
-} from "./pages/Homework/HomeworkDetail";
+} from "./pages/HomeWork/HomeworkDetail";
 import ErrorPage from "./pages/ErrorPage";
 import Exercises, {
     loader as exercisesLoader,
