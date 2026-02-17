@@ -4,9 +4,9 @@ import background from "../../assets/imgs/LoginPic1.png";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import LoginForm from "./LoginForm";
-import { useActionData, useNavigation } from "react-router-dom";
+import { useActionData, useNavigation, useNavigate } from "react-router-dom";
 import BasicSnackbar from "../helper/CustomSnackBar";
-import { CardActions, Link } from "@mui/material";
+import { CardActions, Link, Box } from "@mui/material";
 import {
     Button,
     Dialog,
@@ -17,11 +17,14 @@ import {
     IconButton,
     Divider,
 } from "@mui/material";
+import { authActions } from "../../store/auth";
+import store from "../../store";
 
 const LoginComp = () => {
     const errorData = useActionData();
 
     const navigation = useNavigation();
+    const navigate = useNavigate();
 
     const isSubmitting = navigation.state === "submitting";
 
@@ -61,6 +64,21 @@ const LoginComp = () => {
         setOpenDialog(true);
     }, [errorData]);
 
+    const handleDevLogin = () => {
+        const dummyToken = "dummy-dev-token";
+        const dummyEmail = "dev@example.com";
+        const dummyNiceName = "Dev User";
+
+        localStorage.setItem("token", dummyToken);
+        localStorage.setItem("email", dummyEmail);
+        localStorage.setItem("niceName", dummyNiceName);
+
+        store.dispatch(authActions.setUserEmail(dummyEmail));
+        store.dispatch(authActions.setToken(dummyToken));
+
+        navigate(process.env.REACT_APP_DEFAULT_PATH || "/");
+    };
+
     return (
         <>
             <Toolbar />
@@ -82,13 +100,10 @@ const LoginComp = () => {
                     item
                     xs={8}
                     sm={4}
-                    
                     textAlign="center"
-                    sx={
-                        {
-                            transform: "scalex(1)",
-                        }
-                    }
+                    sx={{
+                        transform: "scalex(1)",
+                    }}
                 >
                     <Card
                         sx={{
@@ -126,6 +141,18 @@ const LoginComp = () => {
                                 isSubmitting={isSubmitting}
                                 handleClick={handleClick}
                             />
+                            {process.env.NODE_ENV === "development" && (
+                                <Box sx={{ mt: 2, textAlign: "center" }}>
+                                    <Button
+                                        variant="outlined"
+                                        color="warning"
+                                        fullWidth
+                                        onClick={handleDevLogin}
+                                    >
+                                        Dev Login (Bypass)
+                                    </Button>
+                                </Box>
+                            )}
                         </CardContent>
                         <CardActions sx={{ justifyContent: "space-between" }}>
                             <Link
