@@ -12,7 +12,7 @@ import {
 import { useParams, useLocation } from "react-router-dom";
 import { basePath } from "../../App";
 
-const UpdatedDetailedComp = ({ data, loading }) => {
+const UpdatedDetailedComp = ({ data, loading, children }) => {
     const { classId } = useParams();
     const location = useLocation();
     const isBasePath = location.pathname === basePath;
@@ -105,6 +105,7 @@ const UpdatedDetailedComp = ({ data, loading }) => {
         <>
             <Toolbar />
             <Container sx={{ maxWidth: { xs: "sm", md: "xl" } }}>
+                {children}
                 {loading ? (
                     <Box
                         width="100%"
