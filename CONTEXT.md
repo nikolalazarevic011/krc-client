@@ -27,3 +27,11 @@ _Avoid_: Award, credential
 **Member**:
 A registered and authenticated student/runner using the dashboard.
 _Avoid_: User, account, student
+
+**Season**:
+An annual Kingdom Running Club training cycle that begins each March.
+_Avoid_: Year, cohort, term
+
+**Season Recap**:
+An end-of-season shared external Google Photos album where Members contribute photos and videos from the Season.
+_Avoid_: Gallery, internal upload

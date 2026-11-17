@@ -38,7 +38,7 @@ Single-context documentation layout. See `docs/agents/domain.md`.
      - **Push as work user:** Switch credentials via `gh auth switch --hostname github.com --user nlazarevic733` for the push, then immediately switch back to `nikolalazarevic011`.
 11. After/grill-me-with-docs is done dont start automaticly implement, confirm with me always
 12.  you can ssh into http://lwccwebportal.com:2276 as n08bcc5 using
-C:UsersNLazarevic.sshcpanel2026 under /home/n08bcc5/public_html/krc/running_dashboard/members youl'll find this project, and i think the /build is what's actually getting served
+C:UsersNLazarevic.sshcpanel2026 under /home/n08bcc5/public_html/krc/running_dashboard/members youl'll find this project, and i think the /build is what's actually getting served, use SCP to upload files u need to cPanel
 1.  localhost for this portal at - https://localhost:3000/ , even tho when u do npm start it goes to https://localhost:3000/running_dashboard/members/build thats because we added /running_dashboard/members/build  , because our production site (this krc portal) is on https://kingdomrunningclub.org/running_dashboard/members/build/ and the https://kingdomrunningclub.org is our WP site
 
 
