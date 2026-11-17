@@ -1,52 +1,64 @@
-# KRC Running Club App
+# Kingdom Running Club (KRC) Dashboard Client
 
-A modern React-based member dashboard for the Kingdom Running Club, providing members with easy access to manage their information and view upcoming running classes.
+A React-based member dashboard client for the Kingdom Running Club, providing members with access to classes, homework, exercises, handouts, resources, and wellness certificates.
 
-## Features
+---
 
-- **Member Dashboard**: Centralized location for member details.
+## 📖 Key Documentation
 
-## Tech Stack
+To maintain clean and DRY (Don't Repeat Yourself) documentation, core concepts and internal architecture are maintained in dedicated documents:
+*   **Domain Vocabulary & Glossary**: Refer to [CONTEXT.md](CONTEXT.md) for canonical terms (e.g., *Class*, *Exercise*, *Homework*, *Handout*, *Certificate*, *Member*).
+*   **Architectural Decision Records & Patterns**: Refer to [.agent/agent.md](.agent/agent.md) for details on framework configurations (React Router v6 loaders/actions, Redux Toolkit slices, Material-UI theme setup, and directory structure).
 
-- **Framework**: [React 18](https://react.dev/) with React Router for routing.
-- **UI Library**: [Material UI (MUI)](https://mui.com/) for a comprehensive set of UI components.
-- **State Management**: [Redux Toolkit](https://redux-toolkit.js.org/) for predictable state management.
-- **Styling**: Theme-based styling using Material UI's theme system.
-- **Backend Integration**: Communicates with a WordPress REST API.
+---
 
-## Installation
+## 🛠️ Setup & Local Development
 
-1. Clone the repository.
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
+### 1. Prerequisites
+*   [Node.js](https://nodejs.org/) (v16+ recommended)
+*   npm
 
-## Usage
+### 2. Environment Configuration
+The application relies on environment variables for local development and build targets.
+1.  Copy the example environment file:
+    ```bash
+    cp .env.example .env
+    ```
+2.  Open `.env` and fill in the private configuration values for your environment (API endpoint URL, path configuration, etc.).
 
-Start the development server:
+> [!NOTE]
+> Local development is configured to run over secure HTTPS to ensure compatibility with WordPress secure REST APIs without encountering mixed-content blocks. The local development server expects certificate files (`cert.pem` and `key.pem`) to be present in the repository root directory.
 
+### 3. Installation
+Install the project dependencies:
 ```bash
-npm run dev
+npm install
 ```
 
-## Development
-
-This project uses environment variables for configuration. A `.env.example` file is provided to list the necessary variables. Create a `.env` file and add the required configuration.
-
-## Folder Structure
-
+### 4. Running the Development Server
+Start the local webpack development server with HTTPS:
+```bash
+npm start
 ```
-krc-client/
-├── src/
-│   ├── components/     # Reusable UI components
-│   ├── pages/          # Page-level components
-│   ├── store/          # Redux Toolkit store and slices
-│   ├── theme/          # Theme configuration and styles
-│   ├── App.jsx         # Main application component and router setup
-│   └── index.jsx       # Entry point
-├── .env.example        # Environment variable template
-└── package.json        # Project dependencies and scripts
+Your local server will spin up and be accessible via secure connection.
+
+---
+
+## 🚀 Build & Deployment
+
+Deployment to the staging/production environments is performed manually via cPanel.
+
+### 1. Build the Production Bundle
+Compile and optimize the assets for production:
+```bash
+npm run build
 ```
+This will generate a `build/` directory containing the optimized static production build.
 
-
+### 2. Manual cPanel Deployment
+1.  Access your cPanel file manager or connect via FTP/SFTP.
+2.  Navigate to the public web root path:
+    ```
+    public_html/krc/running_dashboard/members/build
+    ```
+3.  Upload and completely replace the contents of that remote directory with the newly compiled contents from your local `build/` directory.
