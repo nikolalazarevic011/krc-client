@@ -74,7 +74,7 @@ const HomePage = () => {
     return (
         <>
             <UpdatedDetailedComp data={data} loading={loading}>
-                <Grid container spacing={3} sx={{ mb: 4 }} alignItems="stretch">
+                <Grid container spacing={3} sx={{ mt: 2, mb: 4 }} alignItems="stretch">
                     <Grid item xs={12} md={6}>
                         <Paper elevation={0} sx={cardSurfaceSx}>
                             <Box sx={{ width: "100%" }}>
