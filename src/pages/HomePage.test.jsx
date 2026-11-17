@@ -80,4 +80,24 @@ describe("HomePage", () => {
         expect(certLink).toHaveAttribute("target", "_blank");
         expect(certLink).toHaveAttribute("rel", "noopener noreferrer");
     });
+
+    test("renders both 2026 Season Recap and Health and Wellness Certificate cards with active class data", async () => {
+        renderHomePage([
+            {
+                id: 1,
+                title: "2026 Training Season",
+                description: "Weekly training sessions",
+                date: "2026-04-01",
+            },
+        ]);
+
+        expect(
+            await screen.findByRole("heading", { name: /2026 Season Recap/i })
+        ).toBeInTheDocument();
+        expect(
+            screen.getByRole("heading", {
+                name: /Health and Wellness Certificate/i,
+            })
+        ).toBeInTheDocument();
+    });
 });
